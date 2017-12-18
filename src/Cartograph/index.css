@@ -1,0 +1,99 @@
+.main-body {
+	width: 100%;
+	height: 88%;
+	display: inline-block;
+	position: fixed;
+  	top: 100px;
+  	left: 0px;
+}
+
+.top {
+	display: inline-block;
+	height: 65%;
+	width: 100%;
+}
+
+.aboutCoG {
+	float: left;
+	width: 40%;
+	height: 100%;
+}
+
+.map {
+	float: right;
+	right: 0;
+	width: 59%;
+	border: 3px solid black;
+	height: 100%;
+	display: inline-block;
+}
+
+.location {
+	top: 0;
+	left: 0;
+	height: 10%;
+	width: 50%;
+}
+
+.search-divider {
+	width: 100%;
+	height: 6%;
+	background-color: purple;
+}
+
+.search-info {
+	width: 49.7%;
+	float: left;
+	height: 100%;
+	padding-right: 0.58%;
+	background-color: orange;
+}
+
+.search-form {
+	float: right;
+	width: 49.7%;
+	height: 100%;
+	display: inline-block;
+}
+
+.search-text {
+	display: inline;
+	bottom: 0;
+}
+
+.form-location {
+	width: 70%;
+}
+
+.radius {
+	width: 10%;
+}
+
+.cartograph {
+	width: 18%;
+}
+
+.shop-display {
+	height: 29%;
+	width: 100%;
+	display: block;
+	background-color: blue;
+	text-align: center;
+}
+
+.hoveredShop, .shop1, .shop2, .shop3, .shop4, .shop5 {
+	width: 14.7%;
+	height: 100%;
+	display: inline-block;
+	border: 2px solid black;
+}
+
+.arrow-left {
+	height: 103%;
+	width: 5%;
+}
+
+.arrow-right {
+	height: 103%;
+	width: 5%;
+}

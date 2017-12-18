@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
+import './index.css';
 
 class MapContainer extends Component {
 	render(){
     	return(
-    		<h1>hey</h1>
+    		<div className="map">
+    			<div className="location">
+    				<p>Place, Place, Placetown, 12345</p>
+    			</div>
+    		</div>
    		)
   	}
 }

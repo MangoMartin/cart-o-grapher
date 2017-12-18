@@ -34,14 +34,6 @@ body {
   left: 0px;
 }
 
-.main-body {
-  position: fixed;
-  top: 100px;
-  left: 0px;
-  background-color: green;
-  border: 2px solid;
-}
-
 .settings-body {
   position: fixed;
   top: 100px;
