@@ -49,3 +49,15 @@ body {
   background-color: green;
   border: 2px solid;
 }
+
+.leaflet-container {
+  height: 500px;
+  width: 500px;
+  position: fixed ;
+  top: 200px;
+  display: flex;
+}
+
+.leaflet-default-icon-path {
+  background-image : url("/public/images/marker-icon.png")
+}

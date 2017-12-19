@@ -3,6 +3,8 @@ import {Link, Route, Switch} from 'react-router-dom';
 import MyStore from './myStore.js';
 import Settings from './settings.js';
 import Home from './home.js';
+import Maps from './map.js';
+import ContentBody from './contentbody.js';
 
 class Container extends Component {
 
@@ -11,6 +13,7 @@ class Container extends Component {
   }
 
   render() {
+
     return(
       <div
         className='header'>
@@ -48,6 +51,8 @@ class Container extends Component {
             />
           </Switch>
         </div>
+        <Maps />
+        <ContentBody /> 
       </div>
     )
   }

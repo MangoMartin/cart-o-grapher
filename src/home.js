@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+
 class Home extends Component {
 
   render(){
@@ -7,9 +8,14 @@ class Home extends Component {
       <div
        class='main-body'>
       <h1>Filler Content</h1>
+        <div>
+
+        </div>
       </div>
     )
   }
 }
+
+
 
 export default Home;
