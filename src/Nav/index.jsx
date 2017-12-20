@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import {Link, Route, Switch} from 'react-router-dom';
-import MyStore from './myStore.js';
-import Settings from './settings.js';
-import Home from './home.js';
+import MyStore from '../StoreProfile';
+import Settings from '../ProfileDesign';
+import Home from '../Cartograph';
+import Maps from '../map.js';
 
 class Container extends Component {
 

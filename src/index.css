@@ -34,14 +34,6 @@ body {
   left: 0px;
 }
 
-.main-body {
-  position: fixed;
-  top: 100px;
-  left: 0px;
-  background-color: green;
-  border: 2px solid;
-}
-
 .settings-body {
   position: fixed;
   top: 100px;
@@ -56,8 +48,4 @@ body {
   position: fixed ;
   top: 200px;
   display: flex;
-}
-
-.leaflet-default-icon-path {
-  background-image : url("/public/images/marker-icon.png")
 }

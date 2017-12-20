@@ -2,14 +2,14 @@ import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 import React, { Component } from 'react';
 import DivIcon from 'react-leaflet-div-icon';
 import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
 
 class Maps extends Component {
   constructor(){
     super();
     this.state={
-      lat : 47.637933,
-      long : -122.347938,
-
+      lat : 14.599512,
+      long : 120.984222
     }
   }
 
