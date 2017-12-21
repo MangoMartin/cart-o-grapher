@@ -25,14 +25,14 @@
 	width: 59%;
 	border: 3px solid black;
 	height: 100%;
-	display: inline-block;
 }
 
-.location {
-	top: 0;
-	left: 0;
-	height: 10%;
-	width: 50%;
+.leaflet-container {
+	position:absolute;
+ 	top: 0;
+	bottom: 34.3%;
+	left: 40.6%;
+	right: 0.1%;
 }
 
 .search-divider {

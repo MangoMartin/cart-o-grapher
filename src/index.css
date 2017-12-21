@@ -42,10 +42,3 @@ body {
   border: 2px solid;
 }
 
-.leaflet-container {
-  height: 500px;
-  width: 500px;
-  position: fixed ;
-  top: 200px;
-  display: flex;
-}
