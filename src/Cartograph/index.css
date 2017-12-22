@@ -29,10 +29,10 @@
 
 .leaflet-container {
 	position:absolute;
- 	top: 0;
-	bottom: 34.3%;
-	left: 40.6%;
-	right: 0.1%;
+ 	top: 0.5%;
+	bottom: 34.65%;
+	left: 40.9%;
+	right: 0.2%;
 }
 
 .search-divider {
