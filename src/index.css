@@ -34,11 +34,4 @@ body {
   left: 0px;
 }
 
-.settings-body {
-  position: fixed;
-  top: 100px;
-  left: 0px;
-  background-color: green;
-  border: 2px solid;
-}
 
