@@ -88,7 +88,6 @@ export default class Home extends Component {
   chooseRadius(event){
     this.setState({
       Radius : event.target.value
-    })
+    });
   }
-
 }
