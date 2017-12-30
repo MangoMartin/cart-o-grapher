@@ -16,8 +16,8 @@ class Settings extends Component {
       zip: '',
       siteName:'',
       links: [],
-
     };
+
     this.handleShopNameChange = this.handleShopNameChange.bind(this);
     this.handleSiteNameChange = this.handleSiteNameChange.bind(this);
     this.handleLinkSiteNameChange = this.handleLinkSiteNameChange.bind(this);
@@ -28,7 +28,7 @@ class Settings extends Component {
 
 	render(){
 		return(
-			<div class='settings-body'>
+			<div className='settings-body'>
         <h1>Set up shop/Edit shop</h1>
         <form onSubmit={this.handleSubmit}>
           Shop name: <input
@@ -39,17 +39,10 @@ class Settings extends Component {
             onChange={this.handleShopNameChange}
            /><br />
           {this.state.links.map((link, index) => (
-          <div className="link">
+          <div className="link" key={index + 1}>
             <input
               type="text"
-              placeholder="Company name, e.g. Magic Everywhere LLC"
-              value={this.state.name}
-              onChange={this.handleNameChange}
-              required
-            />
-            <input
-              type="text"
-              placeholder={`Link #${index + 1} siteName`}
+              placeholder={`Link #${index + 1}`}
               value={link.siteName}
               onChange={this.handleLinkSiteNameChange(index)}
               required
@@ -59,6 +52,7 @@ class Settings extends Component {
         ))}
         <button type="button" onClick={this.handleAddLink} className="small">Add Link</button>
         <button>Link Shop</button>
+
         </form> 
       </div>
     )
