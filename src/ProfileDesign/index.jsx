@@ -77,7 +77,7 @@ class Settings extends Component {
             type='text'
             onChange={this.handleCountryChange}
           /><br />
-          <h3>Contact information</h3><br />
+          <h3>Contact information:</h3><br />
           Phone number: {this.state.phone}<br />
           <input
             type='text'
@@ -130,8 +130,9 @@ class Settings extends Component {
             value='Update all store information'
           /><br />
         </form>
-        <h3>External links to store sites</h3>
+        <h3>External links to store sites:</h3><br />
         <AddLinks />
+        <h3>Add a profile image for your store:</h3><br />
         <ImageForm />
       </div>
     )
