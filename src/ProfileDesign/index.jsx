@@ -1,5 +1,14 @@
 import React, { Component } from 'react';
+
+import AddLinks from './AddLinks';
+import ImageForm from './ImageForm';
+import Checkbox from './Checkbox';
 import './index.css';
+
+const checkboxes = [
+  'Local Delivery',
+  'Pickup',
+];
 
 class Settings extends Component {
 
@@ -7,23 +16,23 @@ class Settings extends Component {
 		super();
     this.state = {
       shopName: 'Untitled',
-      ownerName: 'Shop Owner',
-      shopImg: 'blank.jpg',
-      country: '',
+      owner: 'No name provided',
+      about: 'No description provided',
       address: '',
       city: '',
       state: '',
       zip: '',
-      siteName:'',
-      links: [],
+      country: '',
+      phone: 'None Provided',
+      email: 'None provided',
+      mHrs: 'Closed',
+      tHrs: 'Closed',
+      wHrs: 'Closed',
+      thHrs: 'Closed',
+      fHrs: 'Closed',
+      sHrs: 'Closed',
+      suHrs: 'Closed',
     };
-
-    this.handleShopNameChange = this.handleShopNameChange.bind(this);
-    this.handleSiteNameChange = this.handleSiteNameChange.bind(this);
-    this.handleLinkSiteNameChange = this.handleLinkSiteNameChange.bind(this);
-    this.handleAddLink = this.handleAddLink.bind(this);
-    this.handleRemoveLink = this.handleRemoveLink.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
 	render(){
@@ -31,63 +40,196 @@ class Settings extends Component {
 			<div className='settings-body'>
         <h1>Set up shop/Edit shop</h1>
         <form onSubmit={this.handleSubmit}>
-          Shop name: <input
+          <h3>Store info:</h3>
+          Shop name: {this.state.shopName}<br />
+          <input
             type='text'
-            placeholder='Item Name'
-            name='itemName'
-            value={this.state.shopName}
             onChange={this.handleShopNameChange}
-           /><br />
-          {this.state.links.map((link, index) => (
-          <div className="link" key={index + 1}>
-            <input
-              type="text"
-              placeholder={`Link #${index + 1}`}
-              value={link.siteName}
-              onChange={this.handleLinkSiteNameChange(index)}
-              required
-            />
-            <button type="button" onClick={this.handleRemoveLink(index)} className="small">-</button>
-          </div>
-        ))}
-        <button type="button" onClick={this.handleAddLink} className="small">Add Link</button>
-        <button>Link Shop</button>
-
-        </form> 
+          /><br />
+          Owner name: {this.state.owner}<br />
+          <input
+            type='text'
+            onChange={this.handleOwnerChange}
+          /><br />
+          Store description: {this.state.about}<br />
+          <input
+            type='text'
+            onChange={this.handleAboutChange}
+          /><br />
+          <h3>Address:</h3><br />
+          Address: <input
+            type='text'
+            onChange={this.handleAddressChange}
+          /><br />
+          City: <input
+            type='text'
+            onChange={this.handleCityChange}
+          /><br />
+          State: <input
+            type='text'
+            onChange={this.handleStateChange}
+          /><br />
+          Zip code: <input
+            type='text'
+            onChange={this.handleZipChange}
+          /><br />
+          Country: <input
+            type='text'
+            onChange={this.handleCountryChange}
+          /><br />
+          <h3>Contact information</h3><br />
+          Phone number: {this.state.phone}<br />
+          <input
+            type='text'
+            onChange={this.handlePhoneChange}
+          /><br />
+          Email: {this.state.email}<br />
+          <input
+            type='text'
+            onChange={this.handleEmailChange}
+          /><br />
+          {this.createCheckboxes()}
+          <h3>Hours of Operation:</h3>
+          Monday: {this.state.mHrs}<br />
+          <input
+            type='text'
+            onChange={this.handleMHrsChange}
+          /><br />
+          Tuesday: {this.state.tHrs}<br />
+          <input
+            type='text'
+            onChange={this.handleTHrsChange}
+          /><br />
+          Wednesday: {this.state.wHrs}<br />
+          <input
+            type='text'
+            onChange={this.handleWHrsChange}
+          /><br />
+          Thursday: {this.state.thHrs}<br />
+          <input
+          type='text'
+            onChange={this.handleThHrsChange}
+          /><br />
+          Friday: {this.state.fHrs}<br />
+          <input
+            type='text'
+            onChange={this.handleFHrsChange}
+          /><br />
+          Saturday: {this.state.sHrs}<br />
+          <input
+            type='text'
+            onChange={this.handleSHrsChange}
+          /><br />
+          Sunday: {this.state.suHrs}<br />
+          <input
+            type='text'
+            onChange={this.handleSuHrsChange}
+          /><br />
+          <input 
+            type='submit'
+            value='Update all store information'
+          /><br />
+        </form>
+        <h3>External links to store sites</h3>
+        <AddLinks />
+        <ImageForm />
       </div>
     )
+  }
+
+  componentWillMount = () => {
+    this.selectedCheckboxes = new Set();
   }
 
   handleShopNameChange = (event) => {
     this.setState({ shopName: event.target.value });
   }
 
-  handleSiteNameChange = (event) => {
-    this.setState({ siteName: event.target.value });
+  handleOwnerChange = (event) => {
+    this.setState({ owner: event.target.value });
   }
-  
-  handleLinkSiteNameChange = (index) => (event) => {
-    const newLinks = this.state.links.map((link, lnkIdx) => {
-      if (index !== lnkIdx) return link;
-      return { ...link, siteName: event.target.value };
-    });
-    
-    this.setState({ links: newLinks });
+
+  handleAddressChange = (event) => {
+    this.setState({ address: event.target.value });
   }
-  
-  
-  handleAddLink = () => {
-    this.setState({ links: this.state.links.concat([{ siteName: '' }]) });
+
+  handleCityChange = (event) => {
+    this.setState({ city: event.target.value });
   }
-  
-  handleRemoveLink = (index) => () => {
-    this.setState({ links: this.state.links.filter((s, lnkIdx) => index !== lnkIdx) });
+
+  handleStateChange = (event) => {
+    this.setState({ state: event.target.value });
   }
+
+  handleZipChange = (event) => {
+    this.setState({ zip: event.target.value });
+  }
+
+  handleCountryChange = (event) => {
+    this.setState({ country: event.target.value });
+  }
+
+  handlePhoneChange = (event) => {
+    this.setState({ phone: event.target.value });
+  }
+
+  handleEmailChange = (event) => {
+    this.setState({ email: event.target.value });
+  }
+
+  handleMHrsChange = (event) => {
+    this.setState({ mHrs: event.target.value });
+  }
+
+  handleTHrsChange = (event) => {
+    this.setState({ tHrs: event.target.value });
+  }
+
+  handleWHrsChange = (event) => {
+    this.setState({ wHrs: event.target.value });
+  }
+
+  handleThHrsChange = (event) => {
+    this.setState({ thHrs: event.target.value });
+  }
+
+  handleFHrsChange = (event) => {
+    this.setState({ fHrs: event.target.value });
+  }
+
+  handleSHrsChange = (event) => {
+    this.setState({ sHrs: event.target.value });
+  }
+
+  handleSuHrsChange = (event) => {
+    this.setState({ suHrs: event.target.value });
+  }
+
+  toggleCheckbox = label => {
+    if (this.selectedCheckboxes.has(label)) {
+      this.selectedCheckboxes.delete(label);
+    } else {
+      this.selectedCheckboxes.add(label);
+    }
+  }
+
+  createCheckbox = label => (
+    <Checkbox
+      label={label}
+      handleCheckboxChange={this.toggleCheckbox}
+      key={label}
+    />
+  )
+
+  createCheckboxes = () => (
+    checkboxes.map(this.createCheckbox)
+  )
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const { siteName, links } = this.state;
-    alert(`Incorporated: ${siteName} with ${links.length} links`);
+    for (const checkbox of this.selectedCheckboxes) {
+      console.log(checkbox, 'is selected.');
+    }
   }
 
 }
