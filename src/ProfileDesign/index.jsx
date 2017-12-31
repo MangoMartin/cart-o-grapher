@@ -150,6 +150,10 @@ class Settings extends Component {
     this.setState({ owner: event.target.value });
   }
 
+  handleAboutChange = (event) => {
+    this.setState({ about: event.target.value });
+  }
+
   handleAddressChange = (event) => {
     this.setState({ address: event.target.value });
   }
