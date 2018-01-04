@@ -21,10 +21,10 @@ export default class Home extends Component {
       <div className='main-body'>
       	<div className='top'>
       		<div className='aboutCoG'>
-            <p className='about-text'> Cart-o-grapher allows you to bypass the hassle of shipping 
-            by locating nearby inventories of your favorite e-commerce shops, 
+            <p className='about-text'> Cart-o-grapher allows you to bypass the hassle of shipping
+            by locating nearby inventories of your favorite e-commerce shops,
             such as: Amazon, Etsy, Ebay, and more. Just enter in a location below to
-            view nearby stores located on the map and their respective store profiles 
+            view nearby stores located on the map and their respective store profiles
             below.</p>
       		</div>
       		<MapContainer
@@ -45,9 +45,9 @@ export default class Home extends Component {
                 onChange={this.handleChange}
                 required
               />
-              <input 
-                list='radius' 
-                name='radii' 
+              <input
+                list='radius'
+                name='radii'
                 placeholder='How far?'
                 value={this.state.Radius}
                 onChange={this.chooseRadius}
@@ -61,7 +61,7 @@ export default class Home extends Component {
                 <option value="50">miles away</option>
                 <option value="100">miles away</option>
               </datalist>
-              <input 
+              <input
                 type='submit'
                 value='Cart-o-graph!'
                 className='cartograph'
@@ -69,7 +69,7 @@ export default class Home extends Component {
             </form>
       		</div>
       	</div>
-      	<MappedShops 
+      	<MappedShops
       	/>
       </div>
     )
