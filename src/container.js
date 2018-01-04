@@ -1,17 +1,14 @@
 import React, { Component } from 'react';
 import {Link, Route, Switch} from 'react-router-dom';
-import MyStore from '../StoreProfile';
-import Settings from '../ProfileDesign';
-import Home from '../Cartograph';
-import Maps from '../Cartograph/Map.jsx';
+import MyStore from './myStore.js';
+import Settings from './settings.js';
+import Home from './home.js';
+import MapContainer from './Map.jsx';
 
 class Container extends Component {
 
   constructor(){
     super();
-
-    this.removeMap = this.removeMap.bind(this);
-
   }
 
   render() {
@@ -28,7 +25,7 @@ class Container extends Component {
           <ul>
           {this.props.children}
             <Link to='/'><li>Home</li></Link>
-            <Link to='/mystore' onClick={this.removeMap}><li>My Store</li></Link>
+            <Link to='/mystore'><li>My Store</li></Link>
             <Link to='/settings'><li>Settings</li></Link>
             <Link to='/logout'><li>Log Out</li></Link>
           </ul>
@@ -53,24 +50,7 @@ class Container extends Component {
             />
           </Switch>
         </div>
-      </div>
-    )
-  }
-
-  removeMap() {
-    this.map.remove();
-  }
-}
-
-
-
-
-class Logout extends Component {
-
-  render(){
-    return(
-      <div>
-
+        <MapContainer/>
       </div>
     )
   }
