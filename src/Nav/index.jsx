@@ -3,7 +3,7 @@ import {Link, Route, Switch} from 'react-router-dom';
 import MyStore from '../StoreProfile';
 import Settings from '../ProfileDesign';
 import Home from '../Cartograph';
-import Maps from '../Cartograph/Map.jsx';
+import Maps from '../Cartograph/Map.js';
 
 class Container extends Component {
 
@@ -27,10 +27,10 @@ class Container extends Component {
           className='header-nav'>
           <ul>
           {this.props.children}
-            <Link to='/'><li>Home</li></Link>
+            <Link to='/' onClick={this.removeMap}><li>Home</li></Link>
             <Link to='/mystore' onClick={this.removeMap}><li>My Store</li></Link>
-            <Link to='/settings'><li>Settings</li></Link>
-            <Link to='/logout'><li>Log Out</li></Link>
+            <Link to='/settings' onClick={this.removeMap}><li>Settings</li></Link>
+            <Link to='/logout' onClick={this.removeMap}><li>Log Out</li></Link>
           </ul>
 
           <Switch>
