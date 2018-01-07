@@ -3,7 +3,7 @@ import {Link, Route, Switch} from 'react-router-dom';
 import MyStore from './myStore.js';
 import Settings from './settings.js';
 import Home from './home.js';
-import MapContainer from './Map.jsx';
+import MapContainer from './Map.js';
 
 class Container extends Component {
 
