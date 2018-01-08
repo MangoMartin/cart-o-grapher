@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {Link, Route, Switch} from 'react-router-dom';
-import MyStore from '../StoreProfile';
 import Settings from '../ProfileDesign';
 import Home from '../Cartograph';
 import Maps from '../Cartograph/Map.js';
@@ -28,7 +27,6 @@ class Container extends Component {
           <ul>
           {this.props.children}
             <Link to='/' onClick={this.removeMap}><li>Home</li></Link>
-            <Link to='/mystore' onClick={this.removeMap}><li>My Store</li></Link>
             <Link to='/settings' onClick={this.removeMap}><li>Settings</li></Link>
             <Link to='/logout' onClick={this.removeMap}><li>Log Out</li></Link>
           </ul>
@@ -38,10 +36,6 @@ class Container extends Component {
               exact
               path="/"
               component={Home}
-            />
-            <Route
-              path="/mystore"
-              component={MyStore}
             />
             <Route
               path="/settings"
@@ -61,9 +55,6 @@ class Container extends Component {
     this.map.remove();
   }
 }
-
-
-
 
 class Logout extends Component {
 
