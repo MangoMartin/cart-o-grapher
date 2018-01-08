@@ -25,7 +25,6 @@ class Container extends Component {
           <ul>
           {this.props.children}
             <Link to='/'><li>Home</li></Link>
-            <Link to='/mystore'><li>My Store</li></Link>
             <Link to='/settings'><li>Settings</li></Link>
             <Link to='/logout'><li>Log Out</li></Link>
           </ul>
@@ -35,10 +34,6 @@ class Container extends Component {
               exact
               path="/"
               component={Home}
-            />
-            <Route
-              path="/mystore"
-              component={MyStore}
             />
             <Route
               path="/settings"
