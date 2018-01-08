@@ -12,7 +12,10 @@ class MapContainer extends Component {
 
 	render(){
         const provider = new OpenStreetMapProvider();
-
+        provider.search({query: '401 East 60th Street'})
+                .then(function(result){
+                  console.log(result)
+                })
         const searchControl = new GeoSearchControl({
           provider : provider,
           style: 'button',
@@ -21,11 +24,12 @@ class MapContainer extends Component {
           maxMarker: 3
         });
 
-        const map = L.map('map', { zoom: 5})
+        const map = L.map('map', { zoom: 5, minZoom: 2})
                      .addControl(searchControl)
                      .setView([51.505, -0.09], 13);
 
           L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            noWrap: true,
             attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           }).addTo(map);
 
@@ -34,7 +38,7 @@ class MapContainer extends Component {
             .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
             .openPopup();
           }
-          provider.search({query: Markers[1]}).then(function(result){console.log(result)});
+          //provider.search({query: Markers[1]}).then(function(result){console.log(result)});
     	return(
         <div>
         </div>

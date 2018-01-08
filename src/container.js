@@ -4,15 +4,14 @@ import MyStore from './myStore.js';
 import Settings from './settings.js';
 import Home from './home.js';
 import MapContainer from './Map.js';
+import axios from 'axios';
 
 class Container extends Component {
-
   constructor(){
     super();
   }
 
   render() {
-
     return(
       <div
         className='header'>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 import AddLinks from './AddLinks';
 import ImageForm from './ImageForm';
@@ -18,7 +19,7 @@ class Settings extends Component {
       shopName: 'Untitled',
       owner: 'No name provided',
       about: 'No description provided',
-      address: '',
+      address: 'asdfasdf',
       city: '',
       state: '',
       zip: '',
@@ -36,104 +37,16 @@ class Settings extends Component {
   }
 
 	render(){
+
 		return(
 			<div className='settings-body'>
         <h1>Set up shop/Edit shop</h1>
-        <form onSubmit={this.handleSubmit}>
-          <h3>Store info:</h3>
-          Shop name: {this.state.shopName}<br />
-          <input
-            type='text'
-            onChange={this.handleShopNameChange}
-          /><br />
-          Owner name: {this.state.owner}<br />
-          <input
-            type='text'
-            onChange={this.handleOwnerChange}
-          /><br />
-          Store description: {this.state.about}<br />
-          <input
-            type='text'
-            onChange={this.handleAboutChange}
-          /><br />
-          <h3>Address:</h3><br />
-          Address: <input
-            type='text'
-            onChange={this.handleAddressChange}
-          /><br />
-          City: <input
-            type='text'
-            onChange={this.handleCityChange}
-          /><br />
-          State: <input
-            type='text'
-            onChange={this.handleStateChange}
-          /><br />
-          Zip code: <input
-            type='text'
-            onChange={this.handleZipChange}
-          /><br />
-          Country: <input
-            type='text'
-            onChange={this.handleCountryChange}
-          /><br />
-          <h3>Contact information:</h3><br />
-          Phone number: {this.state.phone}<br />
-          <input
-            type='text'
-            onChange={this.handlePhoneChange}
-          /><br />
-          Email: {this.state.email}<br />
-          <input
-            type='text'
-            onChange={this.handleEmailChange}
-          /><br />
-          {this.createCheckboxes()}
-          <h3>Hours of Operation:</h3>
-          Monday: {this.state.mHrs}<br />
-          <input
-            type='text'
-            onChange={this.handleMHrsChange}
-          /><br />
-          Tuesday: {this.state.tHrs}<br />
-          <input
-            type='text'
-            onChange={this.handleTHrsChange}
-          /><br />
-          Wednesday: {this.state.wHrs}<br />
-          <input
-            type='text'
-            onChange={this.handleWHrsChange}
-          /><br />
-          Thursday: {this.state.thHrs}<br />
-          <input
-          type='text'
-            onChange={this.handleThHrsChange}
-          /><br />
-          Friday: {this.state.fHrs}<br />
-          <input
-            type='text'
-            onChange={this.handleFHrsChange}
-          /><br />
-          Saturday: {this.state.sHrs}<br />
-          <input
-            type='text'
-            onChange={this.handleSHrsChange}
-          /><br />
-          Sunday: {this.state.suHrs}<br />
-          <input
-            type='text'
-            onChange={this.handleSuHrsChange}
-          /><br />
-          <input 
-            type='submit'
-            value='Update all store information'
-          /><br />
+        <form
+          method='POST'
+          action='/settings'>
+          <input id='input-field' type='text' />
+          <input name='button' type='submit' value='Submit' />
         </form>
-        <h3>External links to store sites:</h3><br />
-        <AddLinks />
-        <h3>Add a profile image for your store:</h3><br />
-        <ImageForm />
       </div>
     )
   }
