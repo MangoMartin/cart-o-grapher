@@ -1,16 +1,30 @@
 import React, { Component } from 'react';
+import {Link, Route, Switch} from 'react-router-dom';
 
+import LoginSignup from './LoginSignup';
 import AddLinks from './AddLinks';
+import AddCategories from './AddCategories';
 import ImageForm from './ImageForm';
 import Checkbox from './Checkbox';
+import Shop from '../StoreProfile';
 import './index.css';
 
-const checkboxes = [
+const pickupDelivery = [
   'Local Delivery',
   'Pickup',
 ];
 
-class Settings extends Component {
+const daysOpen = [
+  'Sunday',
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Saturday',
+];
+
+class CreateShop extends Component {
 
 	constructor() {
 		super();
@@ -25,19 +39,13 @@ class Settings extends Component {
       country: '',
       phone: 'None Provided',
       email: 'None provided',
-      mHrs: 'Closed',
-      tHrs: 'Closed',
-      wHrs: 'Closed',
-      thHrs: 'Closed',
-      fHrs: 'Closed',
-      sHrs: 'Closed',
-      suHrs: 'Closed',
     };
   }
 
 	render(){
 		return(
 			<div className='settings-body'>
+        <LoginSignup />
         <h1>Set up shop/Edit shop</h1>
         <form onSubmit={this.handleSubmit}>
           <h3>Store info:</h3>
@@ -45,11 +53,13 @@ class Settings extends Component {
           <input
             type='text'
             onChange={this.handleShopNameChange}
+            required
           /><br />
           Owner name: {this.state.owner}<br />
           <input
             type='text'
             onChange={this.handleOwnerChange}
+            required
           /><br />
           Store description: {this.state.about}<br />
           <input
@@ -60,22 +70,27 @@ class Settings extends Component {
           Address: <input
             type='text'
             onChange={this.handleAddressChange}
+            required
           /><br />
           City: <input
             type='text'
             onChange={this.handleCityChange}
+            required
           /><br />
           State: <input
             type='text'
             onChange={this.handleStateChange}
+            required
           /><br />
           Zip code: <input
             type='text'
             onChange={this.handleZipChange}
+            required
           /><br />
           Country: <input
             type='text'
             onChange={this.handleCountryChange}
+            required
           /><br />
           <h3>Contact information:</h3><br />
           Phone number: {this.state.phone}<br />
@@ -88,52 +103,31 @@ class Settings extends Component {
             type='text'
             onChange={this.handleEmailChange}
           /><br />
-          {this.createCheckboxes()}
+          {this.createPickupDeliveryCheckboxes()}
           <h3>Hours of Operation:</h3>
-          Monday: {this.state.mHrs}<br />
-          <input
-            type='text'
-            onChange={this.handleMHrsChange}
-          /><br />
-          Tuesday: {this.state.tHrs}<br />
-          <input
-            type='text'
-            onChange={this.handleTHrsChange}
-          /><br />
-          Wednesday: {this.state.wHrs}<br />
-          <input
-            type='text'
-            onChange={this.handleWHrsChange}
-          /><br />
-          Thursday: {this.state.thHrs}<br />
-          <input
-          type='text'
-            onChange={this.handleThHrsChange}
-          /><br />
-          Friday: {this.state.fHrs}<br />
-          <input
-            type='text'
-            onChange={this.handleFHrsChange}
-          /><br />
-          Saturday: {this.state.sHrs}<br />
-          <input
-            type='text'
-            onChange={this.handleSHrsChange}
-          /><br />
-          Sunday: {this.state.suHrs}<br />
-          <input
-            type='text'
-            onChange={this.handleSuHrsChange}
-          /><br />
+          <p>Check off which days your store is open for business</p>
+          {this.createDaysOpenCheckboxes()}
           <input 
             type='submit'
             value='Update all store information'
           /><br />
         </form>
-        <h3>External links to store sites:</h3><br />
+        <h3>Add categories that describe what your store sells:</h3><br />
+        <p>i.e. Jewelry, Electronics, etc.</p>
+        <AddCategories />
+        <h3>Add external links to store sites:</h3><br />
         <AddLinks />
         <h3>Add a profile image for your store:</h3><br />
         <ImageForm />
+        <Link to='/myshop'>
+          Check out your store profile
+        </Link>
+        <Switch>
+          <Route
+            path='/myshop'
+            component={Shop}
+          />
+        </Switch>
       </div>
     )
   }
@@ -182,34 +176,6 @@ class Settings extends Component {
     this.setState({ email: event.target.value });
   }
 
-  handleMHrsChange = (event) => {
-    this.setState({ mHrs: event.target.value });
-  }
-
-  handleTHrsChange = (event) => {
-    this.setState({ tHrs: event.target.value });
-  }
-
-  handleWHrsChange = (event) => {
-    this.setState({ wHrs: event.target.value });
-  }
-
-  handleThHrsChange = (event) => {
-    this.setState({ thHrs: event.target.value });
-  }
-
-  handleFHrsChange = (event) => {
-    this.setState({ fHrs: event.target.value });
-  }
-
-  handleSHrsChange = (event) => {
-    this.setState({ sHrs: event.target.value });
-  }
-
-  handleSuHrsChange = (event) => {
-    this.setState({ suHrs: event.target.value });
-  }
-
   toggleCheckbox = label => {
     if (this.selectedCheckboxes.has(label)) {
       this.selectedCheckboxes.delete(label);
@@ -226,17 +192,21 @@ class Settings extends Component {
     />
   )
 
-  createCheckboxes = () => (
-    checkboxes.map(this.createCheckbox)
+  createPickupDeliveryCheckboxes = () => (
+    pickupDelivery.map(this.createCheckbox)
+  )
+
+  createDaysOpenCheckboxes = () => (
+    daysOpen.map(this.createCheckbox)
   )
 
   handleSubmit = (event) => {
     event.preventDefault();
     for (const checkbox of this.selectedCheckboxes) {
-      console.log(checkbox, 'is selected.');
+      console.log(checkbox + 'is selected.');
     }
   }
 
 }
 
-export default Settings;
+export default CreateShop;
