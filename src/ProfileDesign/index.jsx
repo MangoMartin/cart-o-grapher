@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-
 import AddLinks from './AddLinks';
 import ImageForm from './ImageForm';
 import Checkbox from './Checkbox';
 import './index.css';
+import axios from 'axios';
 
 const checkboxes = [
   'Local Delivery',
@@ -43,7 +42,7 @@ class Settings extends Component {
         <h1>Set up shop/Edit shop</h1>
         <form
           method='POST'
-          action='/settings'>
+          action='localhost:3001/about'>
           <input id='input-field' type='text' />
           <input name='button' type='submit' value='Submit' />
         </form>

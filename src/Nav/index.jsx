@@ -29,7 +29,7 @@ class Container extends Component {
           {this.props.children}
             <Link to='/' onClick={this.removeMap}><li>Home</li></Link>
             <Link to='/mystore' onClick={this.removeMap}><li>My Store</li></Link>
-            <Link to='/settings' onClick={this.removeMap}><li>Settings</li></Link>
+            <Link to='http://localhost:3001/about' onClick={this.removeMap}><li>Settings</li></Link>
             <Link to='/logout' onClick={this.removeMap}><li>Log Out</li></Link>
           </ul>
 
@@ -44,7 +44,7 @@ class Container extends Component {
               component={MyStore}
             />
             <Route
-              path="/settings"
+              path="http://localhost:3001/about"
               component={Settings}
             />
             <Route

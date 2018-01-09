@@ -5,16 +5,28 @@ import './index.css';
 import {GeoSearchControl, OpenStreetMapProvider} from 'leaflet-geosearch';
 import Markers from './marker.js';
 
+
 class MapContainer extends Component {
   constructor(){
     super();
+
+    this.state = {
+      addresses: []
+    };
   }
+
+  componentDidMount(){
+    fetch('http://localhost:3001').then((response)=> response.json())
+                                 .then((addresses)=>this.setState({
+                                   addresses: addresses
+                                 }))
+    }
 
 	render(){
         const provider = new OpenStreetMapProvider();
         provider.search({query: '401 East 60th Street'})
                 .then(function(result){
-                  console.log(result)
+                  console.log(result);
                 })
         const searchControl = new GeoSearchControl({
           provider : provider,
@@ -41,6 +53,7 @@ class MapContainer extends Component {
           //provider.search({query: Markers[1]}).then(function(result){console.log(result)});
     	return(
         <div>
+          {console.log(this.state.addresses)}
         </div>
    		)
   	}

@@ -1,0 +1,17 @@
+doctype html
+html(lang='en')
+  head
+    title Jade
+    script(type='text/javascript').
+      foo = true;
+      bar = function () {};
+      if (foo) {
+      bar(1 + 5)
+      }
+  body
+    h1 Jade - node template engine
+    #container.col
+      p You are amazing
+      form(method='POST', action='/about')
+        input(type='text', name='address' placeholder='type address here')
+        input(type='submit', value='Post')
