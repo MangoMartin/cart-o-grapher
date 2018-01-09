@@ -1,11 +1,12 @@
-var LocalStrategy = require('passport-local').Strategy;
-var bcrypt = require('bcrypt');
-var jwt = require('jsonwebtoken');
-var config = require('../config/config');
-var User = require("../db").users;
+
+const LocalStrategy = require('passport-local').Strategy;
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const config = require('../config/config');
+const User = require("../db").users;
 
 function getUserParams(req) {
-	var body = req.body
+	let body = req.body
 	return {
 		id: body.id,
 		username: body.username,
@@ -29,7 +30,7 @@ function processSignupCallback(req, username, password, done) {
 				if (user) {
 					return done(null, false);        
 				} else {
-					var userToCreate = getUserParams(req);
+					let userToCreate = getUserParams(req);
 
 					bcrypt.hash(userToCreate.password, config.saltRounds, function(err, hash) {       
 

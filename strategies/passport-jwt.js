@@ -1,15 +1,17 @@
+
 const JwtStrategy = require('passport-jwt').Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;
 
 const config = require('../config/config');
 
-var cookieExtractor = function(req) {
-  var token = null;
+let cookieExtractor = function(req) {
+  let token = null;
   if (req && req.cookies) token = req.cookies['jwt'];
   return token;
 };
+
 module.exports = function(passport) {  
-  var opts = {};
+  let opts = {};
   opts.jwtFromRequest = cookieExtractor; // check token in cookie
   opts.secretOrKey = config.jwtSecret;
     passport.use(new JwtStrategy(opts, function(jwt_payload, done) {
