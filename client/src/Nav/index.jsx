@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {Link, Route, Switch} from 'react-router-dom';
 import CreateShop from '../ProfileDesign';
 import Home from '../Cartograph';
-import Maps from '../Cartograph/Map.js';
 import './index.css';
 
 class Container extends Component {
@@ -15,7 +14,7 @@ class Container extends Component {
     render() {
         return(
             <div className='header'>
-                <Link to='/' onClick={this.removeMap}>
+                <Link to='/api/tests' onClick={this.removeMap}>
                     <div className='header-logo'>
                         <img className='logo' src={require('./logo.jpg')} alt='' />
                         <h1>Cart-o-Grapher</h1>
@@ -35,7 +34,7 @@ class Container extends Component {
                     <Switch>
                         <Route
                             exact
-                            path="/"
+                            path="/api/tests"
                             component={Home}
                         />
                         <Route
@@ -55,7 +54,7 @@ class Container extends Component {
     removeMap() {
         this.map.remove();
     }
-}
+};
 
 class Logout extends Component {
     render(){
@@ -65,6 +64,6 @@ class Logout extends Component {
             </div>
         )
     }
-}
+};
 
 export default Container;

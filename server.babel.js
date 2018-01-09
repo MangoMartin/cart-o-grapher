@@ -4,7 +4,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const path = require('path');
-const models  = require('../db');
+const models  = require('./db');
 
 const router = express.Router();
 const app = express();
@@ -17,12 +17,62 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded( { extended: true } ));
 app.use(cookieParser());
-app.use(require('less-middleware')(path.join(__dirname, 'client/build')));
-app.use(express.static(path.join(__dirname, '/client/build')));
+app.use(require('less-middleware')(path.join(__dirname, '/client/public')));
+app.use(express.static(path.join(__dirname, '/client/public')));
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname+'/build/index.html'));
+app.get('/api/tests', (req, res) => {
+  
+	res.json([{
+  	id: 1,
+  	username: "samsepi0l"
+  }, {
+  	id: 2,
+  	username: "D0loresH4ze"
+  }]);
 });
 
-const port = process.env.PORT || 3000;
+
+app.get('*', (req, res, next) => {
+	var err = new Error('Not Found');
+ 	err.status = 404;
+  	next(err);
+  	res.sendFile(path.join(__dirname+'/client/public/index.html'));
+});
+
+app.use('/api/*', function(req, res, next) {
+  var err = new Error('Not Found still');
+  err.status = 404;
+  next(err);
+  res.sendFile(path.join(__dirname+'/client/public/index.html'));
+});
+
+app.use(function(req, res, next) {
+  var err = new Error('Not Found Okay');
+  err.status = 404;
+  next(err);
+});
+
+// if (app.get('env') === 'production') {
+//   app.use(function(err, req, res, next) {
+//     console.error('DEV ERROR')
+//     res.status(err.status || 500);
+//     res.json({
+//       message: err.message,
+//       error: err
+//     });
+//   });
+// } else {
+// 	app.use(function(err, req, res, next) {
+//     res.status(err.status || 500);
+//     console.error('PROD ERROR')
+//     res.json({
+//       message: err.message,
+//       error: {}
+//     });
+//   });
+// }
+
+const port = process.env.PORT || 3232;
 app.listen(port);
+
+module.exports = app;
