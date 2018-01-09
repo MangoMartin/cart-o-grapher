@@ -17,7 +17,7 @@ class Container extends Component {
             <div className='header'>
                 <Link to='/' onClick={this.removeMap}>
                     <div className='header-logo'>
-                        <img src='./logo.jpg' alt='' />
+                        <img className='logo' src={require('./logo.jpg')} alt='' />
                         <h1>Cart-o-Grapher</h1>
                     </div>
                 </Link>

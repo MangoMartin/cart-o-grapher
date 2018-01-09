@@ -134,7 +134,6 @@ class Settings extends Component {
         <AddLinks />
         <h3>Add a profile image for your store:</h3><br />
         <ImageForm />
-        <img src='./logo.jpg' alt=''/>
       </div>
     )
   }
