@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Link, Route, Switch} from 'react-router-dom';
-import Settings from '../ProfileDesign';
+import CreateShop from '../ProfileDesign';
 import Home from '../Cartograph';
 import Maps from '../Cartograph/Map.js';
 import './index.css';
@@ -24,8 +24,8 @@ class Container extends Component {
                 <div className='header-nav'>
                     <ul>
                     {this.props.children}
-                        <Link to='/settings' onClick={this.removeMap}>
-                            <li>Settings</li>
+                        <Link to='/create' onClick={this.removeMap}>
+                            <li>Create Shop</li>
                         </Link>
                         <Link to='/logout' onClick={this.removeMap}>
                             <li>Log Out</li>
@@ -39,8 +39,8 @@ class Container extends Component {
                             component={Home}
                         />
                         <Route
-                            path="/settings"
-                            component={Settings}
+                            path="/create"
+                            component={CreateShop}
                         />
                         <Route
                             path="/logout"
