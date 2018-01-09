@@ -4,6 +4,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const path = require('path');
+const models  = require('../db');
 
 const router = express.Router();
 const app = express();
