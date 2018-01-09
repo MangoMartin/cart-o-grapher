@@ -10,3 +10,14 @@
   	right: 0px;
   	padding-bottom: 200px;
 }
+
+.login-signup {
+	position: fixed;
+	text-align: center;
+	display: inline-block;
+	border: 2px solid black;
+	left: 30%;
+	right: 30%;
+	top: 20%;
+	padding: 1%;
+}

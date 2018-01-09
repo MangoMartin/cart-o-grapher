@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Link, Route, Switch} from 'react-router-dom';
 
+import LoginSignup from './LoginSignup';
 import AddLinks from './AddLinks';
 import AddCategories from './AddCategories';
 import ImageForm from './ImageForm';
@@ -44,6 +45,7 @@ class CreateShop extends Component {
 	render(){
 		return(
 			<div className='settings-body'>
+        <LoginSignup />
         <h1>Set up shop/Edit shop</h1>
         <form onSubmit={this.handleSubmit}>
           <h3>Store info:</h3>
@@ -51,11 +53,13 @@ class CreateShop extends Component {
           <input
             type='text'
             onChange={this.handleShopNameChange}
+            required
           /><br />
           Owner name: {this.state.owner}<br />
           <input
             type='text'
             onChange={this.handleOwnerChange}
+            required
           /><br />
           Store description: {this.state.about}<br />
           <input
@@ -66,22 +70,27 @@ class CreateShop extends Component {
           Address: <input
             type='text'
             onChange={this.handleAddressChange}
+            required
           /><br />
           City: <input
             type='text'
             onChange={this.handleCityChange}
+            required
           /><br />
           State: <input
             type='text'
             onChange={this.handleStateChange}
+            required
           /><br />
           Zip code: <input
             type='text'
             onChange={this.handleZipChange}
+            required
           /><br />
           Country: <input
             type='text'
             onChange={this.handleCountryChange}
+            required
           /><br />
           <h3>Contact information:</h3><br />
           Phone number: {this.state.phone}<br />
