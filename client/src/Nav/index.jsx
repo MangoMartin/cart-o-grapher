@@ -52,7 +52,9 @@ class Container extends Component {
     }
 
     removeMap() {
-        this.map.remove();
+        if(this.map !== undefined || this.map !== null) {
+            this.map.remove();
+        }
     }
 };
 
