@@ -9,12 +9,7 @@ export default class Home extends Component {
     super();
     this.state = {
       tests: [],
-      mapSearch: '',
-      Radius: ''
     };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.chooseRadius = this.chooseRadius.bind(this);
   }
 
   render(){
@@ -35,7 +30,7 @@ export default class Home extends Component {
               </div>
             )}
       		</div>
-      		<MapContainer
+      		<MapContainer 
       		/>
       	</div>
       	<MappedShops
@@ -48,25 +43,9 @@ export default class Home extends Component {
     this.getTest();
   }
 
-  getTest = () => {
+  getTest() {
     fetch('/api/tests')
       .then(res => res.json())
       .then(tests => this.setState({ tests }));
-  }
-
-  handleChange(event) {
-    this.setState({
-      mapSearch : event.target.value
-    });
-  }
-
-  handleSubmit(event) {
-    event.preventDefault();
-  }
-
-  chooseRadius(event){
-    this.setState({
-      Radius : event.target.value
-    });
   }
 }
