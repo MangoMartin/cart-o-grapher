@@ -11,7 +11,6 @@ export default class Home extends Component {
   constructor(){
     super();
     this.state = {
-      tests: [],
       addresses: []
     };
   }
@@ -44,7 +43,7 @@ export default class Home extends Component {
             .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
             .openPopup();
           }
-    const { tests } = this.state;
+    
     return(
       <div className='main-body'>
       	<div className='top'>
@@ -55,12 +54,7 @@ export default class Home extends Component {
             view nearby stores located on the map and their respective store profiles
             below.
             </p>
-            {tests.map((test) =>
-              <div key={test.username}>
-                {test.username}
-              </div>
-            )}
-      		</div>
+            </div>
       		<div id='map'>
       		</div>
       	</div>
@@ -68,21 +62,5 @@ export default class Home extends Component {
       	/>
       </div>
     )
-  }
-  
-  componentDidMount() {
-    this.getTest();
-  }
-
-  getTest() {
-    fetch('/api/tests', {
-      headers : { 
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-       }
-
-    })
-      .then(res => res.json())
-      .then(tests => this.setState({ tests }));
   }
 }

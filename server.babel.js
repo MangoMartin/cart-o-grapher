@@ -20,14 +20,15 @@ app.use(cookieParser());
 app.use(require('less-middleware')(path.join(__dirname, '/client/build')));
 app.use(express.static(path.join(__dirname, 'client/build')));
 
-app.get('/api/tests', (req, res) => {
+app.get('/api', (req, res) => {
   
-	res.json([{
-  	id: 1,
-  	username: "samsepi0l"
+	res.json([
+{
+  	"id": 1,
+  	"username": "samsepi0l"
   }, {
-  	id: 2,
-  	username: "D0loresH4ze"
+  	"id": 2,
+  	"username": "D0loresH4ze"
   }]);
 });
 
@@ -39,12 +40,12 @@ app.get('*', (req, res, next) => {
   	res.sendFile(path.join(__dirname+'/client/build/index.html'));
 });
 
-app.use('/api/*', function(req, res, next) {
-  var err = new Error('Not Found still');
-  err.status = 404;
-  next(err);
-  res.sendFile(path.join(__dirname+'/client/public/index.html'));
-});
+// app.use('/api/*', function(req, res, next) {
+//   var err = new Error('Not Found still');
+//   err.status = 404;
+//   next(err);
+//   res.sendFile(path.join(__dirname+'/client/public/index.html'));
+// });
 
 app.use(function(req, res, next) {
   var err = new Error('Not Found Okay');
