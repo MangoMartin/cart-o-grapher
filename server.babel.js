@@ -17,8 +17,8 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded( { extended: true } ));
 app.use(cookieParser());
-app.use(require('less-middleware')(path.join(__dirname, '/client/public')));
-app.use(express.static(path.join(__dirname, '/client/public')));
+app.use(require('less-middleware')(path.join(__dirname, '/client/build')));
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.get('/api/tests', (req, res) => {
   
@@ -36,7 +36,7 @@ app.get('*', (req, res, next) => {
 	var err = new Error('Not Found');
  	err.status = 404;
   	next(err);
-  	res.sendFile(path.join(__dirname+'/client/public/index.html'));
+  	res.sendFile(path.join(__dirname+'/client/build/index.html'));
 });
 
 app.use('/api/*', function(req, res, next) {

@@ -75,7 +75,13 @@ export default class Home extends Component {
   }
 
   getTest() {
-    fetch('/api/tests')
+    fetch('/api/tests', {
+      headers : { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+       }
+
+    })
       .then(res => res.json())
       .then(tests => this.setState({ tests }));
   }
