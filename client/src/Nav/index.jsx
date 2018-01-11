@@ -6,8 +6,8 @@ import './index.css';
 
 class Container extends Component {
 
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.removeMap = this.removeMap.bind(this);
     }
 
@@ -53,8 +53,8 @@ class Container extends Component {
 
     removeMap() {
         if(this.map !== undefined || this.map !== null) {
-            this.map.remove();
-        }
+        this.map.remove();
+    }
     }
 };
 
