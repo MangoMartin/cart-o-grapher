@@ -20,17 +20,32 @@ app.use(cookieParser());
 app.use(require('less-middleware')(path.join(__dirname, '/client/build')));
 app.use(express.static(path.join(__dirname, 'client/build')));
 
-app.get('/api', (req, res) => {
-  
-	res.json([
-{
-  	"id": 1,
-  	"username": "samsepi0l"
-  }, {
-  	"id": 2,
-  	"username": "D0loresH4ze"
-  }]);
+let loginSignupRoutes = require('./routes/loginSignup')(passport);
+
+app.use('/api/', loginSignupRoutes);
+
+app.use('/api/owner/', function(req, res, next) {
+  passport.authenticate('jwt', {session: false}, function(err, user, jwtError) {
+    if (user) {
+      req.login(user, null, () => {})
+      next()
+    } else  {
+      next(jwtError)
+    }
+  })(req, res, next)
 });
+
+// app.get('/api', (req, res) => {
+  
+// 	res.json([
+// {
+//   	"id": 1,
+//   	"username": "samsepi0l"
+//   }, {
+//   	"id": 2,
+//   	"username": "D0loresH4ze"
+//   }]);
+// });
 
 
 app.get('*', (req, res, next) => {
