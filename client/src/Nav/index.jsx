@@ -42,6 +42,10 @@ class Container extends Component {
                             component={CreateShop}
                         />
                         <Route
+                            path="/api/owner"
+                            component={CreateShop}
+                        />
+                        <Route
                             path="/logout"
                             component={Logout}
                         />
