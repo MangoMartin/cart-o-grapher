@@ -4,7 +4,7 @@ import 'leaflet/dist/leaflet.css';
 import './index.css';
 import {GeoSearchControl, OpenStreetMapProvider} from 'leaflet-geosearch';
 import Markers from './marker.js';
-
+//import {addressBook} from '../server.js';
 
 class MapContainer extends Component {
   constructor(){
@@ -15,14 +15,16 @@ class MapContainer extends Component {
     };
   }
 
-  componentDidMount(){
+  /*componentDidMount(){
     fetch('http://localhost:3001').then((response)=> response.json())
                                  .then((addresses)=>this.setState({
                                    addresses: addresses
                                  }))
-    }
+    }*/
 
 	render(){
+      //  console.log(addressBook)
+        console.log(addresses)
         const provider = new OpenStreetMapProvider();
         provider.search({query: '401 East 60th Street'})
                 .then(function(result){

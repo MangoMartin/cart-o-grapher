@@ -8,11 +8,11 @@ app.use(bodyParser());
 app.set('views', __dirname + '/views')
 app.set('view engine', 'pug');
 
-const addressBook = [];
+//let addressBook = [];
 app.get('/', function(req,res){
   Location.findAll()
           .then(addresses => {
-            addressBook.push(addresses)
+            res.send('http://localhost:3000')
             console.log(addressBook[0][1].dataValues.address)
           })
   //res.send(202);
