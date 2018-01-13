@@ -18,15 +18,17 @@ class LoginSignup extends Component {
 				<div className='login'>
 					<h1>Login</h1>
 					<p>Get back to business!</p>
-        			<form onSubmit={this.handleLoginSubmit}>
+        			<form onSubmit={this.handleLoginSubmit} ref='loginForm'>
         				Username: <input
             				type='text'
             				onChange={this.handleLoginUserChange}
+                    ref='username'
             				required
           				/><br />
           				Password: <input
             				type='text'
             				onChange={this.handleLoginPwChange}
+                    ref='password'
             				required
           				/><br />
           				<input 
@@ -38,15 +40,17 @@ class LoginSignup extends Component {
 				<div className='signup'>
 					<h1>Sign up</h1>
 					<p>Register your e-commerce shops with Cart-o-grapher!</p>
-        			<form onSubmit={this.handleSignupSubmit}>
+        			<form onSubmit={this.handleSignupSubmit} ref='loginForm'>
         				Username: <input
             				type='text'
             				onChange={this.handleSignupUserChange}
+                    ref='username'
             				required
           				/><br />
           				Password: <input
             				type='text'
             				onChange={this.handleSignupPwChange}
+                    ref='password'
             				required
           				/><br />
           				<input 
@@ -77,6 +81,18 @@ class LoginSignup extends Component {
 
   	handleLoginSubmit = (event) => {
     	event.preventDefault();
+      let data = {
+        username: this.refs.username.value,
+        password: this.refs.password.value
+      };
+      var request = new Request('https://localhost:3232/api', {
+        method: 'POST',
+        headers: new Headers({ 'Content-Type': 'application/json' }),
+        body: JSON.stringify(data)
+      })
+      fetch(request)
+      .then(res => res.json())
+      .then(data => console.log(data));
     }
 
     handleSignupSubmit = (event) => {

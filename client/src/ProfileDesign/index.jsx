@@ -38,13 +38,11 @@ class CreateShop extends Component {
       zip: '',
       country: '',
       phone: 'None Provided',
-      email: 'None provided',
-      tests: []
+      email: 'None provided'
     };
   }
 
 	render(){
-    const { tests } = this.state;
 		return(
 			<div className='settings-body'>
         <LoginSignup />
@@ -130,11 +128,6 @@ class CreateShop extends Component {
             component={Shop}
           />
         </Switch>
-        {tests.map((test) =>
-              <div key={test.username}>
-                {test.username}
-              </div>
-            )}
       </div>
     )
   }
@@ -206,16 +199,6 @@ class CreateShop extends Component {
   createDaysOpenCheckboxes = () => (
     daysOpen.map(this.createCheckbox)
   )
-
-  componentDidMount() {
-    this.getTest();
-  }
-
-  getTest() {
-    fetch('/api')
-      .then(res => res.json())
-      .then(tests => this.setState({ tests }));
-  }
 
   handleSubmit = (event) => {
     event.preventDefault();
