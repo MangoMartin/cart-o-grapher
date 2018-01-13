@@ -6,9 +6,10 @@ const app = express();
 app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.get('/api/testing', (req,res)=>{
-	const dummyInfo = "I am dummy info";
-
-	res.json(dummyInfo);
+	res.json([
+			{id:1, name:"green"},
+			{id:2, name:"blue"}
+		])
 })
 
 app.get('*', (req, res) => {
