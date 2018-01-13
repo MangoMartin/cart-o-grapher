@@ -13,6 +13,10 @@ app.get('/users', (req,res)=>{
 		])
 })
 
+app.get('/form', (req,res)=>{
+	res.send(200)
+})
+
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname+'/client/build/index.html'));
 });
