@@ -6,7 +6,7 @@ class App extends Component {
   state = { users: [] }
 
   componentDidMount(){
-    fetch('/users')
+    fetch('/api/testing')
         .then( res => res.json())
         .then(users => this.setState({ users }))
   }
@@ -17,7 +17,7 @@ class App extends Component {
         <h1>User Log</h1>
         <ul>
           {this.state.users.map(user => 
-            <li key={user.id}>{user.username}</li>
+            <li key={user.id}>{user.name}</li>
           )}   
         </ul>
       </div>
