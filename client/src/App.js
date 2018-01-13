@@ -21,9 +21,9 @@ class App extends Component {
           )}
         </ul>
         <form method='POST' action='/form'>
-          <input type='text' placeholder='type username here' />
-          <input type='text' placeholder='type password here' />
-          <input type='submit' value='Log in' /> 
+          <input type='text' name='username' placeholder='type username here' />
+          <input type='text' name='password' placeholder='type password here' />
+          <input type='submit' value='Log in' />
         </form>
       </div>
     );
