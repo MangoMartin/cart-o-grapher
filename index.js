@@ -1,7 +1,10 @@
 const express = require('express');
+const bodyParser = require('body-parser')
 const path = require('path');
+const Credentials = require('./client/models/credentials.js')
 
 const app = express();
+app.use(bodyParser());
 
 app.use(express.static(path.join(__dirname, 'client/build')));
 
@@ -13,8 +16,17 @@ app.get('/users', (req,res)=>{
 		])
 })
 
-app.get('/form', (req,res)=>{
-	res.send(200)
+app.post('/form', (req,res)=>{
+	Credentials.sync()
+						 .then(()=>{
+							 return Credentials.create({
+								 username: req.body.username,
+								 password: req.body.password
+							 });
+						 })
+						 .then(()=>{
+							 res.redirect('/')
+						 })
 })
 
 app.get('*', (req, res) => {
