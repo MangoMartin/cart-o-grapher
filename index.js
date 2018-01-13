@@ -5,7 +5,7 @@ const app = express();
 
 app.use(express.static(path.join(__dirname, 'client/build')));
 
-app.get('/api/testing', (req,res)=>{
+app.get('/', (req,res)=>{
 	res.json([
 			{id:1, name:"green"},
 			{id:2, name:"blue"}
