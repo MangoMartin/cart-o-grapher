@@ -3,7 +3,9 @@ import './App.css';
 
 class App extends Component {
 
-  state = { users: [] }
+  state = { users: [],
+            fetched: []
+   }
 
   componentDidMount(){
     fetch('/users')
@@ -11,13 +13,19 @@ class App extends Component {
         .then(users => this.setState({ users }))
   }
 
+  componentDidMount(){
+    fetch('fetchme')
+        .then(res => res.json())
+        .then(fetched => this.setState({ fetched }))
+  }
+
   render() {
     return (
       <div className="App">
         <h1>User Log</h1>
         <ul>
-          {this.state.users.map(user =>
-            <li key={user.id}>{user.name}</li>
+          {this.state.fetched.map(user =>
+            <li key={user.login}>{user.password}</li>
           )}
         </ul>
         <form method='POST' action='/form'>

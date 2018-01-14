@@ -18,6 +18,12 @@ app.get('/users', (req,res)=>{
 		])
 })
 
+app.get('/fetchme', (req,res)=>{
+
+	Credentials.findAll()
+						 .then(res=>res.json())
+});
+
 app.post('/form', (req,res)=>{
 	Credentials.sync()
 						 .then(()=>{
