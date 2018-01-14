@@ -13,7 +13,8 @@ app.get('/users', (req,res)=>{
 	res.json([
 			{id:1, name:"green"},
 			{id:2, name:"blue"},
-			{id:3, name:"yellow"}
+			{id:3, name:"yellow"},
+			{id:4, name:"red"}
 		])
 })
 
