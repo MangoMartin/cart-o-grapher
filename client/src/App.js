@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import Maps from './map.js';
 
 class App extends Component {
 
@@ -24,6 +25,7 @@ class App extends Component {
   render() {
     {console.log(this.state.users)}
     {console.log(this.state.fetched)}
+
     return (
       <div className="App">
         <h1>User Log</h1>
@@ -43,6 +45,7 @@ class App extends Component {
           <input type='submit' value='Log in' />
         </form>
       </div>
+      <Maps />
     );
   }
 }
