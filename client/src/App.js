@@ -3,29 +3,38 @@ import './App.css';
 
 class App extends Component {
 
-  state = { users: [],
-            fetched: []
-   }
+  constructor(){
+    super()
+
+    this.state = {
+      users: [],
+      fetched: []
+    }
+  }
 
   componentDidMount(){
     fetch('/users')
         .then( res => res.json())
         .then(users => this.setState({ users }))
-  }
-
-  componentDidMount(){
-    fetch('fetchme')
-        .then(res => res.json())
+    fetch('/fetchme')
+        .then( res => res.json())
         .then(fetched => this.setState({ fetched }))
   }
 
   render() {
+    {console.log(this.state.users)}
+    {console.log(this.state.fetched)}
     return (
       <div className="App">
         <h1>User Log</h1>
         <ul>
-          {this.state.fetched.map(user =>
-            <li key={user.login}>{user.password}</li>
+          {this.state.users.map(user =>
+            <li key={user.id}>{user.name}</li>
+          )}
+        </ul>
+        <ul>
+          {this.state.fetched.map(info =>
+            <li key={info.username}>{info.password}</li>
           )}
         </ul>
         <form method='POST' action='/form'>

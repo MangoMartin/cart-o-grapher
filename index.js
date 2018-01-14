@@ -21,7 +21,10 @@ app.get('/users', (req,res)=>{
 app.get('/fetchme', (req,res)=>{
 
 	Credentials.findAll()
-						 .then(res=>res.json())
+						 .then(credentials => {
+							 res.json(credentials)
+							 console.log(credentials)
+						 })
 });
 
 app.post('/form', (req,res)=>{
