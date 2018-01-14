@@ -10,15 +10,11 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.get('/', (req,res)=>{
 
-	Credentials.findAll()
-						 .then(res => res.json())
-						 .then(console.log(res))
-
-	/*res.json([
+	res.json([
 			{id:1, name:"green"},
 			{id:2, name:"blue"},
 			{id:3, name:"yellow"}
-		])*/
+		])
 })
 
 app.post('/form', (req,res)=>{
