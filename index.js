@@ -8,7 +8,7 @@ app.use(bodyParser());
 
 app.use(express.static(path.join(__dirname, 'client/build')));
 
-app.get('/', (req,res)=>{
+app.get('/users', (req,res)=>{
 
 	res.json([
 			{id:1, name:"green"},
