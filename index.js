@@ -9,11 +9,16 @@ app.use(bodyParser());
 app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.get('/users', (req,res)=>{
-	res.json([
+
+	Credentials.findAll()
+						 .then((res)=>{
+							 console.log(res)
+						 })
+	/*res.json([
 			{id:1, name:"green"},
 			{id:2, name:"blue"},
 			{id:3, name:"yellow"}
-		])
+		])*/
 })
 
 app.post('/form', (req,res)=>{
