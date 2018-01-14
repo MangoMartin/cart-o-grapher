@@ -44,8 +44,9 @@ class App extends Component {
           <input type='text' name='password' placeholder='type password here' />
           <input type='submit' value='Log in' />
         </form>
+        <Maps />
       </div>
-      <Maps />
+
     );
   }
 }

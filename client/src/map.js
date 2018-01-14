@@ -11,4 +11,4 @@ class Maps extends Component {
       }
 }
 
-module.exports = Maps; 
+export default Maps; 
