@@ -16,7 +16,7 @@ module.exports = function(passport) {
 			   	if (loginErr) {
 			     	return next(loginErr);
 			   	}
-			 	return res.redirect('http://localhost:3000/api/signup');
+			 	return res.redirect('/api/signup');
 			}); 
 		})(req, res, next);
 	});
@@ -38,7 +38,7 @@ module.exports = function(passport) {
 				res.cookie("username", user.username);
 				res.cookie("userid", user.id);
  				
- 				return res.redirect('http://localhost:3000/api/owner');
+ 				return res.redirect('/api/owner');
 				
 			}); 
 		})(req, res, next);
