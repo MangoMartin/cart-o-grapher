@@ -1,6 +1,6 @@
 let app = require('../server');
 let models = require("../db");
-let debug = require('debug')('create:server')('react-backend:server');
+let debug = require('debug')('create:server');
 
 
 var server = http.createServer(app);
