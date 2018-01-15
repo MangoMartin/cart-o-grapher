@@ -6,8 +6,8 @@ import './index.css';
 
 class Container extends Component {
 
-    constructor(props){
-        super(props);
+    constructor(){
+        super();
         this.removeMap = this.removeMap.bind(this);
     }
 
@@ -23,7 +23,7 @@ class Container extends Component {
                 <div className='header-nav'>
                     <ul>
                     {this.props.children}
-                        <Link to='/api' onClick={this.removeMap}>
+                        <Link to='/api/signup' onClick={this.removeMap}>
                             <li>Create Shop</li>
                         </Link>
                         <Link to='/logout' onClick={this.removeMap}>
@@ -37,14 +37,18 @@ class Container extends Component {
                             path="/"
                             component={Home}
                         />
-                        <Route
-                            path="/api"
-                            component={CreateShop}
-                        />
+
                         <Route
                             path="/api/owner"
+                          
                             component={CreateShop}
                         />
+                        <Route
+                            path="/api/signup"
+                          
+                            component={CreateShop}
+                        />
+                         
                         <Route
                             path="/logout"
                             component={Logout}
