@@ -6,10 +6,10 @@ class LoginSignup extends Component {
     super();
   }
 componentDidMount() {
-    this.onSubmit();
+    this.handleSubmit();
   }
-onSubmit = (evt) => {
-    evt.preventDefault();
+handleSubmit = (event) => {
+    event.preventDefault();
     fetch('/api/singup');
   }
 
