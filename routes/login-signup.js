@@ -1,5 +1,4 @@
 var express = require('express');
-const app = express();
 var router = express.Router();
 
 const models  = require('../db');
@@ -17,7 +16,7 @@ module.exports = function(passport) {
 			   	if (loginErr) {
 			     	return next(loginErr);
 			   	}
-			 	return res.redirect('/api/signup');
+			 	return res.redirect('http://localhost:3000/api/signup');
 			}); 
 		})(req, res, next);
 	});
@@ -39,7 +38,7 @@ module.exports = function(passport) {
 				res.cookie("username", user.username);
 				res.cookie("userid", user.id);
  				
- 				return res.redirect('/api/owner');
+ 				return res.redirect('http://localhost:3000/api/owner');
 				
 			}); 
 		})(req, res, next);
