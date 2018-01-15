@@ -6,15 +6,15 @@ import './index.css';
 
 class Container extends Component {
 
-    constructor(props){
-        super(props);
+    constructor(){
+        super();
         this.removeMap = this.removeMap.bind(this);
     }
 
     render() {
         return(
             <div className='header'>
-                <Link to='/api/tests' onClick={this.removeMap}>
+                <Link to='/' onClick={this.removeMap}>
                     <div className='header-logo'>
                         <img className='logo' src={require('./logo.jpg')} alt='' />
                         <h1>Cart-o-Grapher</h1>
@@ -23,7 +23,7 @@ class Container extends Component {
                 <div className='header-nav'>
                     <ul>
                     {this.props.children}
-                        <Link to='/create' onClick={this.removeMap}>
+                        <Link to='/api/signup' onClick={this.removeMap}>
                             <li>Create Shop</li>
                         </Link>
                         <Link to='/logout' onClick={this.removeMap}>
@@ -34,13 +34,21 @@ class Container extends Component {
                     <Switch>
                         <Route
                             exact
-                            path="/api/tests"
+                            path="/"
                             component={Home}
                         />
+
                         <Route
-                            path="/create"
+                            path="/api/owner"
+                          
                             component={CreateShop}
                         />
+                        <Route
+                            path="/api/signup"
+                          
+                            component={CreateShop}
+                        />
+                         
                         <Route
                             path="/logout"
                             component={Logout}

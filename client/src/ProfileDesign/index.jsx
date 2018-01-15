@@ -38,7 +38,7 @@ class CreateShop extends Component {
       zip: '',
       country: '',
       phone: 'None Provided',
-      email: 'None provided',
+      email: 'None provided'
     };
   }
 
