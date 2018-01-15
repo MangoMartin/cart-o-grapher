@@ -1,9 +1,11 @@
 var express = require('express');
+const app = express();
 var router = express.Router();
+
 const models  = require('../db');
 
 module.exports = function(passport) {
-	router.post('/', function(req, res, next) {
+	router.post('/signup', function(req, res, next) {
 		passport.authenticate('local-signup', function(err, user, info) {
 			if (err) {
 			  	return next(err); 
@@ -15,9 +17,12 @@ module.exports = function(passport) {
 			   	if (loginErr) {
 			     	return next(loginErr);
 			   	}
-			 	return res.redirect('/api/');
+			 	return res.redirect('/api/signup');
 			}); 
 		})(req, res, next);
+	});
+
+	router.post('/', function(req, res, next) {
 		passport.authenticate('local-login', function(err, user, info) {
 			if (err) {
 			  	return next(err); 
@@ -30,14 +35,16 @@ module.exports = function(passport) {
 					return next(loginErr);
 			    } 
 
-				res.cookie('jwt', user.token);
-				res.cookie('username', user.username);
-				res.cookie('userid', user.id);
- 
-				return res.redirect('/api/owner/');
+				res.cookie("jwt", user.token);
+				res.cookie("username", user.username);
+				res.cookie("userid", user.id);
+ 				
+ 				return res.redirect('/api/owner');
+				
 			}); 
 		})(req, res, next);
 	});
+ 
 
   	return router;
 };

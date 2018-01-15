@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  var shopinfo = sequelize.define('shop', {
+  var shopinfo = sequelize.define('shops', {
     user_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -9,8 +9,8 @@ module.exports = (sequelize, DataTypes) => {
         key: 'id'
       }
     }, 
-    shopName: DataTypes.STRING,
-    shopImg: DataTypes.STRING,
+    shop_name: DataTypes.STRING,
+    shop_img: DataTypes.STRING,
     address: DataTypes.STRING,
     city: DataTypes.STRING,
     state: DataTypes.STRING,

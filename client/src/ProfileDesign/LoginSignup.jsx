@@ -2,102 +2,42 @@ import React, { Component } from 'react';
 import './index.css';
 
 class LoginSignup extends Component {
-	constructor() {
-		super();
-    	this.state = {
-    		loginUser: '',
-    		loginPw: '',
-    		signupUser: '',
-    		signupPw: '',
-    	};
-    }
-
-	render(){
-		return(
-			<div className='login-signup'>
-				<div className='login'>
-					<h1>Login</h1>
-					<p>Get back to business!</p>
-        			<form onSubmit={this.handleLoginSubmit} ref='loginForm'>
-        				Username: <input
-            				type='text'
-            				onChange={this.handleLoginUserChange}
-                    ref='username'
-            				required
-          				/><br />
-          				Password: <input
-            				type='text'
-            				onChange={this.handleLoginPwChange}
-                    ref='password'
-            				required
-          				/><br />
-          				<input 
-            				type='submit'
-            				value='Log in'
-          				/><br />
-        			</form>
-				</div>
-				<div className='signup'>
-					<h1>Sign up</h1>
-					<p>Register your e-commerce shops with Cart-o-grapher!</p>
-        			<form onSubmit={this.handleSignupSubmit} ref='loginForm'>
-        				Username: <input
-            				type='text'
-            				onChange={this.handleSignupUserChange}
-                    ref='username'
-            				required
-          				/><br />
-          				Password: <input
-            				type='text'
-            				onChange={this.handleSignupPwChange}
-                    ref='password'
-            				required
-          				/><br />
-          				<input 
-            				type='submit'
-            				value='Sign up'
-          				/><br />
-        			</form>
-				</div>
-			</div>
-		)
-  	}
-
-  	handleLoginUserChange = (event) => {
-    	this.setState({ loginUser: event.target.value });
-  	}
-
-  	handleLoginPwChange = (event) => {
-    	this.setState({ loginPw: event.target.value });
-  	}
-
-  	handleSignupUserChange = (event) => {
-    	this.setState({ signupUser: event.target.value });
-  	}
-
-  	handleSignupPwChange = (event) => {
-    	this.setState({ signupPw: event.target.value });
-  	}
-
-  	handleLoginSubmit = (event) => {
-    	event.preventDefault();
-      let data = {
-        username: this.refs.username.value,
-        password: this.refs.password.value
-      };
-      var request = new Request('https://localhost:3232/api', {
-        method: 'POST',
-        headers: new Headers({ 'Content-Type': 'application/json' }),
-        body: JSON.stringify(data)
+ constructor() {
+    super();
+    this.state = { user: {} };
+    this.onSubmit = this.handleSubmit.bind(this);
+  }
+  handleSubmit(e) {
+    e.preventDefault();
+    var self = this;
+    // On submit of the form, send a POST request with the data to the server.
+    fetch('https://localhost:3000/api/signup', { 
+        method: 'post',
+       credentials: 'include', //pass cookies, for authentication
+  headers: {
+  'Accept': 'application/json, application/xml, text/plain, text/html, *.*',
+  'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'
+  },
+        data: {
+          username: self.refs.username,
+          password: self.refs.password
+        }
       })
-      fetch(request)
-      .then(res => res.json())
-      .then(data => console.log(data));
-    }
+     .then(res => {
+  if(res.status === 200) return res.json();
+  else return { error: 'there was an error with response' }
 
-    handleSignupSubmit = (event) => {
-    	event.preventDefault();
-    }
+});
+  }
+  render() {
+    return (
+      <form onSubmit={this.onSubmit}>
+        <input type="text" placeholder="Username" ref="username" name="username" />
+        <input type="text" placeholder="Password" ref="password" name="password" />
+        <input type="submit" />
+      </form>
+    );
+  }
 }
 
 export default LoginSignup;
