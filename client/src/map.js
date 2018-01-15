@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
+import L from 'leaflet';
 
-class Maps extends Component {
-
-      render(){
-        return(
-          <div>
-            Maps here
-          </div>
-        )
-      }
+class Mapster extends Component {
+  render(){
+    
+    return(
+        <div>
+        </div>
+    )
+  }
 }
 
-export default Maps; 
+export default Mapster;
