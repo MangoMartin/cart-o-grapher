@@ -1,15 +1,15 @@
-const LocalStrategy = require('passport-local').Strategy;
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
-const config = require('../config/config');
-const User = require("../db").users;
+var LocalStrategy = require('passport-local').Strategy;
+var bcrypt = require('bcrypt');
+var jwt = require('jsonwebtoken');
+var config = require('../config/config');
+var User = require('../db').users;
 
 function getUserParams(req) {
 	let body = req.body
 	return {
-		id: body.id,
-		username: body.username,
-		password: body.password
+		"id": body.id,
+		"username": body.username,
+		"password": body.password
 	};
 }
 
@@ -21,7 +21,7 @@ function initializeSerialization(passport) {
 function processSignupCallback(req, username, password, done) {
 	User.findOne({
 		where: { 
-			'username' :  username         
+			"username" :  "username"         
 		},        
 			attributes: ['id']    
 		})    
@@ -44,6 +44,7 @@ function processSignupCallback(req, username, password, done) {
 	              					createdRecord.token = token;
 	              					createdRecord.password = password;
 	             	 				return done(null, createdRecord);
+	             	 				console.log(savedRecord);
 	               			});
           			});
       		});
@@ -55,7 +56,7 @@ function processLoginCallback(username, password, done) {
    
 	User.findOne({        
 		where: { 
-			'username' :  username         
+			"username" :  "username"         
 			}    
 		})    
 		.then(function(user) {
@@ -74,6 +75,7 @@ function processLoginCallback(username, password, done) {
            			user.save()
             			.then(function(savedRecord) {
               				return done(null, savedRecord);
+              				console.log(savedRecord);
             			});
           			});
         		}
@@ -84,13 +86,13 @@ function processLoginCallback(username, password, done) {
 module.exports = function(passport) {
 
     initializeSerialization(passport);
-	passport.use('local-signup', new LocalStrategy({
-	        usernameField: 'username',        
-	        passwordField: 'password',        
+	passport.use("local-signup", new LocalStrategy({
+	        usernameField: "username",        
+	        passwordField: "password",        
 	        passReqToCallback: true    
 	}, processSignupCallback));  
-	passport.use('local-login', new LocalStrategy({        
-		usernameField : 'username',        
-		passwordField : 'password'  
+	passport.use("local-login", new LocalStrategy({        
+		usernameField : "username",        
+		passwordField : "password"  
 	}, processLoginCallback));
 };

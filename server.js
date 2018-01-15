@@ -1,7 +1,7 @@
 require('babel-register');
 
-var app = require('./server.babel');
-var Sequelize = require('sequelize');
-var sequelize = new Sequelize('postgres://postgres@localhost:1234/CoGdb');
+let app = require('./server.babel');
+let Sequelize = require('sequelize');
+let sequelize = new Sequelize('postgres://postgres@localhost:1234/cogdb');
 
 module.exports = app;
