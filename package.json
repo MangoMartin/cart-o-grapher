@@ -1,10 +1,10 @@
 {
-  "name": "cart-ographer",
+  "name": "cart-o-grapher",
   "version": "1.0.0",
   "main": "db.js",
   "scripts": {
-    "start": "node index.js",
-    "heroku-postbuild": "cd client && npm install && npm run build && npm prune --production"
+    "start": "node server.js",
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
   },
   "repository": {
     "type": "git",
