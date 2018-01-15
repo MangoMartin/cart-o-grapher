@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-const port = process.env.PORT;
 import './index.css';
 
 class LoginSignup extends Component {
