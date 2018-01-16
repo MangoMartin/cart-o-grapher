@@ -53,7 +53,7 @@ class CreateShop extends Component {
 		return(
 			<div className='settings-body'>
         <h1>Set up shop/Edit shop</h1>
-        <form method='POST' action='/api/owner' encType='multipart/form-data'>
+        <form method='POST' action='/api/owner' encType='application/x-www-form-urlencoded'>
           <h3>Store info:</h3>
           Shop name: {this.state.shopName}<br />
           <input
