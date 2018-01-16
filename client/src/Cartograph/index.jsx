@@ -83,7 +83,12 @@ export default class Home extends Component {
     )
   }
    componentDidMount(){
-      fetch('/')
+      fetch('/', {
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        }
+      });
           .then(res => res.json())
           .then(fetched => this.setState({ fetched }))
         //  window.map.loadMap();
