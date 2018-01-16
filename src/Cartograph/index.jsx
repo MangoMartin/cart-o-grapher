@@ -32,7 +32,7 @@ export default class Home extends Component {
       	</div>
       	<div className='search-divider'>
       		<div className='search-info'>
-            <h4 className='search-text'>Search by location and choose map radius in miles</h4>
+            <h4 className='search-text'>Search by location (and choose map radius in miles)</h4>
       		</div>
       		<div className='search-form'>
             <form onSubmit={this.handleSubmit}>

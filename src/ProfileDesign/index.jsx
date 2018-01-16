@@ -43,82 +43,86 @@ class CreateShop extends Component {
 
 	render(){
 		return(
-			<div className='settings-body'>
-        <h1>Set up shop/Edit shop</h1>
-        <form onSubmit={this.handleSubmit}>
-          <h3>Store info:</h3>
-          Shop name: {this.state.shopName}<br />
-          <input
-            type='text'
-            onChange={this.handleShopNameChange}
-          /><br />
-          Owner name: {this.state.owner}<br />
-          <input
-            type='text'
-            onChange={this.handleOwnerChange}
-          /><br />
-          Store description: {this.state.about}<br />
-          <input
-            type='text'
-            onChange={this.handleAboutChange}
-          /><br />
-          <h3>Address:</h3><br />
-          Address: <input
-            type='text'
-            onChange={this.handleAddressChange}
-          /><br />
-          City: <input
-            type='text'
-            onChange={this.handleCityChange}
-          /><br />
-          State: <input
-            type='text'
-            onChange={this.handleStateChange}
-          /><br />
-          Zip code: <input
-            type='text'
-            onChange={this.handleZipChange}
-          /><br />
-          Country: <input
-            type='text'
-            onChange={this.handleCountryChange}
-          /><br />
-          <h3>Contact information:</h3><br />
-          Phone number: {this.state.phone}<br />
-          <input
-            type='text'
-            onChange={this.handlePhoneChange}
-          /><br />
-          Email: {this.state.email}<br />
-          <input
-            type='text'
-            onChange={this.handleEmailChange}
-          /><br />
-          {this.createPickupDeliveryCheckboxes()}
-          <h3>Hours of Operation:</h3>
-          <p>Check off which days your store is open for business</p>
-          {this.createDaysOpenCheckboxes()}
-          <input 
-            type='submit'
-            value='Update all store information'
-          /><br />
-        </form>
-        <h3>Add categories that describe what your store sells:</h3><br />
-        <p>i.e. Jewelry, Electronics, etc.</p>
-        <AddCategories />
-        <h3>Add external links to store sites:</h3><br />
-        <AddLinks />
-        <h3>Add a profile image for your store:</h3><br />
-        <ImageForm />
-        <Link to='/myshop'>
-          Check out your store profile
-        </Link>
-        <Switch>
-          <Route
-            path='/myshop'
-            component={Shop}
-          />
-        </Switch>
+      <div className ='full'>
+        <div className='op'>
+        </div>
+  			<div className='settings-body'>
+          <h1>Set up shop/Edit shop</h1>
+          <form onSubmit={this.handleSubmit}>
+            <h3>Store info:</h3>
+            Shop name: {this.state.shopName}<br />
+            <input
+              type='text'
+              onChange={this.handleShopNameChange}
+            /><br />
+            Owner name: {this.state.owner}<br />
+            <input
+              type='text'
+              onChange={this.handleOwnerChange}
+            /><br />
+            Store description: {this.state.about}<br />
+            <input
+              type='text'
+              onChange={this.handleAboutChange}
+            /><br />
+            <h3>Address:</h3><br />
+            Address: <input
+              type='text'
+              onChange={this.handleAddressChange}
+            /><br />
+            City: <input
+              type='text'
+              onChange={this.handleCityChange}
+            /><br />
+            State: <input
+              type='text'
+              onChange={this.handleStateChange}
+            /><br />
+            Zip code: <input
+              type='text'
+              onChange={this.handleZipChange}
+            /><br />
+            Country: <input
+              type='text'
+              onChange={this.handleCountryChange}
+            /><br />
+            <h3>Contact information:</h3><br />
+            Phone number: {this.state.phone}<br />
+            <input
+              type='text'
+              onChange={this.handlePhoneChange}
+            /><br />
+            Email: {this.state.email}<br />
+            <input
+              type='text'
+              onChange={this.handleEmailChange}
+            /><br />
+            {this.createPickupDeliveryCheckboxes()}
+            <h3>Hours of Operation:</h3>
+            <p>Check off which days your store is open for business</p>
+            {this.createDaysOpenCheckboxes()}
+            <input
+              type='submit'
+              value='Update all store information'
+            /><br />
+          </form>
+          <h3>Add categories that describe what your store sells:</h3><br />
+          <p>i.e. Jewelry, Electronics, etc.</p>
+          <AddCategories />
+          <h3>Add external links to store sites:</h3><br />
+          <AddLinks />
+          <h3>Add a profile image for your store:</h3><br />
+          <ImageForm />
+          <Link to='/myshop'>
+            Check out your store profile
+          </Link>
+          <Switch>
+            <Route
+              path='/myshop'
+              component={Shop}
+            />
+          </Switch>
+        </div>
       </div>
     )
   }
