@@ -53,12 +53,12 @@ class CreateShop extends Component {
 		return(
 			<div className='settings-body'>
         <h1>Set up shop/Edit shop</h1>
-        <form method='POST' action='/api/signup' encType='application/x-www-form-urlencoded' onSubmit={this.handleSubmit}>
+        <form method='POST' action='http://localhost:3232/api/owner' encType='application/x-www-form-urlencoded'>
           <h3>Store info:</h3>
           Shop name: {this.state.shopName}<br />
           <input
             type='text'
-            name='shop_name'
+            name='shopname'
             onChange={this.handleShopNameChange}
             required
           /><br />
@@ -233,23 +233,11 @@ class CreateShop extends Component {
     
   }
 
-  checkboxName = label => {
-    label === "Sunday" && this.state.sun === true ? label : null; 
-    label === "Monday" && this.state.mon === true ? label : null; 
-    label === "Tuesday" && this.state.tues === true ? label : null; 
-    label === "Wednesday" && this.state.wed === true ? label : null; 
-    label === "Thursday" && this.state.thur === true ? label : null; 
-    label === "Friday" && this.state.fri === true ? label : null; 
-    label === "Saturday" && this.state.sat === true ? label : null; 
-    label === "Delivery" && this.state.delivery === true ? label : null; 
-    label === "Pickup" && this.state.pickups === true ? label : null; 
-  }
-
   createCheckbox = label => (
     <Checkbox
       label={label}
       handleCheckboxChange={this.toggleCheckbox}
-      name={this.checkboxName}
+      name={label}
       key={label}
     />
   )
@@ -261,13 +249,6 @@ class CreateShop extends Component {
   createDaysOpenCheckboxes = () => (
     daysOpen.map(this.createCheckbox)
   )
-
-  handleSubmit = (event) => {
-    event.preventDefault();
-    for (const checkbox of this.selectedCheckboxes) {
-      console.log(checkbox + 'is selected.');
-    }
-  }
 
 }
 

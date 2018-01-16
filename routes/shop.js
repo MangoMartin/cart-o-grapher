@@ -12,20 +12,17 @@ var lgdUsername;
 router.post('/', function(req, res, next) {
 	lgdUserId = req.cookies['userid'];
     lgdUsername = req.cookies['username'];
-    var days = req.body.Sunday + req.body.Monday + req.body.Tuesday + req.body.Wednesday + req.body.Thursday + req.body.Friday + req.body.Saturday;
-    console.log(days);
 
     Shop.findOne({
 		where: { 
 			'user_id' :  lgdUserId         
-		},   
-			attributes: ['id']    
+		}
 		})    
 			.then(function(shop) {
 				if (shop) {
 					Shop.update({
 						user_id: lgdUserId,
-						shop_name: req.body.shop_name,
+						shop_name: req.body.shopname,
 						owner: req.body.owner,
 						about: req.body.about,
 					    address: req.body.address,
@@ -35,8 +32,7 @@ router.post('/', function(req, res, next) {
 						phone: req.body.phone,
 						email: req.body.email,
 						pickup: req.body.pickup,
-						delivery: req.body.delivery,
-						availability: days
+						delivery: req.body.delivery
 					}, {
 					  	where: {
 					    	user_id: lgdUserId
@@ -45,7 +41,7 @@ router.post('/', function(req, res, next) {
 				} else {
 				    Shop.create({
 						user_id: lgdUserId,
-						shop_name: req.body.shop_name,
+						shop_name: req.body.shopname,
 						owner: req.body.owner,
 						about: req.body.about,
 					    address: req.body.address,
@@ -55,12 +51,11 @@ router.post('/', function(req, res, next) {
 						phone: req.body.phone,
 						email: req.body.email,
 						pickup: req.body.pickup,
-						delivery: req.body.delivery,
-						availability: days
+						delivery: req.body.delivery
 					});
 				}    
 			});
-		res.redirect('/');
+		res.redirect('http://localhost:3000/api/owner');
 });	
 
 
