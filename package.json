@@ -36,6 +36,8 @@
     "passport-local": "^1.0.0",
     "path": "^0.12.7",
     "pg": "^7.4.1",
+    "react-cookie": "^2.1.2",
+    "react-cookies": "^0.1.0",
     "sequelize": "^4.29.3",
     "sequelize-cli": "^3.2.0"
   },

@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+import cookie from 'react-cookie';
 
 const models  = require('../db');
 
@@ -34,10 +35,12 @@ module.exports = function(passport) {
 					return next(loginErr);
 			    } 
 
+  
+  
 				res.cookie("jwt", user.token);
 				res.cookie("username", user.username);
 				res.cookie("userid", user.id);
- 				
+ 				cookie.plugToRequest(req, res);
  				return res.redirect('/api/owner');
 				
 			}); 
