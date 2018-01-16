@@ -37,9 +37,10 @@ module.exports = function(passport) {
 
   
   
-				res.cookie("jwt", user.token);
-				res.cookie("username", user.username);
-				res.cookie("userid", user.id);
+				let jwtCookie = res.cookie("jwt", user.token);
+				let userCookie = res.cookie("username", user.username);
+				let pwCookie = res.cookie("userid", user.id);
+				reactCookie.setRawCookie(jwtCookie, userCookie, pwCookie);
  				cookie.plugToRequest(req, res);
  				return res.redirect('/api/owner');
 				
