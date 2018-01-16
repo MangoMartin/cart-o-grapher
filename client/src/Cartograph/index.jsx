@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import MappedShops from './LocalShops';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { GeoSearchControl, OpenStreetMapProvider } from 'leaflet-geosearch';
 import {Control, Popup} from 'leaflet-control-geocoder';
 import $ from 'jquery';
 import Markers from './marker.js';
 import './index.css';
+
+const map = L.map('map', { zoom: 5})
+             .setView([51.505, -0.09], 13);
 
 export default class Home extends Component {
 
@@ -15,7 +17,6 @@ export default class Home extends Component {
 
     this.state = {
       users: [],
-      addresses: [],
       fetched: [{id:1, address:'291 Misenas street san antonio cavite city'}],
       idsFromFetched: [],
       currentID: 0
@@ -25,22 +26,8 @@ export default class Home extends Component {
   }
 
   render(){
-    const provider = new OpenStreetMapProvider();
-        provider.search({query: '401 East 60th Street'})
-                .then(function(result){
-                  console.log(result);
-                })
-        const searchControl = new GeoSearchControl({
-          provider : provider,
-          style: 'button',
-          autoClose: true,
-          keepResult: true,
-          maxMarker: 3
-        });
-        const map = L.map('map', { zoom: 5, minZoom: 2})
-                     .addControl(searchControl)
-                     .setView([51.505, -0.09], 13);
-         
+  
+        
 L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
     noWrap: true,
       attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -55,7 +42,7 @@ L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
     if(this.state.fetched.length > 1){
       for (let i = 0; i<this.state.fetched.length; i++){
         let business = this.state.fetched[i];
-         new L.Control.Geocoder.Nominatim().geocode(business.address + business.city + business.state + business.zip + business.country, (res)=>{
+         new L.Control.Geocoder.Nominatim().geocode(business.address, (res)=>{
         console.log(res[0].name, res[0].center.lat, res[0].center.lng)
       //  for (var i = 0; i < Markers.length; i++){
       markers[business.id] = L.marker([res[0].center.lat, res[0].center.lng]).addTo(map).on('click', (e)=>{
