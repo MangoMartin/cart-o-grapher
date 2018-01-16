@@ -8,7 +8,7 @@ app.use(bodyParser());
 
 app.use(express.static(path.join(__dirname, 'client/build')));
 
-app.get('/users', (req,res)=>{
+/*app.get('/users', (req,res)=>{
 
 	res.json([
 			{id:1, name:"green"},
@@ -16,7 +16,7 @@ app.get('/users', (req,res)=>{
 			{id:3, name:"yellow"},
 			{id:4, name:"red"}
 		])
-})
+})*/
 
 app.get('/fetchme', (req,res)=>{
 
@@ -32,7 +32,8 @@ app.post('/form', (req,res)=>{
 						 .then(()=>{
 							 return Credentials.create({
 								 username: req.body.username,
-								 password: req.body.password
+								 password: req.body.password,
+								 address: req.body.address
 							 });
 						 })
 						 .then(()=>{

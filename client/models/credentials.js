@@ -17,6 +17,9 @@ const Credentials = sequelize.define('credentials', {
   },
   password: {
     type: Sequelize.STRING
+  },
+  address: {
+    type: Sequelize.STRING
   }
 });
 

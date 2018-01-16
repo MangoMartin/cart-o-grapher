@@ -1,19 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
 import L from 'leaflet';
+import {Control} from 'leaflet-control-geocoder';
 
 const map = L.map('map', { zoom: 5})
              .setView([51.505, -0.09], 13);
-
-  L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-  }).addTo(map);
-
-  L.marker([51.5, -0.09]).addTo(map)
-    .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-    .openPopup();
-
-  console.log('1',this.map)
+  console.log('ZUPZUPZUP',this.map)
 
 class App extends Component {
 
@@ -23,7 +15,7 @@ class App extends Component {
     this.state = {
       users: [],
       fetched: [],
-      mapRendered: true
+
       }
 
      this.loadMap = this.loadMap.bind(this);
@@ -31,6 +23,20 @@ class App extends Component {
     }
 
   render() {
+    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+    console.log(this.state.fetched)
+    /*for (let i = 0; i<this.state.addresses.length; i++){
+    new L.Control.Geocoder.Nominatim().geocode(this.state.addresses[i], (res)=>{
+
+      console.log(res[0].name, res[0].center.lat, res[0].center.lng)
+    //  for (var i = 0; i < Markers.length; i++){
+        L.marker([res[i].center.lat, res[i].center.lng]).addTo(map)
+        .bindPopup('hallo')
+        .openPopup()
+    })}*/
+
 
     return (
       <div className="App">
@@ -48,6 +54,7 @@ class App extends Component {
         <form method='POST' action='/form'>
           <input type='text' name='username' placeholder='type username here' />
           <input type='text' name='password' placeholder='type password here' />
+          <input type='text' name='address' placeholder='type password here' />
           <input type='submit' value='Log in' />
         </form>
         <div id='map'></div>
