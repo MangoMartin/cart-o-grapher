@@ -43,7 +43,7 @@ export default class Home extends Component {
             .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
             .openPopup();
           }
-    
+
     return(
       <div className='main-body'>
       	<div className='top'>
@@ -54,7 +54,7 @@ export default class Home extends Component {
             view nearby stores located on the map and their respective store profiles
             below.
             </p>
-            </div>
+          </div>
       		<div id='map'>
       		</div>
       	</div>

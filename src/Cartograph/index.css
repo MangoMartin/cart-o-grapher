@@ -1,17 +1,17 @@
 .main-body {
 	width: 100%;
 	height: 88%;
-	display: inline-block;
-	/* background-color: #ff9966; */
+	/* display: inline-block; */
+	background-color: #A9A9A9;
 	/* background-image: url("../ProfileDesign/cartography-1.jpg"); */
 	position: fixed;
-  	top: 100px;
+  	top: 50px;
   	left: 0px;
 }
 
 .top {
-	display: inline-block;
-	height: 65%;
+	/* display: inline-block; */
+	height: 4%;
 	width: 100%;
 }
 
@@ -21,31 +21,35 @@
 	height: 100%;
 	text-indent: 15px;
 	font-style: italic;
-	margin-left: 15px;
-	margin-top: 30px;
+	margin-left: 375px;
+	margin-top: 400px;
+	display: block;
 	/* border: 1px solid black; */
 }
 
 .map {
 	/* float: right; */
-	right: 0;
+	right: 100px;
 	width: 59%;
+	margin-bottom: 300px;
+	margin-right: 30px;
 	border: 3px solid black;
 	/* height: 100%; */
 }
 
 .leaflet-container {
-	position:absolute;
- 	top: 18.5%;
-	bottom: 34.65%;
-	left: 40.9%;
-	right: 0.2%;
-	height: 300px;
-}
+	position:fixed;
+ 	top: 10.5%;
+	bottom: 14.65%;
+	left: 20.9%;
+	right: 20.2%;
+	height: 350px;
 
+}
+/*
 .search-divider {
 	width: 100%;
-	height: 6%;
+	height: 50%;
 	background-color: purple;
 }
 
@@ -69,29 +73,31 @@
 .search-text {
 	display: inline;
 	bottom: 0;
-}
-
+} */
+/*
 .form-location {
 	width: 70%;
 }
 
 .radius {
 	width: 10%;
-}
-
+} */
+/*
 .cartograph {
 	width: 17%;
 	float: right;
 	margin-right: 3px;
 	margin-top: 3px;
-	/* needs to be centered */
-}
+	needs to be centered
+} */
 
 .shop-display {
 	height: 29%;
 	width: 100%;
+	margin-top: 75px;
+	/* margin-bottom: 90px; */
 	display: block;
-	background-color: #4d79ff;
+	background-color: #000066;
 	text-align: center;
 }
 
