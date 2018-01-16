@@ -22,7 +22,7 @@ app.use(cookieParser());
 app.use(cookiesMiddleware());
 app.use(require('less-middleware')(path.join(__dirname, '/client/build')));
 app.use(express.static(path.join(__dirname, 'client/build')));
-app.use(cors({ origin: 'http://localhost:3232', credentials: true }))
+app.use(cors({ origin: 'https://cart-o-grapher.herokuapp.com/', credentials: true }))
 
 
 app.all('*', function(req, res, next) {
