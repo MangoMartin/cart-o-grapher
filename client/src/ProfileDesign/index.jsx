@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {Link, Route, Switch} from 'react-router-dom';
 
-import LoginSignup from './LoginSignup';
 import AddLinks from './AddLinks';
 import AddCategories from './AddCategories';
 import ImageForm from './ImageForm';
@@ -45,7 +44,6 @@ class CreateShop extends Component {
 	render(){
 		return(
 			<div className='settings-body'>
-        <LoginSignup />
         <h1>Set up shop/Edit shop</h1>
         <form onSubmit={this.handleSubmit}>
           <h3>Store info:</h3>
