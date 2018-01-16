@@ -8,10 +8,6 @@ import $ from 'jquery';
 import Markers from './marker.js';
 import './index.css';
 
-const map = L.map('map', { zoom: 5, minZoom: 2})
-                     .addControl(searchControl)
-                     .setView([51.505, -0.09], 13);
-
 export default class Home extends Component {
 
   constructor(props){
@@ -41,7 +37,9 @@ export default class Home extends Component {
           keepResult: true,
           maxMarker: 3
         });
-
+        const map = L.map('map', { zoom: 5, minZoom: 2})
+                     .addControl(searchControl)
+                     .setView([51.505, -0.09], 13);
          
 L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
     noWrap: true,
