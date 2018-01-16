@@ -19,7 +19,6 @@ fs.readdirSync(path.join(__dirname, 'models'))
 });
 
 var users = sequelize.define('users', {
-  user_id: Sequelize.INTEGER,
   username: Sequelize.TEXT,
   password: Sequelize.TEXT
 });
