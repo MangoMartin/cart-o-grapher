@@ -33,7 +33,7 @@ var shops = sequelize.define('shops', {
   city: Sequelize.STRING,
   state: Sequelize.STRING,
   zip: Sequelize.INTEGER,
-  phone: Sequelize.INTEGER,
+  phone: Sequelize.STRING,
   email: Sequelize.STRING,
   pickup: Sequelize.BOOLEAN,
   delivery: Sequelize.BOOLEAN,
