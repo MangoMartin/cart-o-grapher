@@ -21,7 +21,7 @@ function initializeSerialization(passport) {
 function processSignupCallback(req, username, password, done) {
 	User.findOne({
 		where: { 
-			"username" :  "username"         
+			'username' :  username         
 		},        
 			attributes: ['id']    
 		})    
@@ -56,7 +56,7 @@ function processLoginCallback(username, password, done) {
    
 	User.findOne({        
 		where: { 
-			"username" :  "username"         
+			'username' :  username       
 			}    
 		})    
 		.then(function(user) {
@@ -75,7 +75,6 @@ function processLoginCallback(username, password, done) {
            			user.save()
             			.then(function(savedRecord) {
               				return done(null, savedRecord);
-              				console.log(savedRecord);
             			});
           			});
         		}

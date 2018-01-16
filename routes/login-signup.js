@@ -1,8 +1,6 @@
-const express = require('express');
-const router = express.Router();
-const cookee = require('react-cookie');
-const cuukii = cookee.reactCookie();
-
+var express = require('express');
+var router = express.Router();
+require("react/package.json"); // react is a peer dependency. 
 
 const models  = require('../db');
 
@@ -26,6 +24,7 @@ module.exports = function(passport) {
 
 	router.post('/', function(req, res, next) {
 		passport.authenticate('local-login', function(err, user, info) {
+			console.log(user.token);
 			if (err) {
 			  	return next(err); 
 			}
@@ -36,16 +35,10 @@ module.exports = function(passport) {
 			    if (loginErr) {
 					return next(loginErr);
 			    } 
-
-  
-  
-				let jwtCookie = res.cookie("jwt", user.token);
-				let userCookie = res.cookie("username", user.username);
-				let pwCookie = res.cookie("userid", user.id);
-				cuukii.setRawCookie(jwtCookie, userCookie, pwCookie);
- 				cookee.plugToRequest(req, res);
+				res.cookie('jwt', user.token);
+				res.cookie('username', user.username);
+				res.cookie('userid', user.id);
  				return res.redirect('/api/owner');
-				
 			}); 
 		})(req, res, next);
 	});
