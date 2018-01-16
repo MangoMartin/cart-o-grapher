@@ -88,7 +88,7 @@ export default class Home extends Component {
           'Content-Type': 'application/json',
           'Accept': 'application/json'
         }
-      });
+      })
           .then(res => res.json())
           .then(fetched => this.setState({ fetched }))
         //  window.map.loadMap();
