@@ -11,7 +11,7 @@ sequelize
     console.log('Unable due to', err);
   });
 
-const Credentials = sequelize.define('credentials', {
+const Shops = sequelize.define('shops', {
   username: {
     type: Sequelize.STRING
   },
@@ -23,4 +23,4 @@ const Credentials = sequelize.define('credentials', {
   }
 });
 
-module.exports = Credentials;
+module.exports = Shops;

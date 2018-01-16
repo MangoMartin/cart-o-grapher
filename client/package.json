@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "jquery": "^3.2.1",
     "leaflet": "^1.2.0",
     "leaflet-control-geocoder": "^1.5.8",
     "react": "^16.2.0",

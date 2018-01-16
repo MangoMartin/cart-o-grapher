@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser')
 const path = require('path');
-const Credentials = require('./client/models/credentials.js')
+const Shops = require('./client/models/credentials.js')
 
 const app = express();
 app.use(bodyParser());
@@ -20,17 +20,17 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.get('/fetchme', (req,res)=>{
 
-	Credentials.findAll()
-						 .then(credentials => {
-							 res.json(credentials)
-							 console.log(credentials)
+	Shops.findAll()
+						 .then(shops => {
+							 res.json(shops)
+							 console.log(shops)
 						 })
 });
 
 app.post('/form', (req,res)=>{
-	Credentials.sync()
+	Shops.sync()
 						 .then(()=>{
-							 return Credentials.create({
+							 return Shops.create({
 								 username: req.body.username,
 								 password: req.body.password,
 								 address: req.body.address
