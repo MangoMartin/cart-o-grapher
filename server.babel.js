@@ -40,7 +40,9 @@ app.all('*', function(req, res, next) {
 
 var loginSignupRoutes = require('./routes/login-signup')(passport);
 var shopRoutes = require('./routes/shop');
+var homeRoutes = require('./routes/home');
 
+app.use('/', homeRoutes);
 app.use('/api', loginSignupRoutes);
 
 app.use('/api/owner', function(req, res, next) {
