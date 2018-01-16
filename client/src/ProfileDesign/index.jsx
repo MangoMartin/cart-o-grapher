@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {Link, Route, Switch} from 'react-router-dom';
-
 import AddLinks from './AddLinks';
 import AddCategories from './AddCategories';
 import ImageForm from './ImageForm';
@@ -10,6 +9,7 @@ import './index.css';
 
 const pickupDelivery = [
   'Local Delivery',
+  'Delivery',
   'Pickup',
 ];
 
@@ -174,15 +174,55 @@ class CreateShop extends Component {
   toggleCheckbox = label => {
     if (this.selectedCheckboxes.has(label)) {
       this.selectedCheckboxes.delete(label);
+       if (label === "Sunday") {
+        this.setState({ sun: false });
+      } else if (label === "Saturday") {
+        this.setState({ sat: false });
+      } else if (label === "Monday") {
+        this.setState({ mon: false });
+      } else if (label === "Tuesday") {
+        this.setState({ tues: false });
+      } else if (label === "Wednesday") {
+        this.setState({ wed: false });
+      } else if (label === "Thursday") {
+        this.setState({ thur: false });
+      } else if (label === "Friday") {
+        this.setState({ fri: false });
+      } else if (label === "Delivery") {
+        this.setState({ delivery: false });
+      } else if (label === "Pickup") {
+        this.setState({ pickup: false });
+      }
     } else {
       this.selectedCheckboxes.add(label);
+      if (label === "Sunday") {
+        this.setState({ sun: true });
+      } else if (label === "Saturday") {
+        this.setState({ sat: true });
+      } else if (label === "Monday") {
+        this.setState({ mon: true });
+      } else if (label === "Tuesday") {
+        this.setState({ tues: true });
+      } else if (label === "Wednesday") {
+        this.setState({ wed: true });
+      } else if (label === "Thursday") {
+        this.setState({ thur: true });
+      } else if (label === "Friday") {
+        this.setState({ fri: true });
+      } else if (label === "Delivery") {
+        this.setState({ delivery: true });
+      } else if (label === "Pickup") {
+        this.setState({ pickup: true });
+      }
     }
+
   }
 
   createCheckbox = label => (
     <Checkbox
       label={label}
       handleCheckboxChange={this.toggleCheckbox}
+      name={label}
       key={label}
     />
   )
@@ -201,7 +241,6 @@ class CreateShop extends Component {
       console.log(checkbox + 'is selected.');
     }
   }
-
 }
 
 export default CreateShop;
