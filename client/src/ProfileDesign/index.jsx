@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
-import {Link, Route, Switch} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
 import AddLinks from './AddLinks';
 import AddCategories from './AddCategories';
 import ImageForm from './ImageForm';
 import Checkbox from './Checkbox';
-import Shop from '../StoreProfile';
 import './index.css';
 
 const pickupDelivery = [
-  'Local Delivery',
   'Delivery',
   'Pickup',
 ];
@@ -38,91 +37,107 @@ class CreateShop extends Component {
       country: '',
       phone: 'None Provided',
       email: 'None provided',
+      mon: false,
+      tues: false,
+      wed: false,
+      thur: false,
+      fri: false,
+      sat: false,
+      sun: false,
+      delivery: false,
+      pickup: false
     };
   }
 
 	render(){
 		return(
-      <div className ='full'>
-        <div className='op'>
-        </div>
-  			<div className='settings-body'>
-          <h1>Set up shop/Edit shop</h1>
-          <form onSubmit={this.handleSubmit}>
-            <h3>Store info:</h3>
-            Shop name: {this.state.shopName}<br />
-            <input
-              type='text'
-              onChange={this.handleShopNameChange}
-            /><br />
-            Owner name: {this.state.owner}<br />
-            <input
-              type='text'
-              onChange={this.handleOwnerChange}
-            /><br />
-            Store description: {this.state.about}<br />
-            <input
-              type='text'
-              onChange={this.handleAboutChange}
-            /><br />
-            <h3>Address:</h3><br />
-            Address: <input
-              type='text'
-              onChange={this.handleAddressChange}
-            /><br />
-            City: <input
-              type='text'
-              onChange={this.handleCityChange}
-            /><br />
-            State: <input
-              type='text'
-              onChange={this.handleStateChange}
-            /><br />
-            Zip code: <input
-              type='text'
-              onChange={this.handleZipChange}
-            /><br />
-            Country: <input
-              type='text'
-              onChange={this.handleCountryChange}
-            /><br />
-            <h3>Contact information:</h3><br />
-            Phone number: {this.state.phone}<br />
-            <input
-              type='text'
-              onChange={this.handlePhoneChange}
-            /><br />
-            Email: {this.state.email}<br />
-            <input
-              type='text'
-              onChange={this.handleEmailChange}
-            /><br />
-            {this.createPickupDeliveryCheckboxes()}
-            <h3>Hours of Operation:</h3>
-            <p>Check off which days your store is open for business</p>
-            {this.createDaysOpenCheckboxes()}
-            <input
-              type='submit'
-              value='Update all store information'
-            /><br />
-          </form>
-          <h3>Add categories that describe what your store sells:</h3><br />
-          <p>i.e. Jewelry, Electronics, etc.</p>
-          <AddCategories />
-          <h3>Add external links to store sites:</h3><br />
-          <AddLinks />
-          <h3>Add a profile image for your store:</h3><br />
-          <ImageForm />
-          <Link to='/myshop'>
-            Check out your store profile
-          </Link>
-          <Switch>
-            <Route
-              path='/myshop'
-              component={Shop}
-            />
-          </Switch>
-        </div>
+			<div className='settings-body'>
+        <h1>Set up shop/Edit shop</h1>
+        <form method='POST' action='http://localhost:3232/api/owner' encType='application/x-www-form-urlencoded'>
+          <h3>Store info:</h3>
+          Shop name: {this.state.shopName}<br />
+          <input
+            type='text'
+            name='shopname'
+            onChange={this.handleShopNameChange}
+            required
+          /><br />
+          Owner name: {this.state.owner}<br />
+          <input
+            type='text'
+            name='owner'
+            onChange={this.handleOwnerChange}
+            required
+          /><br />
+          Store description: {this.state.about}<br />
+          <input
+            type='text'
+            name='about'
+            onChange={this.handleAboutChange}
+          /><br />
+          <h3>Address:</h3><br />
+          Address: <input
+            type='text'
+            name='address'
+            onChange={this.handleAddressChange}
+            required
+          /><br />
+          City: <input
+            type='text'
+            name='city'
+            onChange={this.handleCityChange}
+            required
+          /><br />
+          State: <input
+            type='text'
+            name='state'
+            onChange={this.handleStateChange}
+            required
+          /><br />
+          Zip code: <input
+            type='number'
+            name='zip'
+            onChange={this.handleZipChange}
+            required
+          /><br />
+          Country: <input
+            type='text'
+            name='country'
+            onChange={this.handleCountryChange}
+            required
+          /><br />
+          <h3>Contact information:</h3><br />
+          Phone number: {this.state.phone}<br />
+          <input
+            type='text'
+            name='phone'
+            onChange={this.handlePhoneChange}
+          /><br />
+          Email: {this.state.email}<br />
+          <input
+            type='text'
+            name='email'
+            onChange={this.handleEmailChange}
+          /><br />
+          {this.createPickupDeliveryCheckboxes()}
+          <h3>Hours of Operation:</h3>
+          <p>Check off which days your store is open for business</p>
+          {this.createDaysOpenCheckboxes()}
+          <input 
+            type='submit'
+            value='Update all store information'
+          /><br />
+        </form>
+        <h3>Add categories that describe what your store sells:</h3><br />
+        <p>i.e. Jewelry, Electronics, etc.</p>
+        <AddCategories />
+        <h3>Add external links to store sites:</h3><br />
+        <AddLinks />
+        <h3>Add a profile image for your store:</h3><br />
+        <ImageForm />
+        <Link to='/myshop'>
+          Check out your store profile
+        </Link>
       </div>
     )
   }
@@ -192,7 +207,7 @@ class CreateShop extends Component {
         this.setState({ delivery: false });
       } else if (label === "Pickup") {
         this.setState({ pickup: false });
-      }
+      } 
     } else {
       this.selectedCheckboxes.add(label);
       if (label === "Sunday") {
@@ -213,9 +228,9 @@ class CreateShop extends Component {
         this.setState({ delivery: true });
       } else if (label === "Pickup") {
         this.setState({ pickup: true });
-      }
+      } 
     }
-
+    
   }
 
   createCheckbox = label => (
@@ -235,12 +250,6 @@ class CreateShop extends Component {
     daysOpen.map(this.createCheckbox)
   )
 
-  handleSubmit = (event) => {
-    event.preventDefault();
-    for (const checkbox of this.selectedCheckboxes) {
-      console.log(checkbox + 'is selected.');
-    }
-  }
 }
 
 export default CreateShop;
