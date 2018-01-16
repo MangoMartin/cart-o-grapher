@@ -22,6 +22,12 @@ module.exports = {
       shop_img: {
         type: Sequelize.STRING
       },
+      owner: {
+        type: Sequelize.STRING
+      },
+      about: {
+        type: Sequelize.STRING
+      },
       address: {
         type: Sequelize.STRING
       },

@@ -9,7 +9,7 @@ var Shop = require('../db').shops;
 var lgdUserId;
 var lgdUsername;
 
-router.get('/shop-info', function(req, res, next) {
+router.post('/', function(req, res, next) {
 	lgdUserId = req.cookies['userid'];
     lgdUsername = req.cookies['username'];
     var days = req.body.Sunday + req.body.Monday + req.body.Tuesday + req.body.Wednesday + req.body.Thursday + req.body.Friday + req.body.Saturday;
