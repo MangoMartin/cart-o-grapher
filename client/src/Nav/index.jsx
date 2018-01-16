@@ -45,11 +45,11 @@ class Container extends Component {
                         />
                         <Route
                             path="/api/signup"
-                            component={ Signup }
+                            component={Signup}
                         />
                         <Route
                             path="/api"
-                            component={ Login }
+                            component={Login}
                         />
                         <Route
                             path="/logout"

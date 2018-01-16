@@ -9,7 +9,7 @@ class Signup extends Component {
     return (
       <div className='login-signup'>
       <div className='signup'>
-      <form method='POST' action='/api' encType='application/x-www-form-urlencoded'>
+      <form method='POST' action='/api/signup' encType='application/x-www-form-urlencoded'>
         <input type="text" placeholder="Username" name="username"/>
         <input type="text" placeholder="Password" name="password"/>
         <input type="submit" value="Sign Up" />
