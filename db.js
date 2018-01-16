@@ -27,6 +27,8 @@ var users = sequelize.define('users', {
 var shops = sequelize.define('shops', {
   user_id: Sequelize.INTEGER,
   shop_name: Sequelize.STRING,
+  owner: Sequelize.STRING,
+  about: Sequelize.STRING,
   shop_img: Sequelize.STRING,
   address: Sequelize.STRING,
   city: Sequelize.STRING,

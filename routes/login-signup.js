@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-require("react/package.json"); // react is a peer dependency. 
 
 const models  = require('../db');
 
@@ -24,7 +23,6 @@ module.exports = function(passport) {
 
 	router.post('/', function(req, res, next) {
 		passport.authenticate('local-login', function(err, user, info) {
-			console.log(user.token);
 			if (err) {
 			  	return next(err); 
 			}

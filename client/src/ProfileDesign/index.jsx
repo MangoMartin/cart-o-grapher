@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
-import {Link, Route, Switch} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import AddLinks from './AddLinks';
 import AddCategories from './AddCategories';
 import ImageForm from './ImageForm';
 import Checkbox from './Checkbox';
-import Shop from '../StoreProfile';
 import './index.css';
 
 const pickupDelivery = [
-  'Local Delivery',
+  'Delivery',
   'Pickup',
 ];
 
@@ -37,7 +36,16 @@ class CreateShop extends Component {
       zip: '',
       country: '',
       phone: 'None Provided',
-      email: 'None provided'
+      email: 'None provided',
+      mon: false,
+      tues: false,
+      wed: false,
+      thur: false,
+      fri: false,
+      sat: false,
+      sun: false,
+      delivery: false,
+      pickup: false
     };
   }
 
@@ -45,48 +53,56 @@ class CreateShop extends Component {
 		return(
 			<div className='settings-body'>
         <h1>Set up shop/Edit shop</h1>
-        <form onSubmit={this.handleSubmit}>
+        <form method='POST' action='/api/signup' encType='application/x-www-form-urlencoded' onSubmit={this.handleSubmit}>
           <h3>Store info:</h3>
           Shop name: {this.state.shopName}<br />
           <input
             type='text'
+            name='shop_name'
             onChange={this.handleShopNameChange}
             required
           /><br />
           Owner name: {this.state.owner}<br />
           <input
             type='text'
+            name='owner'
             onChange={this.handleOwnerChange}
             required
           /><br />
           Store description: {this.state.about}<br />
           <input
             type='text'
+            name='about'
             onChange={this.handleAboutChange}
           /><br />
           <h3>Address:</h3><br />
           Address: <input
             type='text'
+            name='address'
             onChange={this.handleAddressChange}
             required
           /><br />
           City: <input
             type='text'
+            name='city'
             onChange={this.handleCityChange}
             required
           /><br />
           State: <input
             type='text'
+            name='state'
             onChange={this.handleStateChange}
             required
           /><br />
           Zip code: <input
-            type='text'
+            type='number'
+            name='zip'
             onChange={this.handleZipChange}
             required
           /><br />
           Country: <input
             type='text'
+            name='country'
             onChange={this.handleCountryChange}
             required
           /><br />
@@ -94,11 +110,13 @@ class CreateShop extends Component {
           Phone number: {this.state.phone}<br />
           <input
             type='text'
+            name='phone'
             onChange={this.handlePhoneChange}
           /><br />
           Email: {this.state.email}<br />
           <input
             type='text'
+            name='email'
             onChange={this.handleEmailChange}
           /><br />
           {this.createPickupDeliveryCheckboxes()}
@@ -120,12 +138,6 @@ class CreateShop extends Component {
         <Link to='/myshop'>
           Check out your store profile
         </Link>
-        <Switch>
-          <Route
-            path='/myshop'
-            component={Shop}
-          />
-        </Switch>
       </div>
     )
   }
@@ -177,15 +189,67 @@ class CreateShop extends Component {
   toggleCheckbox = label => {
     if (this.selectedCheckboxes.has(label)) {
       this.selectedCheckboxes.delete(label);
+       if (label === "Sunday") {
+        this.setState({ sun: false });
+      } else if (label === "Saturday") {
+        this.setState({ sat: false });
+      } else if (label === "Monday") {
+        this.setState({ mon: false });
+      } else if (label === "Tuesday") {
+        this.setState({ tues: false });
+      } else if (label === "Wednesday") {
+        this.setState({ wed: false });
+      } else if (label === "Thursday") {
+        this.setState({ thur: false });
+      } else if (label === "Friday") {
+        this.setState({ fri: false });
+      } else if (label === "Delivery") {
+        this.setState({ delivery: false });
+      } else if (label === "Pickup") {
+        this.setState({ pickup: false });
+      } 
     } else {
       this.selectedCheckboxes.add(label);
+      if (label === "Sunday") {
+        this.setState({ sun: true });
+      } else if (label === "Saturday") {
+        this.setState({ sat: true });
+      } else if (label === "Monday") {
+        this.setState({ mon: true });
+      } else if (label === "Tuesday") {
+        this.setState({ tues: true });
+      } else if (label === "Wednesday") {
+        this.setState({ wed: true });
+      } else if (label === "Thursday") {
+        this.setState({ thur: true });
+      } else if (label === "Friday") {
+        this.setState({ fri: true });
+      } else if (label === "Delivery") {
+        this.setState({ delivery: true });
+      } else if (label === "Pickup") {
+        this.setState({ pickup: true });
+      } 
     }
+    
+  }
+
+  checkboxName = label => {
+    label === "Sunday" && this.state.sun === true ? label : null; 
+    label === "Monday" && this.state.mon === true ? label : null; 
+    label === "Tuesday" && this.state.tues === true ? label : null; 
+    label === "Wednesday" && this.state.wed === true ? label : null; 
+    label === "Thursday" && this.state.thur === true ? label : null; 
+    label === "Friday" && this.state.fri === true ? label : null; 
+    label === "Saturday" && this.state.sat === true ? label : null; 
+    label === "Delivery" && this.state.delivery === true ? label : null; 
+    label === "Pickup" && this.state.pickups === true ? label : null; 
   }
 
   createCheckbox = label => (
     <Checkbox
       label={label}
       handleCheckboxChange={this.toggleCheckbox}
+      name={this.checkboxName}
       key={label}
     />
   )
