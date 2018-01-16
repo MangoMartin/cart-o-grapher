@@ -18,25 +18,17 @@ class Container extends Component {
 
     render() {
         return(
+          <div className='NavbarInstance'>
             <Navbar>
               <Navbar.Header>
-                <Link to='/' onClick={this.removeMap}>
-                    <Navbar.Brand>
-                      <img className='logo' src={require('./logo.jpg')} alt='' />
-                      <h1>Cart-o-Grapher</h1>
-                    </Navbar.Brand>
-                </Link>
+                  <Navbar.Brand>
+                    <img className='logo' src={require('./logo.jpg')} alt='' />
+                    <Link to='/' onClick={this.removeMap}>Cart-o-Grapher</Link>
+                  </Navbar.Brand>
               </Navbar.Header>
               <Nav>
-                  <ul>
-                  {this.props.children}
-                      <Link to='/api/signup' onClick={this.removeMap}>
-                        <NavItem eventKey={1}>Create Shop</NavItem>
-                      </Link>
-                      <Link to='/logout' onClick={this.removeMap}>
-                        <NavItem eventKey={2}>Log Out</NavItem>
-                      </Link>
-                  </ul>
+                  <NavItem href='/api/signup' onClick={this.removeMap}>Create Shop</NavItem>
+                    <NavItem href='/logout' onClick={this.removeMap}>Log Out</NavItem>
               </Nav>
 
                   <Switch>
@@ -63,7 +55,7 @@ class Container extends Component {
                       />
                   </Switch>
             </Navbar>
-
+          </div>
         )
     }
 
@@ -77,9 +69,11 @@ class Container extends Component {
 class Logout extends Component {
     render(){
         return(
+          <div>
             <div className='logbody'>
 
             </div>
+          </div>
         )
     }
 };
