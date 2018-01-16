@@ -1,6 +1,8 @@
-var express = require('express');
-var router = express.Router();
-import cookie from 'react-cookie';
+const express = require('express');
+const router = express.Router();
+const cookee = require('react-cookie');
+const cuukii = cookee.reactCookie();
+
 
 const models  = require('../db');
 
@@ -40,8 +42,8 @@ module.exports = function(passport) {
 				let jwtCookie = res.cookie("jwt", user.token);
 				let userCookie = res.cookie("username", user.username);
 				let pwCookie = res.cookie("userid", user.id);
-				reactCookie.setRawCookie(jwtCookie, userCookie, pwCookie);
- 				cookie.plugToRequest(req, res);
+				cuukii.setRawCookie(jwtCookie, userCookie, pwCookie);
+ 				cookee.plugToRequest(req, res);
  				return res.redirect('/api/owner');
 				
 			}); 
