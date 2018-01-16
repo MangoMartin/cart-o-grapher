@@ -39,6 +39,7 @@ app.all('*', function(req, res, next) {
 });
 
 var loginSignupRoutes = require('./routes/login-signup')(passport);
+var shopRoutes = require('./routes/shop');
 
 app.use('/api', loginSignupRoutes);
 
@@ -52,6 +53,8 @@ app.use('/api/owner', function(req, res, next) {
     }
   })(req, res, next)
 });
+
+app.use('/api/owner', shopRoutes);
 
 
 app.get('*', (req, res, next) => {
