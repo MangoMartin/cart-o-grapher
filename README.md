@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <img src="/public/logo.png" align="right" />
+=======
+<img src="/client/public/logo.png" align="right" />
+>>>>>>> ccf64c6e3cb9f3d83f6d0fe4c7c13283ceb6aa7f
 # Cart-o-grapher
 [Raymond Ajax Metrulis](https://github.com/reizeismith), [Sean McNeeley](https://github.com/sean21mcn), and [Mikhal Misenas](https://github.com/mistermappy) collaborated on this project.
 An app that provides a map of nearby E-commerce shop inventories, allowing users to potentially bypass the hassle and cost of shipping.
