@@ -55,7 +55,7 @@ router.post('/', function(req, res, next) {
 					});
 				}    
 			});
-		res.redirect('http://localhost:3000/api/owner');
+		res.redirect('/api/owner');
 });	
 
 
