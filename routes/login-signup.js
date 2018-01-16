@@ -16,7 +16,7 @@ module.exports = function(passport) {
 			   	if (loginErr) {
 			     	return next(loginErr);
 			   	}
-			 	return res.redirect('/api/signup');
+			 	return res.redirect('/api');
 			}); 
 		})(req, res, next);
 	});
