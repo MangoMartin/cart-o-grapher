@@ -3,15 +3,25 @@
 	width: 100%;
 	height: 70%;
 	display: inline-block;
-	text-align: center;
-	background-image: url("/cartography-1.jpg");
+	text-align: left;
 	position: fixed;
   	top: 100px;
   	left: 0px;
   	right: 0px;
   	padding-bottom: 200px;
 }
-/*
-body {
-	background-image: url("/cartography-1.jpg")
-} */
+
+.op {
+	position:fixed;
+	background-image: url("../ProfileDesign/cartography-1.jpg");
+	background-size: cover;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	opacity: 0.2;
+}
+
+h1 {
+	text-align: left;
+}
