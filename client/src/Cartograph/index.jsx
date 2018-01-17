@@ -83,8 +83,9 @@ export default class Home extends Component {
     )
   }
    componentDidMount(){
-      fetch('/', {
+      fetch('/home', {
         headers: {
+          'Method': 'GET',
           'Content-Type': 'application/json',
           'Accept': 'application/json'
         }

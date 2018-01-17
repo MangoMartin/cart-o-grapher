@@ -22,8 +22,8 @@ app.use(cookieParser());
 app.use(cookiesMiddleware());
 app.use(require('less-middleware')(path.join(__dirname, '/client/build')));
 app.use(express.static(path.join(__dirname, 'client/build')));
-app.use(cors({ origin: 'https://localhost:3232', credentials: true }))
-
+app.use(cors({ origin: 'https://cart-o-grapher.herokuapp.com/', credentials: true }))
+// CORS errors?
 
 app.all('*', function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
@@ -42,7 +42,7 @@ var loginSignupRoutes = require('./routes/login-signup')(passport);
 var shopRoutes = require('./routes/shop');
 var homeRoutes = require('./routes/home');
 
-app.use('/', homeRoutes);
+app.use('/home', homeRoutes);
 app.use('/api', loginSignupRoutes);
 
 app.use('/api/owner', function(req, res, next) {
