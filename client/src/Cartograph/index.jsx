@@ -20,6 +20,7 @@ export default class Home extends Component {
       idsFromFetched: [],
       currentID: 0
     }
+    this.loadMap = this.loadMap.bind(this);
      this.clickMe = this.clickMe.bind(this);
     
   }
@@ -56,7 +57,7 @@ export default class Home extends Component {
                                           <a href='http://www.google.com'>Google</a>`)
                               .openPopup()
                           
-        markers[business.id]._icon.id = business.id;
+        markers[business.id]._icon.id = business.id - 1;
       
     })}}
 
@@ -82,19 +83,24 @@ export default class Home extends Component {
       </div>
     )
   }
-   componentDidMount(){
-      fetch('/home', {
-        headers: {
-          'Method': 'GET',
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        }
+  loadMap(){
+    let mymap;
+    if(mymap !== undefined || mymap != null) {
+      mymap.remove()
+    }
+    else{
+      var myInit = {
+        method: 'GET',
+        encType: 'application/json',
+        accept: 'application/json'
+      };
+      fetch('/home', myInit, {
+        credentials: 'omit'  
       })
           .then(res => res.json())
           .then(fetched => this.setState({ fetched }))
-        //  window.map.loadMap();
     }
-
+}
     clickMe(){
       alert('you clicked marker:')
     }
