@@ -16,7 +16,7 @@ class Container extends Component {
     render() {
         return(
             <div className='header'>
-                <Link to='/' onClick={this.removeMap}>
+                <Link to='/home' onClick={this.removeMap}>
                     <div className='header-logo'>
                         <img className='logo' src={require('./logo.jpg')} alt='' />
                         <h1>Cart-o-Grapher</h1>
@@ -36,7 +36,7 @@ class Container extends Component {
                     <Switch>
                         <Route
                             exact
-                            path="/"
+                            path="/home"
                             component={Home}
                         />
                         <Route
@@ -61,9 +61,7 @@ class Container extends Component {
         )
     }
 
-    componentDidMount(){
-        this.removeMap();
-    }
+
 
     removeMap() {
         if(this.map !== undefined || this.map !== null) {
