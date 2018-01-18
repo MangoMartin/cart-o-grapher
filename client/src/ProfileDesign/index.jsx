@@ -142,6 +142,17 @@ class CreateShop extends Component {
     )
   }
 
+  componentDidMount() {
+      var remap = document.getElementById("map");
+      var tiles = document.getElementsByClassName("leaflet-layer").length;
+      if (!remap) {
+        return;
+      }
+      else if (tiles === 1 || tiles === 0) {
+        remap.parentNode.removeChild(remap);
+      } 
+    }
+
   componentWillMount = () => {
     this.selectedCheckboxes = new Set();
   }
