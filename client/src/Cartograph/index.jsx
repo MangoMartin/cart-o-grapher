@@ -5,6 +5,9 @@ import 'leaflet/dist/leaflet.css';
 import { Control, Popup } from 'leaflet-control-geocoder';
 import $ from 'jquery';
 import './index.css';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap-theme.css';
+
 
 const map = L.map('map', { zoom: 5})
              .setView([51.505, -0.09], 13);
