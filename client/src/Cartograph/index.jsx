@@ -21,14 +21,11 @@ export default class Home extends Component {
       currentID: 0
     }
     this.loadMap = this.loadMap.bind(this);
-     this.clickMe = this.clickMe.bind(this);
-    
+    this.clickMe = this.clickMe.bind(this);
   }
 
   render(){
-  
-        
- L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
     console.log(this.state.fetched)
@@ -49,20 +46,17 @@ export default class Home extends Component {
             this.setState({currentID: markers[business.id]._icon.id})
             console.log('currentID:', this.state.currentID)
       })
-                              .bindPopup(`${this.state.fetched[i].shop_name}<br>
-                                          ${this.state.fetched[i].address}<br>
-                                          ${this.state.fetched[i].city}<br>
-                                          ${this.state.fetched[i].state}<br>
-                                          ${this.state.fetched[i].about}<br>
-                                          <a href='http://www.google.com'>Google</a>`)
-                              .openPopup()
+        .bindPopup(`${this.state.fetched[i].shop_name}<br>
+                    ${this.state.fetched[i].address}<br>
+                    ${this.state.fetched[i].city}<br>
+                    ${this.state.fetched[i].state}<br>
+                    ${this.state.fetched[i].about}<br>
+                    <a href='http://www.google.com'>Google</a>`).openPopup();
                           
         markers[business.id]._icon.id = business.id - 1;
       
     })}}
 
-          
-    
     return(
       <div className='main-body'>
       	<div className='top'>
@@ -73,7 +67,7 @@ export default class Home extends Component {
             view nearby stores located on the map and their respective store profiles
             below.
             </p>
-            <h1 key={this.state.fetched[this.state.currentID].id}>{this.state.fetched[this.state.currentID].address}</h1>
+            <h3 key={this.state.fetched[this.state.currentID].id}>{this.state.fetched[this.state.currentID].address}</h3>
             </div>
       		<div id='map'>
       		</div>
@@ -83,12 +77,8 @@ export default class Home extends Component {
       </div>
     )
   }
+
   loadMap(){
-    let mymap;
-    if(mymap !== undefined || mymap != null) {
-      mymap.remove()
-    }
-    else{
       var myInit = {
         method: 'GET',
         encType: 'application/json',
@@ -99,10 +89,9 @@ export default class Home extends Component {
       })
           .then(res => res.json())
           .then(fetched => this.setState({ fetched }))
-    }
-}
-    clickMe(){
-      alert('you clicked marker:')
-    }
-
+  }
+  
+  clickMe(){
+    alert('you clicked marker:')
+  }
 }
