@@ -5,9 +5,6 @@ import 'leaflet/dist/leaflet.css';
 import { Control, Popup } from 'leaflet-control-geocoder';
 import $ from 'jquery';
 import './index.css';
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap/dist/css/bootstrap-theme.css';
-
 
 const map = L.map('map', { zoom: 5})
              .setView([51.505, -0.09], 13);
@@ -23,11 +20,11 @@ export default class Home extends Component {
       idsFromFetched: [],
       currentID: 0
     }
-    this.loadMap = this.loadMap.bind(this);
     this.clickMe = this.clickMe.bind(this);
   }
 
   render(){
+
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
@@ -61,9 +58,9 @@ export default class Home extends Component {
     })}}
 
     return(
-      <div className='main-body'>
-      	<div className='top'>
-      		<div className='aboutCoG'>
+      <div className='App'>
+        <div className='top'>
+          <div className='aboutCoG'>
             <p className='about-text'> Cart-o-grapher allows you to bypass the hassle of shipping
             by locating nearby inventories of your favorite e-commerce shops,
             such as: Amazon, Etsy, Ebay, and more. Just enter in a location below to
@@ -72,16 +69,16 @@ export default class Home extends Component {
             </p>
             <h3 key={this.state.fetched[this.state.currentID].id}>{this.state.fetched[this.state.currentID].address}</h3>
             </div>
-      		<div id='map'>
-      		</div>
-      	</div>
-      	<MappedShops
-      	/>
+          <div id='map'>
+          </div>
+        </div>
+        <MappedShops
+        />
       </div>
     )
   }
 
-  loadMap(){
+  componentDidMount(){
       var myInit = {
         method: 'GET',
         encType: 'application/json',
@@ -98,3 +95,5 @@ export default class Home extends Component {
     alert('you clicked marker:')
   }
 }
+
+
