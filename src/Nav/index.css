@@ -26,11 +26,15 @@
 .navbar-brand {
   display: flex;
   align-items: center;
+  position: fixed;
+  z-index: 2;
 }
 
 .nav {
   float: right;
+  position: relative;
   margin-left: 200px;
+  z-index: 2;
 }
 
 h1 {
