@@ -1,4 +1,3 @@
-'use strict';
 module.exports = (sequelize, DataTypes) => {
   var shopinfo = sequelize.define('shops', {
     user_id: {

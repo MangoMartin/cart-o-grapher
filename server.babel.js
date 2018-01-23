@@ -22,7 +22,7 @@ app.use(cookieParser());
 app.use(cookiesMiddleware());
 app.use(require('less-middleware')(path.join(__dirname, '/client/build')));
 app.use(express.static(path.join(__dirname, 'client/build')));
-app.use(cors({ origin: 'http://localhost:3232', credentials: true }))
+app.use(cors({ origin: 'https://localhost:3232', credentials: true }))
 
 
 app.all('*', function(req, res, next) {
@@ -40,7 +40,9 @@ app.all('*', function(req, res, next) {
 
 var loginSignupRoutes = require('./routes/login-signup')(passport);
 var shopRoutes = require('./routes/shop');
+var homeRoutes = require('./routes/home');
 
+app.use('/', homeRoutes);
 app.use('/api', loginSignupRoutes);
 
 app.use('/api/owner', function(req, res, next) {

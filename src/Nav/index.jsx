@@ -59,6 +59,10 @@ class Container extends Component {
         )
     }
 
+    componentDidMount(){
+        this.removeMap();
+    }
+
     removeMap() {
         if(this.map !== undefined || this.map !== null) {
         this.map.remove();
