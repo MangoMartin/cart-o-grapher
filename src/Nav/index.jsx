@@ -12,9 +12,12 @@ import 'bootstrap/dist/css/bootstrap-theme.css';
 class Container extends Component {
 
     constructor(){
-        super();
-        this.removeMap = this.removeMap.bind(this);
+      super();
+
+      this.removeMap = this.removeMap.bind(this);
+
     }
+
 
     render() {
         return(
@@ -59,18 +62,22 @@ class Container extends Component {
         )
     }
 
-    componentDidMount(){
-        this.removeMap();
+    removeMap() {
+      var remap = document.getElementById("map");
+      var tiles = document.getElementsByClassName("leaflet-layer").length;
+      if (!remap) {
+        return;
+      }
+      else if (tiles > 1) {
+        remap.parentNode.removeChild(remap);
+      }
     }
 
-    removeMap() {
-        if(this.map !== undefined || this.map !== null) {
-        this.map.remove();
-    }
-    }
 };
 
+
 class Logout extends Component {
+
     render(){
         return(
           <div>
