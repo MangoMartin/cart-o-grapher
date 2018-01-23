@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import Modal from 'react-modal';
 import MappedShops from './LocalShops';
 import Markers from './marker.js';
 import L from 'leaflet';
@@ -10,7 +12,28 @@ import 'bootstrap/dist/css/bootstrap-theme.css';
 
 
 const map = L.map('map', { zoom: 5})
-             .setView([51.505, -0.09], 13);
+             .locate({setView: true, maxZoom: 16});
+
+const modalStyles = {
+  overlay : {
+    position          : 'fixed',
+    top               : '0',
+    left              : '0',
+    right             : '0',
+    bottom            : '0'
+  },
+  content : {
+    position          : 'fixed',
+    minWidth          : '500px',
+    minHeight         : '500px',
+    top               : '50%',
+    left              : '50%',
+    right             : 'auto',
+    bottom            : 'auto',
+    marginRight       : '-50%',
+    transform         : 'translate(-50%, -50%)'
+  }
+};
 
 export default class Home extends Component {
 
@@ -21,11 +44,22 @@ export default class Home extends Component {
       users: [],
       fetched: [{id:9, address:'291 Misenas street san antonio cavite city'}],
       idsFromFetched: [],
-      currentID: 0
+      currentID: 0,
+      modalIsOpen: false
     }
 
      this.clickMe = this.clickMe.bind(this);
+     this.openModal = this.openModal.bind(this);
+     this.closeModal = this.closeModal.bind(this);
 
+  }
+
+  openModal() {
+    this.setState({modalIsOpen: true});
+  }
+
+  closeModal() {
+    this.setState({modalIsOpen: false});
   }
 
   render(){
@@ -81,6 +115,20 @@ export default class Home extends Component {
             view nearby stores located on the map and their respective store profiles
             below.
             </p>
+            <div className='outer-button'>
+              <button onClick={this.openModal}>Open Modal</button>
+              <Modal
+                isOpen={this.state.modalIsOpen}
+                onRequestClose={this.closeModal}
+                style={modalStyles}
+                contentLabel='Example'
+              >
+
+                <h2 ref={subtitle => this.subtitle = subtitle}>Hello</h2>
+                  <div> This work for you? </div>
+                  <button onClick={this.closeModal}>Close</button>
+              </Modal>
+            </div>
           </div>
       		<div id='map'>
       		</div>

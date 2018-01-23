@@ -30,6 +30,12 @@
 	/* border: 1px solid black; */
 }
 
+.outer-button {
+	position: relative;
+	left: 400px;
+	bottom: 30px;
+}
+
 .map {
 	/* float: right; */
 	right: 100px;

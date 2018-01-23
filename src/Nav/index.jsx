@@ -62,12 +62,14 @@ class Container extends Component {
 
 };
 
+
 class Logout extends Component {
+
     render(){
         return(
           <div>
             <div className='logbody'>
-
+  
             </div>
           </div>
         )
