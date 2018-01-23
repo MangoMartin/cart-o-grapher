@@ -56,6 +56,7 @@
     "react-geolocation": "^1.0.3",
     "react-leaflet": "^1.7.8",
     "react-leaflet-div-icon": "^1.1.0",
+    "react-modal": "^3.1.11",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.17",
     "react-test-renderer": "^16.2.0"
