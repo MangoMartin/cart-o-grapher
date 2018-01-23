@@ -148,7 +148,7 @@ export default class Home extends Component {
 
      componentDidMount(){
       fetch('/home')
-          .then( res => res.json())
+          .then(res => res.json())
           .then(fetched => this.setState({ fetched }))
         //  window.map.loadMap();
     }
