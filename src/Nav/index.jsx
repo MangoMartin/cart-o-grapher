@@ -13,7 +13,7 @@ class Container extends Component {
 
     constructor(){
         super();
-        this.removeMap = this.removeMap.bind(this);
+
     }
 
     render() {
@@ -59,15 +59,7 @@ class Container extends Component {
         )
     }
 
-    componentDidMount(){
-        this.removeMap();
-    }
 
-    removeMap() {
-        if(this.map !== undefined || this.map !== null) {
-        this.map.remove();
-    }
-    }
 };
 
 class Logout extends Component {
