@@ -22,16 +22,17 @@ class Container extends Component {
     render() {
         return(
           <div className='NavbarInstance'>
+          {this.removeMap}
             <Navbar>
               <Navbar.Header>
                   <Navbar.Brand>
                     <img className='logo' src={require('./logo.jpg')} alt='' />
-                    <Link to='/' onClick={this.removeMap}>Cart-o-Grapher</Link>
+                    <Link to='/'>Cart-o-Grapher</Link>
                   </Navbar.Brand>
               </Navbar.Header>
               <Nav>
-                  <NavItem href='/api/signup' onClick={this.removeMap}>Create Shop</NavItem>
-                    <NavItem href='/logout' onClick={this.removeMap}>Log Out</NavItem>
+                  <NavItem href='/api/signup'>Create Shop</NavItem>
+                    <NavItem href='/logout'>Log Out</NavItem>
               </Nav>
 
                   <Switch>
