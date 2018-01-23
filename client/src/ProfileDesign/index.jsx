@@ -6,8 +6,7 @@ import AddCategories from './AddCategories';
 import ImageForm from './ImageForm';
 import Checkbox from './Checkbox';
 import './index.css';
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap/dist/css/bootstrap-theme.css';
+
 
 
 const pickupDelivery = [

@@ -6,8 +6,7 @@ import Login from '../ProfileDesign/Login';
 import Signup from '../ProfileDesign/Signup';
 import Home from '../Cartograph';
 import './index.css';
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap/dist/css/bootstrap-theme.css';
+
 
 class Container extends Component {
 
@@ -21,16 +20,17 @@ class Container extends Component {
 
             <Navbar>
             {this.removeMap}
+              <div>
               <Navbar.Header>
                 <Link to='/home' onClick={this.forceUpdate}>
                     <Navbar.Brand>
                       <img className='logo' src={require('./logo.jpg')} alt='' />
-                      <h1>Cart-o-Grapher</h1>
+                      <h1>Cartographer</h1>
                     </Navbar.Brand>
                 </Link>
               </Navbar.Header>
               <Nav>
-                  <ul>
+                  <ul className='navList'>
                   {this.props.children}
                   <li>
                       <Link to='/api/signup'>
@@ -42,8 +42,9 @@ class Container extends Component {
                       </li>
                     
                   </ul>
+               
               </Nav>
-
+            </div>
                   <Switch>
                       <Route
                           exact

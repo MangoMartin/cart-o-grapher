@@ -5,9 +5,6 @@ import 'leaflet/dist/leaflet.css';
 import { Control, Popup } from 'leaflet-control-geocoder';
 import $ from 'jquery';
 import './index.css';
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap/dist/css/bootstrap-theme.css';
-
 
 const map = L.map('map', { zoom: 5})
              .setView([51.505, -0.09], 13);
@@ -70,13 +67,11 @@ export default class Home extends Component {
             view nearby stores located on the map and their respective store profiles
             below.
             </p>
-            <h3 key={this.state.fetched[this.state.currentID].id}>{this.state.fetched[this.state.currentID].address}</h3>
+            <h3 id='address' key={this.state.fetched[this.state.currentID].id}>{this.state.fetched[this.state.currentID].address}</h3>
             </div>
       		<div id='map'>
       		</div>
       	</div>
-      	<MappedShops
-      	/>
       </div>
     )
   }
