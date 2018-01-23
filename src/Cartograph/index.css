@@ -3,6 +3,7 @@
 	height: 88%;
 	/* display: inline-block; */
 	background-color: #A9A9A9;
+	/* background-color: #ff9966; */
 	/* background-image: url("../ProfileDesign/cartography-1.jpg"); */
 	position: fixed;
   	top: 50px;
@@ -24,12 +25,15 @@
 	margin-left: 375px;
 	margin-top: 400px;
 	display: block;
+	/* margin-left: 15px;
+	margin-top: 30px; */
 	/* border: 1px solid black; */
 }
 
 .map {
 	/* float: right; */
 	right: 100px;
+	/* right: 0; */
 	width: 59%;
 	margin-bottom: 300px;
 	margin-right: 30px;
@@ -98,6 +102,7 @@
 	/* margin-bottom: 90px; */
 	display: block;
 	background-color: #000066;
+	/* background-color: #4d79ff; */
 	text-align: center;
 }
 
