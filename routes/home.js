@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var Shop = require('../db').shops;
+var Shops = require('../db').shops;
 
 router.get('/', function(req, res, next) {
 	Shops.findAll()

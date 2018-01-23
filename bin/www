@@ -2,7 +2,6 @@ let app = require('../server');
 let models = require("../db");
 let debug = require('debug')('create:server');
 
-
 var server = http.createServer(app);
 
 let port = normalizePort(process.env.PORT || '3000');

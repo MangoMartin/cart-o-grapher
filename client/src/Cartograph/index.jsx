@@ -8,9 +8,6 @@ import 'leaflet/dist/leaflet.css';
 import { Control, Popup } from 'leaflet-control-geocoder';
 import $ from 'jquery';
 import './index.css';
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap/dist/css/bootstrap-theme.css';
-
 
 const map = L.map('map', { zoom: 5})
              .locate({setView: true, maxZoom: 16});
@@ -48,8 +45,6 @@ export default class Home extends Component {
       currentID: 0,
       modalIsOpen: false
     }
-
-     this.loadMap = this.loadMap.bind(this);
      this.clickMe = this.clickMe.bind(this);
      this.openModal = this.openModal.bind(this);
      this.closeModal = this.closeModal.bind(this);
@@ -66,8 +61,7 @@ export default class Home extends Component {
 
   render(){
 
-
- L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
     console.log(this.state.fetched)
@@ -108,7 +102,7 @@ export default class Home extends Component {
           }
 
     return(
-      <div className='main-body'>
+      <div className='App'>
       	<div className='top'>
       		<div className='aboutCoG'>
             <p className='about-text'> Cart-o-grapher allows you to bypass the hassle of shipping
@@ -141,7 +135,7 @@ export default class Home extends Component {
     )
   }
 
-  loadMap(){
+  componentDidMount(){
       var myInit = {
         method: 'GET',
         encType: 'application/json',
@@ -158,3 +152,4 @@ export default class Home extends Component {
     alert('you clicked marker:')
   }
 }
+
