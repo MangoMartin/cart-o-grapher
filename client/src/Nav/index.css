@@ -1,0 +1,53 @@
+:local(.navbar) {
+  color: #4d79ff !important;
+  /* width: 100%;
+  height: 100px;
+  font-family: Times New Roman;
+  font-size: 18px;
+  display: inline-flex;
+  justify-content: space-between; */
+}
+/*
+.nav {
+  background-color: #4d79ff;
+
+}
+.header-nav ul {
+  list-style-type: none;
+  margin-top: 30px;
+  font-style: italic;
+}
+
+.header-nav li {
+  float: left;
+  margin: 10px;
+} */
+
+h1 {
+  text-align: center;
+  margin-left: 100px;
+}
+
+.logo {
+  width: 20%;
+  float: left;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 0px;
+  background-size: cover;
+  display: block;
+  border-radius: 100px;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+}
+
+.logbody {
+  position:fixed;
+  background-image: url("../Nav/cartography-2.jpg");
+  background-size: cover;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0.2;
+}

@@ -6,6 +6,9 @@ import 'leaflet/dist/leaflet.css';
 import { Control, Popup } from 'leaflet-control-geocoder';
 import $ from 'jQuery';
 import './index.css';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap-theme.css';
+
 
 const map = L.map('map', { zoom: 5})
              .setView([51.505, -0.09], 13);
@@ -21,6 +24,7 @@ export default class Home extends Component {
       idsFromFetched: [],
       currentID: 0
     }
+
      this.clickMe = this.clickMe.bind(this);
 
   }
@@ -49,6 +53,7 @@ export default class Home extends Component {
             this.setState({currentID: markers[business.id]._icon.id})
             console.log('currentID:', this.state.currentID)
       })
+
                               .bindPopup(`${this.state.fetched[i].shop_name}<br>
                                           ${this.state.fetched[i].address}<br>
                                           ${this.state.fetched[i].city}<br>
@@ -95,11 +100,9 @@ export default class Home extends Component {
       })
           .then(res => res.json())
           .then(fetched => this.setState({ fetched }))
-        //  window.map.loadMap();
-    }
+  }
 
-    clickMe(){
-      alert('you clicked marker:')
-    }
-
+  clickMe(){
+    alert('you clicked marker:')
+  }
 }

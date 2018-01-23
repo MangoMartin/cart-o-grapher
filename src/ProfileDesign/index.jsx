@@ -6,6 +6,9 @@ import AddCategories from './AddCategories';
 import ImageForm from './ImageForm';
 import Checkbox from './Checkbox';
 import './index.css';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap-theme.css';
+
 
 const pickupDelivery = [
   'Delivery',
@@ -141,6 +144,17 @@ class CreateShop extends Component {
       </div>
     )
   }
+
+  componentDidMount() {
+      var remap = document.getElementById("map");
+      var tiles = document.getElementsByClassName("leaflet-layer").length;
+      if (!remap) {
+        return;
+      }
+      else if (tiles === 1 || tiles === 0) {
+        remap.parentNode.removeChild(remap);
+      } 
+    }
 
   componentWillMount = () => {
     this.selectedCheckboxes = new Set();
