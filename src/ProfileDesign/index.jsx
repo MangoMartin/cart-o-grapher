@@ -6,6 +6,9 @@ import AddCategories from './AddCategories';
 import ImageForm from './ImageForm';
 import Checkbox from './Checkbox';
 import './index.css';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap-theme.css';
+
 
 const pickupDelivery = [
   'Delivery',
@@ -52,6 +55,8 @@ class CreateShop extends Component {
 	render(){
 		return(
 			<div className='settings-body'>
+        <div className='op'>
+        </div>
         <h1>Set up shop/Edit shop</h1>
         <form method='POST' action='/api/owner' encType='application/x-www-form-urlencoded'>
           <h3>Store info:</h3>
@@ -123,7 +128,7 @@ class CreateShop extends Component {
           <h3>Hours of Operation:</h3>
           <p>Check off which days your store is open for business</p>
           {this.createDaysOpenCheckboxes()}
-          <input 
+          <input
             type='submit'
             value='Update all store information'
           /><br />
@@ -141,6 +146,17 @@ class CreateShop extends Component {
       </div>
     )
   }
+
+  componentDidMount() {
+      var remap = document.getElementById("map");
+      var tiles = document.getElementsByClassName("leaflet-layer").length;
+      if (!remap) {
+        return;
+      }
+      else if (tiles === 1 || tiles === 0) {
+        remap.parentNode.removeChild(remap);
+      }
+    }
 
   componentWillMount = () => {
     this.selectedCheckboxes = new Set();
@@ -207,7 +223,7 @@ class CreateShop extends Component {
         this.setState({ delivery: false });
       } else if (label === "Pickup") {
         this.setState({ pickup: false });
-      } 
+      }
     } else {
       this.selectedCheckboxes.add(label);
       if (label === "Sunday") {
@@ -228,9 +244,9 @@ class CreateShop extends Component {
         this.setState({ delivery: true });
       } else if (label === "Pickup") {
         this.setState({ pickup: true });
-      } 
+      }
     }
-    
+
   }
 
   createCheckbox = label => (
