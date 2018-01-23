@@ -4,7 +4,6 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const path = require('path');
-const cookiesMiddleware = require('universal-cookie-express');
 const cors = require('cors');
 
 
@@ -19,11 +18,10 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded( { extended: true } ));
 app.use(cookieParser());
-app.use(cookiesMiddleware());
 app.use(require('less-middleware')(path.join(__dirname, '/client/build')));
 app.use(express.static(path.join(__dirname, 'client/build')));
 app.use(cors({ origin: 'https://localhost:3232', credentials: true }))
-
+// CORS errors?
 
 app.all('*', function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
@@ -42,7 +40,7 @@ var loginSignupRoutes = require('./routes/login-signup')(passport);
 var shopRoutes = require('./routes/shop');
 var homeRoutes = require('./routes/home');
 
-app.use('/', homeRoutes);
+app.use('/home', homeRoutes);
 app.use('/api', loginSignupRoutes);
 
 app.use('/api/owner', function(req, res, next) {
