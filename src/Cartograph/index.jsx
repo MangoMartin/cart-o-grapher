@@ -4,7 +4,6 @@ import Markers from './marker.js';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { Control, Popup } from 'leaflet-control-geocoder';
-import $ from 'jQuery';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
@@ -98,7 +97,6 @@ export default class Home extends Component {
           'Accept': 'application/json'
         }
       })
-          .then(res => res.json())
           .then(fetched => this.setState({ fetched }))
   }
 
