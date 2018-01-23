@@ -12,62 +12,53 @@ import 'bootstrap/dist/css/bootstrap-theme.css';
 class Container extends Component {
 
     constructor(){
-        super();
-       this.removeMap = this.removeMap.bind(this);
+      super();
+
+      this.removeMap = this.removeMap.bind(this);
+
     }
+
 
     render() {
         return(
-
+          <div className='NavbarInstance'>
             <Navbar>
-            {this.removeMap}
               <Navbar.Header>
-                <Link to='/home' onClick={this.forceUpdate}>
-                    <Navbar.Brand>
-                      <img className='logo' src={require('./logo.jpg')} alt='' />
-                      <h1>Cart-o-Grapher</h1>
-                    </Navbar.Brand>
-                </Link>
+                  <Navbar.Brand>
+                    <img className='logo' src={require('./logo.jpg')} alt='' />
+                    <Link to='/' onClick={this.removeMap}>Cart-o-Grapher</Link>
+                  </Navbar.Brand>
               </Navbar.Header>
               <Nav>
-                  <ul>
-                  {this.props.children}
-                  <li>
-                      <Link to='/api/signup'>
-                        <NavItem eventKey={1}>Create Shop</NavItem>
-                      </Link>
-                      </li>
-                      <li>
-                        Logout
-                      </li>
-                    
-                  </ul>
+                  <NavItem href='/api/signup' onClick={this.removeMap}>Create Shop</NavItem>
+                    <NavItem href='/logout' onClick={this.removeMap}>Log Out</NavItem>
               </Nav>
 
                   <Switch>
                       <Route
                           exact
-                          path="/home"
+                          path="/"
                           component={Home}
                       />
                       <Route
-                      exact
                           path="/api/owner"
                           component={CreateShop}
                       />
                       <Route
-                      exact
                           path="/api/signup"
                           component={Signup}
                       />
                       <Route
-                      exact
                           path="/api"
                           component={Login}
                       />
+                      <Route
+                          path="/logout"
+                          component={Logout}
+                      />
                   </Switch>
             </Navbar>
-
+          </div>
         )
     }
 
@@ -79,7 +70,22 @@ class Container extends Component {
       }
       else if (tiles > 1) {
         remap.parentNode.removeChild(remap);
-      } 
+      }
+    }
+
+};
+
+
+class Logout extends Component {
+
+    render(){
+        return(
+          <div>
+            <div className='logbody'>
+
+            </div>
+          </div>
+        )
     }
 };
 
