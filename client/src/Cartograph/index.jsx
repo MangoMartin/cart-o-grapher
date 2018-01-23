@@ -10,7 +10,6 @@ import { GeoSearchControl, OpenStreetMapProvider } from 'leaflet-geosearch';
 import $ from 'jquery';
 import './index.css';
 
-
 const provider = new OpenStreetMapProvider();
 
     const searchControl = new GeoSearchControl({
@@ -23,6 +22,7 @@ const provider = new OpenStreetMapProvider();
 const map = L.map('map', { zoom: 5})
              .addControl(searchControl)
              .setView([51.505, -0.09], 13);
+  //console.log('ZUPZUPZUP',this.map);
 
 const modalStyles = {
   overlay : {
@@ -47,12 +47,13 @@ const modalStyles = {
 
 export default class Home extends Component {
 
+  
   constructor(props){
     super(props)
 
     this.state = {
       users: [],
-      fetched: [{id:9, address:'291 Misenas street san antonio cavite city'}],
+      fetched: [{id:1, address:'291 Misenas street san antonio cavite city'}],
       idsFromFetched: [],
       currentID: 0,
       modalIsOpen: false
@@ -140,20 +141,22 @@ export default class Home extends Component {
       		</div>
       	</div>
       </div>
-    )
+    );
   }
-
-  // componentDidMount(){
-  //     fetch('/home')
-  //         .then( res => res.json())
-  //         .then(fetched => this.setState({ fetched }))
-  //       //  window.map.loadMap();
-  //   }
-
-  clickMe(){
-    alert('you clicked marker:')
-  }
-}
-
 
      
+
+    //  componentDidMount(){
+    //   fetch('/home')
+    //       .then( res => res.json())
+    //       .then(fetched => this.setState({ fetched }))
+    //     //  window.map.loadMap();
+    // }
+
+   clickMe(){
+      alert('you clicked marker:')
+    }
+
+
+}
+

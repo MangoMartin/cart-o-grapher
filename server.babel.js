@@ -18,8 +18,8 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded( { extended: true } ));
 app.use(cookieParser());
-app.use(require('less-middleware')(path.join(__dirname, '/client/build/static')));
-app.use(express.static(path.join(__dirname, 'client/build/static')));
+app.use(require('less-middleware')(path.join(__dirname, '/client/build')));
+app.use(express.static(path.join(__dirname, 'client/build')));
 app.use(cors({ origin: 'https://localhost:3232', credentials: true }))
 // CORS errors?
 
