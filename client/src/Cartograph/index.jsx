@@ -146,12 +146,12 @@ export default class Home extends Component {
 
      
 
-    //  componentDidMount(){
-    //   fetch('/home')
-    //       .then( res => res.json())
-    //       .then(fetched => this.setState({ fetched }))
-    //     //  window.map.loadMap();
-    // }
+     componentDidMount(){
+      fetch('/home')
+          .then( res => res.json())
+          .then(fetched => this.setState({ fetched }))
+        //  window.map.loadMap();
+    }
 
    clickMe(){
       alert('you clicked marker:')
