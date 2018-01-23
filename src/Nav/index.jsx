@@ -12,9 +12,12 @@ import 'bootstrap/dist/css/bootstrap-theme.css';
 class Container extends Component {
 
     constructor(){
-        super();
+      super();
+
+      this.removeMap = this.removeMap.bind(this);
 
     }
+
 
     render() {
         return(
@@ -59,6 +62,16 @@ class Container extends Component {
         )
     }
 
+    removeMap() {
+      var remap = document.getElementById("map");
+      var tiles = document.getElementsByClassName("leaflet-layer").length;
+      if (!remap) {
+        return;
+      }
+      else if (tiles > 1) {
+        remap.parentNode.removeChild(remap);
+      }
+    }
 
 };
 
@@ -69,7 +82,7 @@ class Logout extends Component {
         return(
           <div>
             <div className='logbody'>
-  
+
             </div>
           </div>
         )

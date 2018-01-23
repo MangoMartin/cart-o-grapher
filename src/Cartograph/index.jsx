@@ -6,6 +6,7 @@ import Markers from './marker.js';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { Control, Popup } from 'leaflet-control-geocoder';
+import $ from 'jquery';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
@@ -48,6 +49,7 @@ export default class Home extends Component {
       modalIsOpen: false
     }
 
+     this.loadMap = this.loadMap.bind(this);
      this.clickMe = this.clickMe.bind(this);
      this.openModal = this.openModal.bind(this);
      this.closeModal = this.closeModal.bind(this);
@@ -138,13 +140,17 @@ export default class Home extends Component {
       </div>
     )
   }
-   componentDidMount(){
-      fetch('/', {
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        }
+
+  loadMap(){
+      var myInit = {
+        method: 'GET',
+        encType: 'application/json',
+        accept: 'application/json'
+      };
+      fetch('/home', myInit, {
+        credentials: 'omit'
       })
+          .then(res => res.json())
           .then(fetched => this.setState({ fetched }))
   }
 
