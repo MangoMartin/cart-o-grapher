@@ -135,18 +135,18 @@ export default class Home extends Component {
     )
   }
 
-  componentDidMount(){
-      var myInit = {
-        method: 'GET',
-        encType: 'application/json',
-        accept: 'application/json'
-      };
-      fetch('/home', myInit, {
-        credentials: 'omit'
-      })
-          .then(res => res.json())
-          .then(fetched => this.setState({ fetched }))
-  }
+  // componentDidMount(){
+  //     var myInit = {
+  //       method: 'GET',
+  //       encType: 'application/json',
+  //       accept: 'application/json'
+  //     };
+  //     fetch('/home', myInit, {
+  //       credentials: 'omit'
+  //     })
+  //         .then(res => res.json())
+  //         .then(fetched => this.setState({ fetched }))
+  // }
 
   clickMe(){
     alert('you clicked marker:')
