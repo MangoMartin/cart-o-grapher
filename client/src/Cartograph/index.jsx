@@ -3,64 +3,78 @@ import MappedShops from './LocalShops';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { Control, Popup } from 'leaflet-control-geocoder';
+import { GeoSearchControl, OpenStreetMapProvider } from 'leaflet-geosearch';
 import $ from 'jquery';
 import './index.css';
 
+const provider = new OpenStreetMapProvider();
+
+    const searchControl = new GeoSearchControl({
+      provider : provider,
+      style: 'button',
+      autoClose: true,
+      keepResult: true,
+      maxMarker: 3
+    });
 const map = L.map('map', { zoom: 5})
+             .addControl(searchControl)
              .setView([51.505, -0.09], 13);
 
 export default class Home extends Component {
 
+  
   constructor(props){
     super(props)
 
     this.state = {
       users: [],
-      fetched: [{id:9, address:'291 Misenas street san antonio cavite city'}],
+      fetched: [{id:1, address:'291 Misenas street san antonio cavite city'}],
       idsFromFetched: [],
       currentID: 0
     }
-    this.loadMap = this.loadMap.bind(this);
+    
     this.clickMe = this.clickMe.bind(this);
-  }
+    }
 
-  render(){
+  render() {
+
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
+    })
+      .addTo(map);
     console.log(this.state.fetched)
     for(let i = 0; i<this.state.fetched.length; i++){
       this.state.idsFromFetched.push(this.state.fetched[i].id)
     }
+ 
 
     let markers = {};
     if(this.state.fetched.length > 1){
       for (let i = 0; i<this.state.fetched.length; i++){
-        let business = this.state.fetched[i];
-         new L.Control.Geocoder.Nominatim().geocode(this.state.fetched[i].address, (res)=>{
+        let person = this.state.fetched[i];
+      
+        new L.Control.Geocoder.Nominatim().geocode(this.state.fetched[i].address, (res)=>{
         console.log(res[0].name, res[0].center.lat, res[0].center.lng)
-      //  for (var i = 0; i < Markers.length; i++){
-      markers[business.id] = L.marker([res[0].center.lat, res[0].center.lng]).addTo(map).on('click', (e)=>{
+      markers[person.id] = L.marker([res[0].center.lat, res[0].center.lng]).addTo(map).on('click', (e)=>{
 
-            console.log('marker: ' + markers[business.id]._icon.id)
-            this.setState({currentID: markers[business.id]._icon.id})
+            console.log('marker: ' + markers[person.id]._icon.id)
+            this.setState({currentID: markers[person.id]._icon.id})
             console.log('currentID:', this.state.currentID)
       })
-        .bindPopup(`${this.state.fetched[i].shop_name}<br>
-                    ${this.state.fetched[i].address}<br>
-                    ${this.state.fetched[i].city}<br>
-                    ${this.state.fetched[i].state}<br>
-                    ${this.state.fetched[i].about}<br>
-                    <a href='http://www.google.com'>Google</a>`).openPopup();
-                          
-        markers[business.id]._icon.id = business.id - 1;
-      
+                              .bindPopup(`${this.state.fetched[i].shop_name}<br>
+                                          ${this.state.fetched[i].address}<br>
+                                          ${this.state.fetched[i].createdAt}<br>`)
+                              .openPopup()
+                       
+        markers[person.id]._icon.id = person.id-1;
     })}}
 
+
+    
     return(
       <div className='main-body'>
-      	<div className='top'>
-      		<div className='aboutCoG'>
+        <div className='top'>
+          <div className='aboutCoG'>
             <p className='about-text'> Cart-o-grapher allows you to bypass the hassle of shipping
             by locating nearby inventories of your favorite e-commerce shops,
             such as: Amazon, Etsy, Ebay, and more. Just enter in a location below to
@@ -69,27 +83,22 @@ export default class Home extends Component {
             </p>
             <h3 id='address' key={this.state.fetched[this.state.currentID].id}>{this.state.fetched[this.state.currentID].address}</h3>
             </div>
-      		<div id='map'>
-      		</div>
-      	</div>
+          <div id='map'>
+          </div>
+        </div>
       </div>
     )
   }
 
-  loadMap(){
-      var myInit = {
-        method: 'GET',
-        encType: 'application/json',
-        accept: 'application/json'
-      };
-      fetch('/home', myInit, {
-        credentials: 'omit'  
-      })
-          .then(res => res.json())
+     componentDidMount(){
+      fetch('/home')
+          .then( res => res.json())
           .then(fetched => this.setState({ fetched }))
-  }
-  
-  clickMe(){
-    alert('you clicked marker:')
-  }
+    }
+
+   clickMe(){
+      alert('you clicked marker:')
+    }
+
+
 }

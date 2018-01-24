@@ -55,4 +55,6 @@
 
 .navList li a:link{
   text-decoration: none;
+  width: 100%;
+  background-color: black;
 }

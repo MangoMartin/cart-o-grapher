@@ -32,14 +32,17 @@ class Container extends Component {
               <Nav>
                   <ul className='navList'>
                   {this.props.children}
-                  <li>
+                 
                       <Link to='/api/signup'>
-                        <NavItem eventKey={1}>Create Shop</NavItem>
+                       <li>
+                       Create Shop
+                        </li>
                       </Link>
-                      </li>
+                      <Link to='/api'>
                       <li>
                         Logout
                       </li>
+                       </Link>
                     
                   </ul>
                
@@ -60,6 +63,11 @@ class Container extends Component {
                       exact
                           path="/api/signup"
                           component={Signup}
+                      />
+                      <Route
+                      exact
+                          path="/api"
+                          component={Login}
                       />
                       <Route
                       exact
