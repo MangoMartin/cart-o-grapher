@@ -19,6 +19,7 @@ const provider = new OpenStreetMapProvider();
 const map = L.map('map', { zoom: 5})
              .addControl(searchControl)
              .setView([51.505, -0.09], 13);
+  //console.log('ZUPZUPZUP',this.map);
 
 export default class Home extends Component {
 
@@ -32,7 +33,8 @@ export default class Home extends Component {
       idsFromFetched: [],
       currentID: 0
     }
-    
+    // this.loadMap = this.loadMap.bind(this);
+    // this.renderDiv = this.renderDiv.bind(this)
     this.clickMe = this.clickMe.bind(this);
     }
 
@@ -46,15 +48,17 @@ export default class Home extends Component {
     for(let i = 0; i<this.state.fetched.length; i++){
       this.state.idsFromFetched.push(this.state.fetched[i].id)
     }
- 
+    //console.log(this.state.idsFromFetched)
 
     let markers = {};
     if(this.state.fetched.length > 1){
       for (let i = 0; i<this.state.fetched.length; i++){
         let person = this.state.fetched[i];
-      
+      //  console.log(this.state.fetched[1])
+        //console.log(markers)
         new L.Control.Geocoder.Nominatim().geocode(this.state.fetched[i].address, (res)=>{
         console.log(res[0].name, res[0].center.lat, res[0].center.lng)
+      //  for (var i = 0; i < Markers.length; i++){
       markers[person.id] = L.marker([res[0].center.lat, res[0].center.lng]).addTo(map).on('click', (e)=>{
 
             console.log('marker: ' + markers[person.id]._icon.id)
@@ -65,13 +69,14 @@ export default class Home extends Component {
                                           ${this.state.fetched[i].address}<br>
                                           ${this.state.fetched[i].createdAt}<br>`)
                               .openPopup()
-                       
+                            //  markers[person.id].setContent(<p>hello</p>)
         markers[person.id]._icon.id = person.id-1;
+        //console.log('1',markers[person.id]._icon.id)
+        //console.log('2',markers)
     })}}
 
 
-    
-    return(
+     return(
       <div className='main-body'>
         <div className='top'>
           <div className='aboutCoG'>
@@ -94,6 +99,7 @@ export default class Home extends Component {
       fetch('/home')
           .then( res => res.json())
           .then(fetched => this.setState({ fetched }))
+        //  window.map.loadMap();
     }
 
    clickMe(){
