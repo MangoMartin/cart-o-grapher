@@ -76,18 +76,28 @@ export default class Home extends Component {
     })}}
 
 
-    return(
-      <div className="App">
-        <h1>Cartographer</h1>
-          <div id='map'></div>
-        <h1 key={this.state.fetched[this.state.currentID].id}>{this.state.fetched[this.state.currentID].address}</h1>
+     return(
+      <div className='main-body'>
+        <div className='top'>
+          <div className='aboutCoG'>
+            <p className='about-text'> Cart-o-grapher allows you to bypass the hassle of shipping
+            by locating nearby inventories of your favorite e-commerce shops,
+            such as: Amazon, Etsy, Ebay, and more. Just enter in a location below to
+            view nearby stores located on the map and their respective store profiles
+            below.
+            </p>
+            <h3 id='address' key={this.state.fetched[this.state.currentID].id}>{this.state.fetched[this.state.currentID].address}</h3>
+            </div>
+          <div id='map'>
+          </div>
+        </div>
       </div>
-    );
+    )
   }
 
      componentDidMount(){
       fetch('/home')
-          .then( res => res.json())
+          .then(res => res.json())
           .then(fetched => this.setState({ fetched }))
         //  window.map.loadMap();
     }
@@ -98,84 +108,3 @@ export default class Home extends Component {
 
 
 }
-
-
-// import React, { Component } from 'react';
-// import './App.css';
-// import L from 'leaflet';
-// import {Control, Popup} from 'leaflet-control-geocoder';
-// import $ from 'jquery';
-
-
-// const provider = new OpenStreetMapProvider();
-
-//     const searchControl = new GeoSearchControl({
-//       provider : provider,
-//       style: 'button',
-//       autoClose: true,
-//       keepResult: true,
-//       maxMarker: 3
-//     });
-// const map = L.map('map', { zoom: 5})
-//              .addControl(searchControl)
-//              .setView([51.505, -0.09], 13);
-//   //console.log('ZUPZUPZUP',this.map)
-
-// class App extends Component {
-
-//     /*$('.leaflet-marker-icon').on('click', function(e) {
-//    // Use the event to find the clicked element
-//    var el = $(e.srcElement || e.target),
-//        id = el.attr('id');
-
-//     alert('Here is the markers ID: ' + id + '. Use it as you wish. Hit ok and watch the map.');
-//     map.panTo( this.state.markers[id].getLatLng() );
-//   })*/
-
-//     return (
-//       <div className="App">
-//         <h1>Cartographer</h1>
-//         <ul>
-//           {this.state.users.map(user =>
-//             <li key={user.id}>{user.name}</li>
-//           )}
-//         </ul>
-//         <ul>
-//           {this.state.fetched.map(info =>
-//             <li key={info.shopName}>{info.product}</li>
-//           )}
-//         </ul>
-//         <form method='POST' action='/form'>
-//           <input type='text' name='shopName' placeholder='type shopName here' />
-//           <input type='text' name='aboutShop' placeholder='type something about your shop here' />
-//           <input type='text' name='address' placeholder='type address here' />
-//           <input type='text' name='contactDetail' placeholder='contact details here' />
-//           <input type='text' name='product' placeholder='type product here' />
-//           <input type='text' name='price' placeholder='type price here' />
-//           <input type='text' name='quantity' placeholder='type quantity here' />
-//           <input type='submit' value='Create Shop' />
-//         </form>
-//         <div id='map'></div>
-//         <h1 key={this.state.fetched[this.state.currentID].id}>{this.state.fetched[this.state.currentID].address}</h1>
-//       </div>
-//     );
-//   }
-// /*  loadMap(){
-//     let mymap;
-//     if(mymap !== undefined || mymap != null) {
-//       mymap.remove()
-//     }
-//     else{*/
-//     componentDidMount(){
-//       fetch('/home')
-//           .then( res => res.json())
-//           .then(fetched => this.setState({ fetched }))
-//         //  window.map.loadMap();
-//     }
-
-//    clickMe(){
-//       alert('you clicked marker:')
-//     }
-
-
-// }
