@@ -50,6 +50,20 @@ export default class Home extends Component {
     }
     //console.log(this.state.idsFromFetched)
 
+  let MarkerIcon = L.Icon.extend({
+    options: {
+      shadowUrl: 'logo.png',
+      iconSize:     [38, 95],
+      shadowSize:   [0, 0],
+      iconAnchor:   [22, 94],
+      shadowAnchor: [4, 62],
+      popupAnchor:  [-3, -76]
+    }
+  });
+
+  let logoIcon = new MarkerIcon({iconUrl: 'logo.jpg'});
+
+  
     let markers = {};
     if(this.state.fetched.length > 1){
       for (let i = 0; i<this.state.fetched.length; i++){
@@ -59,7 +73,7 @@ export default class Home extends Component {
         new L.Control.Geocoder.Nominatim().geocode(fulladdress, (res)=>{
         console.log(res[0].center.lat, res[0].center.lng)
       //  for (var i = 0; i < Markers.length; i++){
-      markers[person.id] = L.marker([res[0].center.lat, res[0].center.lng]).bindPopup(`${this.state.fetched[i].shop_name}<br>
+      markers[person.id] = L.marker([res[0].center.lat, res[0].center.lng], , {icon: logoIcon})).bindPopup(`${this.state.fetched[i].shop_name}<br>
                                           ${this.state.fetched[i].address}<br>
                                           ${this.state.fetched[i].city}<span>, </span>${this.state.fetched[i].state}<br>
                                           ${this.state.fetched[i].zip}<br>
