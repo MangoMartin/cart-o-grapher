@@ -77,18 +77,18 @@ export default class Home extends Component {
                                           ${this.state.fetched[i].address}<br>
                                           ${this.state.fetched[i].city}<span>, </span>${this.state.fetched[i].state}<br>
                                           ${this.state.fetched[i].zip}<br>
-                                          ${this.state.fetched[i].createdAt}<br>`).addTo(map).on('click', (e)=>{
+                                          ${this.state.fetched[i].createdAt}<br>`).addTo(map).on('mouseover', (e)=>{
 
-            console.log('marker: ' + markers[person.id]._icon.id)
-            this.setState({currentID: markers[person.id]._icon.id})
-            console.log('currentID:', this.state.currentID)
-      }).openPopup()
+            this.openPopup();
+      }).on('mouseout', function (e) {
+            this.closePopup()
+        
                             //  markers[person.id].setContent(<p>hello</p>)
-        markers[person.id]._icon.id = person.id-1;
+        // markers[person.id]._icon.id = person.id-1;
         //console.log('1',markers[person.id]._icon.id)
         //console.log('2',markers)
     })}}
-
+ 
 
      return(
       <div className='main-body'>
@@ -111,7 +111,7 @@ export default class Home extends Component {
 
      componentDidMount(){
       fetch('/home')
-          .then( res => res.json())
+          .then(res => res.json())
           .then(fetched => this.setState({ fetched }))
         //  window.map.loadMap();
     }
