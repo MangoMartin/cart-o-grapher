@@ -29,7 +29,7 @@ export default class Home extends Component {
 
     this.state = {
       users: [],
-      fetched: [{id:1, address:'291 Misenas street san antonio cavite city'}],
+      fetched: [{id:9, address:'163 William Street', city:'New York', state: 'NY', zip: '10038'}],
       idsFromFetched: [],
       currentID: 0
     }
@@ -54,19 +54,18 @@ export default class Home extends Component {
     if(this.state.fetched.length > 1){
       for (let i = 0; i<this.state.fetched.length; i++){
         let person = this.state.fetched[i];
-      //  console.log(this.state.fetched[1])
-        //console.log(markers)
-        new L.Control.Geocoder.Nominatim().geocode(this.state.fetched[i].address, (res)=>{
-        console.log(res[0].name, res[0].center.lat, res[0].center.lng)
+    
+        new L.Control.Geocoder.Nominatim().geocode(this.state.fetched[i].address + this.state.fetched[i].city + this.state.fetched[i].state + this.state.fetched[i].zip, (res)=>{
+        
       //  for (var i = 0; i < Markers.length; i++){
       markers[person.id] = L.marker([res[0].center.lat, res[0].center.lng]).addTo(map).on('click', (e)=>{
-
-            console.log('marker: ' + markers[person.id]._icon.id)
-            this.setState({currentID: markers[person.id]._icon.id})
-            console.log('currentID:', this.state.currentID)
+console.log(res[0].name, res[0].center.lat, res[0].center.lng)
+         
       })
                               .bindPopup(`${this.state.fetched[i].shop_name}<br>
                                           ${this.state.fetched[i].address}<br>
+                                          ${this.state.fetched[i].city}<span>, </span>${this.state.fetched[i].state}<br>
+                                          ${this.state.fetched[i].zip}<br>
                                           ${this.state.fetched[i].createdAt}<br>`)
                               .openPopup()
                             //  markers[person.id].setContent(<p>hello</p>)
@@ -108,3 +107,5 @@ export default class Home extends Component {
 
 
 }
+
+//shop_name: 'Cheese and bits', city: ''
