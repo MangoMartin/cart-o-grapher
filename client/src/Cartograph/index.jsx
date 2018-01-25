@@ -49,7 +49,18 @@ export default class Home extends Component {
       this.state.idsFromFetched.push(this.state.fetched[i].id)
     }
     //console.log(this.state.idsFromFetched)
+let CartIcon = L.Icon.extend({
+    options: {
+      shadowUrl: 'logo.jpg',
+      iconSize:     [38, 95],
+      shadowSize:   [0, 0],
+      iconAnchor:   [22, 94],
+      shadowAnchor: [4, 62],
+      popupAnchor:  [-3, -76]
+    }
+  });
 
+  let logoIcon = new CartIcon({iconUrl: 'logo.jpg'});
     let markers = {};
     if(this.state.fetched.length > 1){
       for (let i = 0; i<this.state.fetched.length; i++){
@@ -59,18 +70,18 @@ export default class Home extends Component {
         new L.Control.Geocoder.Nominatim().geocode(fulladdress, (res)=>{
         console.log(res[0].center.lat, res[0].center.lng)
       //  for (var i = 0; i < Markers.length; i++){
-      markers[person.id] = L.marker([res[0].center.lat, res[0].center.lng]).addTo(map).on('click', (e)=>{
-
-            console.log('marker: ' + markers[person.id]._icon.id)
-            this.setState({currentID: markers[person.id]._icon.id})
-            console.log('currentID:', this.state.currentID)
-      })
-                              .bindPopup(`${this.state.fetched[i].shop_name}<br>
+      markers[person.id] = L.marker([res[0].center.lat, res[0].center.lng], {icon: logoIcon}).bindPopup(`${this.state.fetched[i].shop_name}<br>
                                           ${this.state.fetched[i].address}<br>
                                           ${this.state.fetched[i].city}<span>, </span>${this.state.fetched[i].state}<br>
                                           ${this.state.fetched[i].zip}<br>
                                           ${this.state.fetched[i].createdAt}<br>`)
-                              .openPopup()
+                              .addTo(map).on('click', (e)=>{
+
+            console.log('marker: ' + markers[person.id]._icon.id)
+            this.setState({currentID: markers[person.id]._icon.id})
+            console.log('currentID:', this.state.currentID)
+      }).openPopup()
+                              
                             //  markers[person.id].setContent(<p>hello</p>)
         markers[person.id]._icon.id = person.id-1;
         //console.log('1',markers[person.id]._icon.id)
@@ -99,7 +110,7 @@ export default class Home extends Component {
 
      componentDidMount(){
       fetch('/home')
-          .then( res => res.json())
+          .then(res => res.json())
           .then(fetched => this.setState({ fetched }))
         //  window.map.loadMap();
     }
