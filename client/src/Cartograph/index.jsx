@@ -76,10 +76,10 @@ export default class Home extends Component {
             ${this.state.fetched[i].createdAt}<br>`)
           .addTo(map).on('mouseover', (e)=>{
             this.openPopup();
-          }).on('mouseout', function (e) {
+          }).on('mouseout', (e)=>{
             this.closePopup();
           })
-        )}
+        })
       }
     }
  
