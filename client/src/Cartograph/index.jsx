@@ -9,21 +9,20 @@ import './index.css';
 
 const provider = new OpenStreetMapProvider();
 
-    const searchControl = new GeoSearchControl({
-      provider : provider,
-      style: 'button',
-      autoClose: true,
-      keepResult: true,
-      maxMarker: 3
-    });
+const searchControl = new GeoSearchControl({
+  provider : provider,
+  style: 'button',
+  autoClose: true,
+  keepResult: true,
+  maxMarker: 3
+});
+
 const map = L.map('map', { zoom: 5})
              .addControl(searchControl)
              .setView([40.7079924, -74.0063203], 13);
-  //console.log('ZUPZUPZUP',this.map);
 
 export default class Home extends Component {
 
-  
   constructor(props){
     super(props)
 
@@ -33,37 +32,33 @@ export default class Home extends Component {
       idsFromFetched: [],
       currentID: 0
     }
-    // this.loadMap = this.loadMap.bind(this);
-    // this.renderDiv = this.renderDiv.bind(this)
+    
     this.clickMe = this.clickMe.bind(this);
-    }
+  }
 
-  render() {
+  render(){
 
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-    })
-      .addTo(map);
+    }).addTo(map);
     console.log(this.state.fetched)
     for(let i = 0; i<this.state.fetched.length; i++){
       this.state.idsFromFetched.push(this.state.fetched[i].id)
     }
     //console.log(this.state.idsFromFetched)
 
-  let MarkerIcon = L.Icon.extend({
-    options: {
-      shadowUrl: 'logo.png',
-      iconSize:     [38, 95],
-      shadowSize:   [0, 0],
-      iconAnchor:   [22, 94],
-      shadowAnchor: [4, 62],
-      popupAnchor:  [-3, -76]
-    }
-  });
+    let MarkerIcon = L.Icon.extend({
+      options: {
+        shadowUrl: 'logo.png',
+        iconSize:     [38, 95],
+        shadowSize:   [0, 0],
+        iconAnchor:   [22, 94],
+        shadowAnchor: [4, 62],
+        popupAnchor:  [-3, -76]
+      }
+    });
 
-  let logoIcon = new MarkerIcon({iconUrl: 'logo.jpg'});
-
-  
+    let logoIcon = new MarkerIcon({iconUrl: 'logo.jpg'});
     let markers = {};
     if(this.state.fetched.length > 1){
       for (let i = 0; i<this.state.fetched.length; i++){
@@ -71,23 +66,22 @@ export default class Home extends Component {
         let fulladdress = this.state.fetched[i].address + ", " + this.state.fetched[i].city + ", " + this.state.fetched[i].state + ", " +  this.state.fetched[i].zip;
         console.log(fulladdress);
         new L.Control.Geocoder.Nominatim().geocode(fulladdress, (res)=>{
-        console.log(res[0].center.lat, res[0].center.lng)
+          console.log(res[0].center.lat, res[0].center.lng)
       //  for (var i = 0; i < Markers.length; i++){
-      markers[person.id] = L.marker([res[0].center.lat, res[0].center.lng], {icon: logoIcon}).bindPopup(`${this.state.fetched[i].shop_name}<br>
-                                          ${this.state.fetched[i].address}<br>
-                                          ${this.state.fetched[i].city}<span>, </span>${this.state.fetched[i].state}<br>
-                                          ${this.state.fetched[i].zip}<br>
-                                          ${this.state.fetched[i].createdAt}<br>`).addTo(map).on('mouseover', (e)=>{
-
+          markers[person.id] = L.marker([res[0].center.lat, res[0].center.lng], {icon: logoIcon}).bindPopup(
+            `${this.state.fetched[i].shop_name}<br>
+            ${this.state.fetched[i].address}<br>
+            ${this.state.fetched[i].city}<span>, </span>${this.state.fetched[i].state}<br>
+            ${this.state.fetched[i].zip}<br>
+            ${this.state.fetched[i].createdAt}<br>`)
+          .addTo(map).on('mouseover', (e)=>{
             this.openPopup();
-      }).on('mouseout', function (e) {
-            this.closePopup()
-        
-                            //  markers[person.id].setContent(<p>hello</p>)
-        // markers[person.id]._icon.id = person.id-1;
-        //console.log('1',markers[person.id]._icon.id)
-        //console.log('2',markers)
-    })}}
+          }).on('mouseout', function (e) {
+            this.closePopup();
+          })
+        )}
+      }
+    }
  
 
      return(
