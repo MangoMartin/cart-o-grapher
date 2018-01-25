@@ -73,7 +73,7 @@ export default class Home extends Component {
         new L.Control.Geocoder.Nominatim().geocode(fulladdress, (res)=>{
         console.log(res[0].center.lat, res[0].center.lng)
       //  for (var i = 0; i < Markers.length; i++){
-      markers[person.id] = L.marker([res[0].center.lat, res[0].center.lng], , {icon: logoIcon})).bindPopup(`${this.state.fetched[i].shop_name}<br>
+      markers[person.id] = L.marker([res[0].center.lat, res[0].center.lng], {icon: logoIcon})).bindPopup(`${this.state.fetched[i].shop_name}<br>
                                           ${this.state.fetched[i].address}<br>
                                           ${this.state.fetched[i].city}<span>, </span>${this.state.fetched[i].state}<br>
                                           ${this.state.fetched[i].zip}<br>
