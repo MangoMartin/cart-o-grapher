@@ -18,7 +18,7 @@ const provider = new OpenStreetMapProvider();
     });
 const map = L.map('map', { zoom: 5})
              .addControl(searchControl)
-             .setView([51.505, -0.09], 13);
+             .setView([40.7079924, -74.0063203], 13);
   //console.log('ZUPZUPZUP',this.map);
 
 export default class Home extends Component {
@@ -54,13 +54,16 @@ export default class Home extends Component {
     if(this.state.fetched.length > 1){
       for (let i = 0; i<this.state.fetched.length; i++){
         let person = this.state.fetched[i];
-    
-        new L.Control.Geocoder.Nominatim().geocode(this.state.fetched[i].address + this.state.fetched[i].city + this.state.fetched[i].state + this.state.fetched[i].zip, (res)=>{
-        
+        let fulladdress = this.state.fetched[i].address + ", " + this.state.fetched[i].city + ", " + this.state.fetched[i].state + ", " +  this.state.fetched[i].zip;
+        console.log(fulladdress);
+        new L.Control.Geocoder.Nominatim().geocode(fulladdress, (res)=>{
+        console.log(res[0].center.lat, res[0].center.lng)
       //  for (var i = 0; i < Markers.length; i++){
       markers[person.id] = L.marker([res[0].center.lat, res[0].center.lng]).addTo(map).on('click', (e)=>{
-console.log(res[0].name, res[0].center.lat, res[0].center.lng)
-         
+
+            console.log('marker: ' + markers[person.id]._icon.id)
+            this.setState({currentID: markers[person.id]._icon.id})
+            console.log('currentID:', this.state.currentID)
       })
                               .bindPopup(`${this.state.fetched[i].shop_name}<br>
                                           ${this.state.fetched[i].address}<br>

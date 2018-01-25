@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded( { extended: true } ));
 app.use(cookieParser());
 app.use(require('less-middleware')(path.join(__dirname, '/client/build')));
 app.use(express.static(path.join(__dirname, 'client/build')));
-app.use(cors({ origin: 'https://localhost:3232', credentials: true }))
+// app.use(cors({ origin: 'https://localhost:3232', credentials: true }))
 // CORS errors?
 
 app.all('*', function(req, res, next) {
