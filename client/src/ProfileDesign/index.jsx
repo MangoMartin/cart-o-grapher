@@ -130,6 +130,7 @@ class CreateShop extends Component {
             value='Update all store information'
           /><br />
         </form>
+        <h1>Coming Soon, Adding store categories and links to other stores</h1>
         <h3>Add categories that describe what your store sells:</h3><br />
         <p>i.e. Jewelry, Electronics, etc.</p>
         <AddCategories />
