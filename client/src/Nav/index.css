@@ -1,20 +1,22 @@
 .navbar {
   border: 2px solid black;
+  background-image: url("cartography-1.jpg");
 }
 
 .cart-o-grapher {
-  font-size: 252%;
+  font-size: 285%;
   text-align: left;
   margin-left: 10%;
 }
 
 .signup-link, .login-link {
   width: 20%;
-  height: 7.5%;
-  border: 2px solid black;
+  height: 7%;
+  border: 4px outset grey;
   position: fixed;
   right: 0;
   text-align: center;
+  background-color: grey;
 }
 
 .login-link {
@@ -53,4 +55,5 @@
 
 a:link{
   text-decoration: none;
+  font-family: 'Bookman Old Style'; 
 }

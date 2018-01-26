@@ -4,6 +4,9 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { Control, Popup } from 'leaflet-control-geocoder';
 import { GeoSearchControl, OpenStreetMapProvider } from 'leaflet-geosearch';
+import {Link, Route, Switch} from 'react-router-dom';
+import Login from '../ProfileDesign/Login';
+import Signup from '../ProfileDesign/Signup';
 import $ from 'jquery';
 import './index.css';
 
@@ -74,10 +77,8 @@ export default class Home extends Component {
                         ${this.state.fetched[i].city}<span>, </span>${this.state.fetched[i].state}<br>
                         ${this.state.fetched[i].zip}<br>
                         ${this.state.fetched[i].createdAt}<br>`)
-            .addTo(map).on('mouseover', (e)=>{
+            .addTo(map).on('click', (e)=>{
               this.openPopup();
-            }).on('mouseout', function (e) {
-              this.closePopup();
             })
             markers[person.id]._icon.id = person.id-1;
 
@@ -90,17 +91,31 @@ export default class Home extends Component {
       <div className='main-body'>
         <div className='top'>
           <div className='aboutCoG'>
+            <h1>About Cart-o-grapher</h1>
             <p className='about-text'>Cart-o-grapher allows you to bypass the hassle of shipping
             by locating nearby inventories of your favorite e-commerce shops,
             such as: Amazon, Etsy, Ebay, and more. 
             </p>
-            <p className='about-text'>Enter an address in the map search bar to see if there are any stores near you!
+            <h1>Using Cart-o-grapher</h1>
+            <p className='about-text'>Enter an address in the map search bar to see if there are any stores near you! If you are a store owner and want to put your shop on the map, create an account by <Link to='/api/signup'><span className='text-signup'>signing up</span></Link>, 
+            or <Link to='/api'><span className='text-login'>login</span></Link> to an existing account, and enter in your shop info such as address and shop name.
             </p>
-            <h3 id='address' key={this.state.fetched[this.state.currentID].id}>{this.state.fetched[this.state.currentID].address}</h3>
-            </div>
+          </div>
           <div id='map'>
           </div>
         </div>
+        <Switch>
+          <Route
+              exact
+              path="/api/signup"
+              component={Signup}
+            />
+            <Route
+              exact
+              path="/api"
+              component={Login}
+            />
+          </Switch>
       </div>
     )
   }
