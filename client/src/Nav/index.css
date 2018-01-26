@@ -1,30 +1,38 @@
-:local(.navbar) {
-  color: #4d79ff !important;
-  /* width: 100%;
-  height: 100px;
-  font-family: Times New Roman;
-  font-size: 18px;
-  display: inline-flex;
-  justify-content: space-between; */
-}
-/*
-.nav {
-  background-color: #4d79ff;
-
-}
-.header-nav ul {
-  list-style-type: none;
-  margin-top: 30px;
-  font-style: italic;
+.navbar {
+  border: 2px solid black;
 }
 
-.header-nav li {
-  float: left;
-  margin: 10px;
-} */
+.cart-o-grapher {
+  font-size: 252%;
+  text-align: left;
+  margin-left: 10%;
+}
+
+.signup-link, .login-link {
+  width: 20%;
+  height: 7.5%;
+  border: 2px solid black;
+  position: fixed;
+  right: 0;
+  text-align: center;
+}
+
+.login-link {
+  top: 0;
+}
+
+.signup-link {
+  top: 7.5%;
+}
+
+.nav-items {
+  border: 2px solid black;
+  width: 10%;
+}
 
 .logo {
   position: fixed;
+  top: 0;
   width: 8%;
   float: left;
   border: 1px solid #ddd;
@@ -37,24 +45,12 @@
   -moz-border-radius: 100px;
 }
 
-.logbody {
-  position:fixed;
-  background-size: cover;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  opacity: 0.2;
-}
-
 .navList {
   font-family: 'Risque', cursive;
   text-align: right;
   padding-right: 2%;
 }
 
-.navList li a:link{
+a:link{
   text-decoration: none;
-  width: 100%;
-  background-color: black;
 }

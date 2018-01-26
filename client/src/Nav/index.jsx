@@ -17,66 +17,49 @@ class Container extends Component {
 
     render() {
         return(
-
-            <Navbar>
+          <Navbar className='navbar'>
             {this.removeMap}
-              <div>
-              <Navbar.Header>
-                <Link to='/home' onClick={this.forceUpdate}>
-                    <Navbar.Brand>
-                      <img className='logo' src={require('./logo.jpg')} alt='' />
-                      <h1>Cartographer</h1>
-                    </Navbar.Brand>
-                </Link>
-              </Navbar.Header>
-              <Nav>
-                  <ul className='navList'>
-                  {this.props.children}
-                 
-                      <Link to='/api/signup'>
-                       <li>
-                       Create Shop
-                        </li>
-                      </Link>
-                      <Link to='/api'>
-                      <li>
-                        Logout
-                      </li>
-                       </Link>
-                    
-                  </ul>
-               
-              </Nav>
-            </div>
-                  <Switch>
-                      <Route
-                          exact
-                          path="/home"
-                          component={Home}
-                      />
-                      <Route
-                      exact
-                          path="/api/owner"
-                          component={CreateShop}
-                      />
-                      <Route
-                      exact
-                          path="/api/signup"
-                          component={Signup}
-                      />
-                      <Route
-                      exact
-                          path="/api"
-                          component={Login}
-                      />
-                      <Route
-                      exact
-                          path="/api"
-                          component={Login}
-                      />
-                  </Switch>
-            </Navbar>
-
+            <Navbar.Header>
+              <Link to='/home' onClick={this.forceUpdate}>
+                <Navbar.Brand >
+                  <img className='logo' src={require('./logo.jpg')} alt='' />
+                  <h1 className='cart-o-grapher'>Cartographer</h1>
+                </Navbar.Brand>
+              </Link>
+              <Link to='/api/signup'>
+                <div className='signup-link'>
+                  <h4>Signup</h4>
+                </div>  
+              </Link>
+              <Link to='/api'>
+                <div className='login-link'>
+                  <h4>Login to map your shop</h4>
+                </div>     
+              </Link>
+            </Navbar.Header>
+            <Switch>
+              <Route
+                exact
+                path="/home"
+                component={Home}
+              />
+              <Route
+                exact
+                path="/api/owner"
+                component={CreateShop}
+              />
+              <Route
+                exact
+                path="/api/signup"
+                component={Signup}
+              />
+              <Route
+                exact
+                path="/api"
+                component={Login}
+              />
+            </Switch>
+          </Navbar>
         )
     }
 

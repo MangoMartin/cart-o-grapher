@@ -68,17 +68,19 @@ export default class Home extends Component {
         new L.Control.Geocoder.Nominatim().geocode(fulladdress, (res)=>{
           console.log(res[0].center.lat, res[0].center.lng)
       //  for (var i = 0; i < Markers.length; i++){
-          markers[person.id] = L.marker([res[0].center.lat, res[0].center.lng], {icon: logoIcon}).bindPopup(
-            `${this.state.fetched[i].shop_name}<br>
-            ${this.state.fetched[i].address}<br>
-            ${this.state.fetched[i].city}<span>, </span>${this.state.fetched[i].state}<br>
-            ${this.state.fetched[i].zip}<br>
-            ${this.state.fetched[i].createdAt}<br>`)
-          .addTo(map).on('mouseover', (e)=>{
-            this.openPopup();
-          }).on('mouseout', (e)=>{
-            this.closePopup();
-          })
+          markers[person.id] = L.marker([res[0].center.lat, res[0].center.lng], {icon: logoIcon})
+            .bindPopup(`${this.state.fetched[i].shop_name}<br>
+                        ${this.state.fetched[i].address}<br>
+                        ${this.state.fetched[i].city}<span>, </span>${this.state.fetched[i].state}<br>
+                        ${this.state.fetched[i].zip}<br>
+                        ${this.state.fetched[i].createdAt}<br>`)
+            .addTo(map).on('mouseover', (e)=>{
+              this.openPopup();
+            }).on('mouseout', function (e) {
+              this.closePopup();
+            })
+            markers[person.id]._icon.id = person.id-1;
+
         })
       }
     }
@@ -88,11 +90,11 @@ export default class Home extends Component {
       <div className='main-body'>
         <div className='top'>
           <div className='aboutCoG'>
-            <p className='about-text'> Cart-o-grapher allows you to bypass the hassle of shipping
+            <p className='about-text'>Cart-o-grapher allows you to bypass the hassle of shipping
             by locating nearby inventories of your favorite e-commerce shops,
-            such as: Amazon, Etsy, Ebay, and more. Just enter in a location below to
-            view nearby stores located on the map and their respective store profiles
-            below.
+            such as: Amazon, Etsy, Ebay, and more. 
+            </p>
+            <p className='about-text'>Enter an address in the map search bar to see if there are any stores near you!
             </p>
             <h3 id='address' key={this.state.fetched[this.state.currentID].id}>{this.state.fetched[this.state.currentID].address}</h3>
             </div>
@@ -114,7 +116,4 @@ export default class Home extends Component {
       alert('you clicked marker:')
     }
 
-
 }
-
-//shop_name: 'Cheese and bits', city: ''

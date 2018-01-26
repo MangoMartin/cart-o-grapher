@@ -47,6 +47,10 @@ h1 {
 	height: 300px;
 }
 
+.leaflet-marker-icon {
+	border-radius: 25%;
+}
+
 .search-divider {
 	width: 100%;
 	height: 6%;
