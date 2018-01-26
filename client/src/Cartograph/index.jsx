@@ -97,7 +97,7 @@ export default class Home extends Component {
             such as: Amazon, Etsy, Ebay, and more. 
             </p>
             <h1>Using Cart-o-grapher</h1>
-            <p className='about-text'>Enter an address in the map search bar to see if there are any stores near you! If you are a store owner and want to put your shop on the map, create an account by <Link to='/api/signup'><span className='text-signup'>signing up</span></Link>, 
+            <p className='about-text'>Enter an address in the map search bar to see if there are any stores marked with the cart-o-grapher logo near you! If you are a store owner and want to put your shop on the map, create an account by <Link to='/api/signup'><span className='text-signup'>signing up</span></Link>, 
             or <Link to='/api'><span className='text-login'>login</span></Link> to an existing account, and enter in your shop info such as address and shop name.
             </p>
           </div>
