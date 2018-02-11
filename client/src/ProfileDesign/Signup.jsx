@@ -20,6 +20,19 @@ class Signup extends Component {
       </div>
     );
   }
+<<<<<<< HEAD
+=======
+  componentDidMount() {
+      var remap = document.getElementById("map");
+      var tiles = document.getElementsByClassName("leaflet-layer").length;
+     if (!remap) {
+        return;
+      }
+      else if (tiles === 1 || tiles === 0) {
+        remap.parentNode.removeChild(remap);
+      } 
+    }
+>>>>>>> d50484143dadda75065a8317f6a21e275bd0d636
 }
 
 export default Signup;

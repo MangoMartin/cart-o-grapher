@@ -4,7 +4,10 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const path = require('path');
+<<<<<<< HEAD
 const cookiesMiddleware = require('universal-cookie-express');
+=======
+>>>>>>> d50484143dadda75065a8317f6a21e275bd0d636
 const cors = require('cors');
 
 
@@ -19,11 +22,18 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded( { extended: true } ));
 app.use(cookieParser());
+<<<<<<< HEAD
 app.use(cookiesMiddleware());
 app.use(require('less-middleware')(path.join(__dirname, '/client/build')));
 app.use(express.static(path.join(__dirname, 'client/build')));
 app.use(cors({ origin: 'https://localhost:3232', credentials: true }))
 
+=======
+app.use(require('less-middleware')(path.join(__dirname, '/client/build')));
+app.use(express.static(path.join(__dirname, 'client/build')));
+// app.use(cors({ origin: 'https://localhost:3232', credentials: true }))
+// CORS errors?
+>>>>>>> d50484143dadda75065a8317f6a21e275bd0d636
 
 app.all('*', function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
@@ -42,7 +52,11 @@ var loginSignupRoutes = require('./routes/login-signup')(passport);
 var shopRoutes = require('./routes/shop');
 var homeRoutes = require('./routes/home');
 
+<<<<<<< HEAD
 app.use('/', homeRoutes);
+=======
+app.use('/home', homeRoutes);
+>>>>>>> d50484143dadda75065a8317f6a21e275bd0d636
 app.use('/api', loginSignupRoutes);
 
 app.use('/api/owner', function(req, res, next) {

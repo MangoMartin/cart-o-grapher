@@ -1,11 +1,21 @@
 .settings-body {
+<<<<<<< HEAD
+=======
+	font-family: 'Bookman Old Style'; 
+>>>>>>> d50484143dadda75065a8317f6a21e275bd0d636
 	overflow: scroll;
 	width: 100%;
 	height: 70%;
 	display: inline-block;
+<<<<<<< HEAD
 	text-align: left;
 	position: fixed;
   	top: 100px;
+=======
+	text-align: center;
+	position: fixed;
+  	top: 125px;
+>>>>>>> d50484143dadda75065a8317f6a21e275bd0d636
   	left: 0px;
   	right: 0px;
   	padding-bottom: 200px;
@@ -23,7 +33,11 @@
 }
 
 h1 {
+<<<<<<< HEAD
 	text-align: left;
+=======
+	text-align: center;
+>>>>>>> d50484143dadda75065a8317f6a21e275bd0d636
 }
 .login-signup {
 	position: fixed;
@@ -35,3 +49,13 @@ h1 {
 	top: 20%;
 	padding: 1%;
 }
+<<<<<<< HEAD
+=======
+
+input {
+	font-family: 'Bookman Old Style'; 
+	font-size: 20px;
+	padding: 5px;
+	border: 5px outset grey;
+}
+>>>>>>> d50484143dadda75065a8317f6a21e275bd0d636

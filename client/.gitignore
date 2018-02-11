@@ -9,8 +9,11 @@
 # production
 /build
 
+<<<<<<< HEAD
 config/config.js
 
+=======
+>>>>>>> d50484143dadda75065a8317f6a21e275bd0d636
 # misc
 .DS_Store
 .env.local

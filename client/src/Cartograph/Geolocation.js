@@ -91,4 +91,8 @@ Geolocation.defaultProps = {
   lazy: false
 }
 
+<<<<<<< HEAD
 export default Geolocation;
+=======
+export default Geolocation;
+>>>>>>> d50484143dadda75065a8317f6a21e275bd0d636

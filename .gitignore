@@ -1,4 +1,7 @@
 node_modules
 .DS_Store
+<<<<<<< HEAD
 config/config.js
 server.js
+=======
+>>>>>>> d50484143dadda75065a8317f6a21e275bd0d636

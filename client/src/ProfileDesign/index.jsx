@@ -7,6 +7,11 @@ import ImageForm from './ImageForm';
 import Checkbox from './Checkbox';
 import './index.css';
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> d50484143dadda75065a8317f6a21e275bd0d636
 const pickupDelivery = [
   'Delivery',
   'Pickup',
@@ -128,6 +133,10 @@ class CreateShop extends Component {
             value='Update all store information'
           /><br />
         </form>
+<<<<<<< HEAD
+=======
+        <h1>Coming Soon, Adding store categories and links to other stores</h1>
+>>>>>>> d50484143dadda75065a8317f6a21e275bd0d636
         <h3>Add categories that describe what your store sells:</h3><br />
         <p>i.e. Jewelry, Electronics, etc.</p>
         <AddCategories />
@@ -142,6 +151,20 @@ class CreateShop extends Component {
     )
   }
 
+<<<<<<< HEAD
+=======
+  componentDidMount() {
+      var remap = document.getElementById("map");
+      var tiles = document.getElementsByClassName("leaflet-layer").length;
+      if (!remap) {
+        return;
+      }
+      else if (tiles === 1 || tiles === 0) {
+        remap.parentNode.removeChild(remap);
+      } 
+    }
+
+>>>>>>> d50484143dadda75065a8317f6a21e275bd0d636
   componentWillMount = () => {
     this.selectedCheckboxes = new Set();
   }

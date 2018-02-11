@@ -1,3 +1,18 @@
+html{
+	background-color: pink;
+
+}	
+
+h1{
+	text-align: center;
+	font-family: 'Bookman Old Style'; 
+	font-size: 30px;
+}
+
+h1 {
+	text-decoration: none;
+}
+
 .main-body {
 	width: 100%;
 	height: 88%;
@@ -5,10 +20,12 @@
 	/* background-color: #ff9966; */
 	/* background-image: url("../ProfileDesign/cartography-1.jpg"); */
 	position: fixed;
-  	top: 100px;
+  	top: 125px;
   	left: 0px;
+  	font-family: 'Bookman Old Style'; 
 }
 
+<<<<<<< HEAD:client/src/Cartograph/index.css
 .top {
 	display: inline-block;
 	height: 65%;
@@ -32,6 +49,19 @@
 	width: 59%;
 	border: 3px solid black;
 	/* height: 100%; */
+=======
+#map {
+	 float: right; 
+	border: 2px solid;
+	position: fixed;
+	top: 50%;
+	left: 25%;
+	right: 25%;
+	margin-top: -50px;
+	margin-left: -100px;
+	width: 66%;
+	 
+>>>>>>> d50484143dadda75065a8317f6a21e275bd0d636:client/src/Cartograph/index.css
 }
 
 .leaflet-container {
@@ -41,6 +71,13 @@
 	left: 40.9%;
 	right: 0.2%;
 	height: 300px;
+<<<<<<< HEAD:client/src/Cartograph/index.css
+=======
+}
+
+.leaflet-marker-icon {
+	border-radius: 25%;
+>>>>>>> d50484143dadda75065a8317f6a21e275bd0d636:client/src/Cartograph/index.css
 }
 
 .search-divider {
@@ -111,3 +148,19 @@
 	height: 103%;
 	width: 5%;
 }
+<<<<<<< HEAD:client/src/Cartograph/index.css
+=======
+
+#address {
+	text-align: center;
+}
+
+.about-text {
+	text-align: center;
+	margin-top: 10px;
+}
+
+.text-signup, .text-login {
+	text-decoration: underline;
+}
+>>>>>>> d50484143dadda75065a8317f6a21e275bd0d636:client/src/Cartograph/index.css
