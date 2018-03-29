@@ -11,11 +11,11 @@ Check out the live site on [Heroku](https://cart-o-grapher.herokuapp.com/home)
 Requirements: Node v.6 and up
 In Node CLI, cd to the main folder:
 `npm install`
-`nodemon server.js'
+`nodemon server.js`
 
 Then cd to client:
-'npm install'
-'npm start'
+`npm install`
+`npm start`
 
 ## Data Models
 ### 'users'
