@@ -7,6 +7,10 @@ An app that provides a map of nearby E-commerce shop inventories, allowing users
 ## Deployment
 Check out the live site on [Heroku](https://cart-o-grapher.herokuapp.com/home)
 
+<p style="text-align: center;">
+	<img src= "https://s3.amazonaws.com/instafake/gifs/React-App-Google-Chrome-3_29_2018-3_56_01-AM.gif" width="900">
+</p>
+
 ## Installation
 Requirements: Node v.6 and up
 In Node CLI, cd to the main folder:
