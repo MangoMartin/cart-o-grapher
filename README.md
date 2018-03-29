@@ -5,16 +5,17 @@
 An app that provides a map of nearby E-commerce shop inventories, allowing users to potentially bypass the hassle and cost of shipping.
 
 ## Deployment
-Check out the live site on [Heroku](https://.herokuapp.com/)
-<p style="text-align: center;">
-	<img src= "https://media.giphy.com/media//giphy.gif" width="900">
-</p>
+Check out the live site on [Heroku](https://cart-o-grapher.herokuapp.com/home)
 
 ## Installation
 Requirements: Node v.6 and up
-In Node CLI:
+In Node CLI, cd to the main folder:
 `npm install`
-`npm start`
+`nodemon server.js'
+
+Then cd to client:
+'npm install'
+'npm start'
 
 ## Data Models
 ### 'users'
