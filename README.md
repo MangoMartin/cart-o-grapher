@@ -1,4 +1,5 @@
 <img src="/client/src/Nav/logo.jpg" align="right" />
+
 # Cart-o-grapher
 [Raymond Ajax Metrulis](https://github.com/reizeismith), [Sean McNeeley](https://github.com/sean21mcn), and [Mikhal Misenas](https://github.com/mistermappy) collaborated on this project.
 An app that provides a map of nearby E-commerce shop inventories, allowing users to potentially bypass the hassle and cost of shipping.
@@ -78,15 +79,15 @@ In Node CLI:
 
 ## Routes
 
-/home : homepage
-/api : login
-/api/signup : signup
-/api/owner : shop profile creator page
+* /home : homepage
+* /api : login
+* /api/signup : signup
+* /api/owner : shop profile creator page
 
 ## Technology 
 
 Node, Express, Leaflet, PostgreSQL
-[Create React App](https://github.com/facebookincubator/create-react-app) was used to make the project template.
+* [Create React App](https://github.com/facebookincubator/create-react-app) was used to make the project template.
 
 
 
